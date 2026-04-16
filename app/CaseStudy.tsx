@@ -219,7 +219,7 @@ export default function CaseStudy() {
                 lineHeight: 1.2,
               }}
             >
-              228 days.
+              5 months.
               <br />
               Zero paid ads.
               <br />
