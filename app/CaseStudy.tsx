@@ -35,21 +35,6 @@ const gridC = "rgba(214,206,188,0.07)";
 // Index where The Mark takes over (Nov 25)
 const TAKEOVER_INDEX = 2;
 
-const seniorityData: [string, number][] = [
-  ["Senior", 36.5],
-  ["Entry", 20.6],
-  ["Director", 9.4],
-  ["Manager", 8.3],
-  ["CXO", 4.2],
-];
-
-const industriesData: [string, number][] = [
-  ["Transport & Logistics", 14.1],
-  ["Import/Export", 7.1],
-  ["Retail", 5.3],
-  ["Food & Beverage", 4.3],
-];
-
 function animateCounter(el: HTMLElement) {
   const target = parseInt(el.dataset.target ?? "0", 10);
   const duration = 1800;
@@ -216,24 +201,6 @@ export default function CaseStudy() {
     };
   }, []);
 
-  const renderDemo = (data: [string, number][]) => {
-    const max = Math.max(...data.map((d) => d[1]));
-    return data.map(([label, pct]) => {
-      const w = Math.round((pct / max) * 100);
-      return (
-        <div className="cs-demo-row" key={label}>
-          <div className="cs-demo-label-row">
-            <span className="cs-demo-name">{label}</span>
-            <span className="cs-demo-pct">{pct}%</span>
-          </div>
-          <div className="cs-bar-bg">
-            <div className="cs-bar-fill" data-w={w} />
-          </div>
-        </div>
-      );
-    });
-  };
-
   return (
     <section className="casestudy">
       <div className="casestudy-inner">
@@ -385,55 +352,6 @@ export default function CaseStudy() {
             <div style={{ position: "relative", height: 220 }}>
               <canvas ref={engagementsRef} />
             </div>
-          </div>
-        </div>
-
-        <div className="cs-demo-grid">
-          <div className="cs-demo-block reveal">
-            <div className="cs-demo-title">Audience Seniority</div>
-            <div>{renderDemo(seniorityData)}</div>
-          </div>
-          <div className="cs-demo-block reveal">
-            <div className="cs-demo-title">Top Industries</div>
-            <div>{renderDemo(industriesData)}</div>
-          </div>
-          <div
-            className="cs-demo-block reveal"
-            style={{
-              background: "rgba(184,149,90,0.06)",
-              borderColor: "rgba(184,149,90,0.2)",
-            }}
-          >
-            <div className="cs-demo-title">The Takeaway</div>
-            <div
-              style={{
-                fontFamily:
-                  "var(--font-cormorant), 'Cormorant Garamond', serif",
-                fontSize: 22,
-                fontWeight: 300,
-                color: "var(--cream)",
-                lineHeight: 1.45,
-                marginBottom: 14,
-              }}
-            >
-              36.5% of the audience is{" "}
-              <em style={{ fontStyle: "italic", color: "var(--gold)" }}>
-                Senior
-              </em>{" "}
-              level or above.
-            </div>
-            <p
-              style={{
-                fontSize: 11,
-                fontWeight: 300,
-                color: "var(--muted-lt)",
-                lineHeight: 1.8,
-              }}
-            >
-              CXOs, Directors, and Senior professionals. These are the exact
-              decision-makers in Tùng&apos;s target market. The right content,
-              consistently, finds the right room.
-            </p>
           </div>
         </div>
       </div>
