@@ -90,6 +90,13 @@ export default function CaseStudy() {
 
     const charts: Chart[] = [];
 
+    // Sep-Oct (i<2) = pre-Mark baseline; Nov onwards = managed by The Mark
+    const followerColors = csNewFollowers.map((_, i) => {
+      if (i < 2) return "rgba(184,149,90,0.12)"; // baseline
+      if (i === 4) return GOLD; // peak month
+      return "rgba(184,149,90,0.4)"; // managed
+    });
+
     if (followersRef.current) {
       charts.push(
         new Chart(followersRef.current, {
@@ -99,9 +106,7 @@ export default function CaseStudy() {
             datasets: [
               {
                 data: csNewFollowers,
-                backgroundColor: csNewFollowers.map((_, i) =>
-                  i === 4 ? GOLD : "rgba(184,149,90,0.28)"
-                ),
+                backgroundColor: followerColors,
                 borderWidth: 0,
                 hoverBackgroundColor: GOLD,
               },
@@ -152,9 +157,11 @@ export default function CaseStudy() {
             datasets: [
               {
                 data: csImpressions,
-                backgroundColor: csImpressions.map((_, i) =>
-                  i === 4 ? "rgba(184,149,90,0.6)" : "rgba(184,149,90,0.18)"
-                ),
+                backgroundColor: csImpressions.map((_, i) => {
+                  if (i < 2) return "rgba(184,149,90,0.08)"; // baseline
+                  if (i === 4) return "rgba(184,149,90,0.6)"; // peak
+                  return "rgba(184,149,90,0.3)"; // managed
+                }),
                 borderWidth: 0,
                 hoverBackgroundColor: "rgba(184,149,90,0.7)",
               },
@@ -174,9 +181,11 @@ export default function CaseStudy() {
             datasets: [
               {
                 data: csEngagements,
-                backgroundColor: csEngagements.map((_, i) =>
-                  i === 4 ? GOLD : "rgba(184,149,90,0.28)"
-                ),
+                backgroundColor: csEngagements.map((_, i) => {
+                  if (i < 2) return "rgba(184,149,90,0.12)"; // baseline
+                  if (i === 4) return GOLD; // peak
+                  return "rgba(184,149,90,0.4)"; // managed
+                }),
                 borderWidth: 0,
                 hoverBackgroundColor: GOLD,
               },
@@ -253,9 +262,59 @@ export default function CaseStudy() {
               </em>
             </h2>
             <p className="casestudy-disclaimer reveal">
-              Identity withheld at client request. Import/export industry, Vietnam
-              market. Sep 2025 – Apr 2026.
+              Identity withheld at client request. Import/export industry,
+              Vietnam market. Account opened Sep 2025 — fully managed by The
+              Mark from Nov 2025 onwards.
             </p>
+            <div
+              className="reveal"
+              style={{
+                marginTop: 16,
+                display: "flex",
+                gap: 18,
+                alignItems: "center",
+                flexWrap: "wrap",
+                fontSize: 9,
+                fontWeight: 600,
+                letterSpacing: 1.5,
+                color: "var(--muted-lt)",
+                textTransform: "uppercase",
+              }}
+            >
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                <span
+                  style={{
+                    width: 10,
+                    height: 10,
+                    background: "rgba(184,149,90,0.15)",
+                    display: "inline-block",
+                  }}
+                />
+                Pre-Mark baseline (Sep–Oct)
+              </span>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                <span
+                  style={{
+                    width: 10,
+                    height: 10,
+                    background: "rgba(184,149,90,0.4)",
+                    display: "inline-block",
+                  }}
+                />
+                Managed by The Mark
+              </span>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                <span
+                  style={{
+                    width: 10,
+                    height: 10,
+                    background: "#B8955A",
+                    display: "inline-block",
+                  }}
+                />
+                Peak month
+              </span>
+            </div>
           </div>
           <div className="reveal" style={{ paddingTop: 8 }}>
             <div
