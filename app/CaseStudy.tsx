@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Chart from "chart.js/auto";
+import Chart, { ChartOptions, Plugin, ScriptableContext } from "chart.js/auto";
 
 const csMonths = [
   "Sep 25",
@@ -14,12 +14,26 @@ const csMonths = [
   "Apr 26",
 ];
 const csNewFollowers = [138, 196, 302, 622, 778, 308, 186, 161];
-const csCumulative = [138, 334, 636, 1258, 2036, 2344, 2530, 2691];
 const csImpressions = [640, 229, 1887, 14638, 46635, 12861, 16851, 19782];
 const csEngagements = [10, 1, 40, 267, 638, 212, 306, 328];
 
+// Cumulative running totals
+const cumulate = (arr: number[]) =>
+  arr.reduce<number[]>((acc, v, i) => {
+    acc.push(i === 0 ? v : acc[i - 1] + v);
+    return acc;
+  }, []);
+
+const csCumulativeFollowers = cumulate(csNewFollowers);
+const csCumulativeImpressions = cumulate(csImpressions);
+const csCumulativeEngagements = cumulate(csEngagements);
+
 const GOLD = "#B8955A";
+const GOLD_DIM = "rgba(184,149,90,0.45)";
 const gridC = "rgba(214,206,188,0.07)";
+
+// Index where The Mark takes over (Nov 25)
+const TAKEOVER_INDEX = 2;
 
 const seniorityData: [string, number][] = [
   ["Senior", 36.5],
@@ -49,9 +63,32 @@ function animateCounter(el: HTMLElement) {
   requestAnimationFrame(tick);
 }
 
+// Plugin: vertical dashed line marking The Mark takeover (between Oct and Nov)
+const takeoverLinePlugin: Plugin<"line"> = {
+  id: "takeoverLine",
+  afterDatasetsDraw(chart) {
+    const { ctx, chartArea, scales } = chart;
+    const x = scales.x.getPixelForValue(TAKEOVER_INDEX - 0.5);
+    if (!isFinite(x)) return;
+    ctx.save();
+    ctx.beginPath();
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = "rgba(184,149,90,0.55)";
+    ctx.lineWidth = 1;
+    ctx.moveTo(x, chartArea.top);
+    ctx.lineTo(x, chartArea.bottom);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = "rgba(184,149,90,0.85)";
+    ctx.font = "600 9px 'Montserrat', sans-serif";
+    ctx.textAlign = "left";
+    ctx.fillText("THE MARK TAKES OVER", x + 6, chartArea.top + 12);
+    ctx.restore();
+  },
+};
+
 export default function CaseStudy() {
   const followersRef = useRef<HTMLCanvasElement>(null);
-  const cumulativeRef = useRef<HTMLCanvasElement>(null);
   const impressionsRef = useRef<HTMLCanvasElement>(null);
   const engagementsRef = useRef<HTMLCanvasElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
@@ -61,7 +98,7 @@ export default function CaseStudy() {
     Chart.defaults.font.family = "'Montserrat', sans-serif";
     Chart.defaults.font.size = 9;
 
-    const baseOpts = {
+    const baseOpts: ChartOptions<"line"> = {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
@@ -73,6 +110,10 @@ export default function CaseStudy() {
           borderColor: GOLD,
           borderWidth: 0.5,
           padding: 10,
+          callbacks: {
+            label: (ctx) =>
+              `Total: ${(ctx.parsed.y ?? 0).toLocaleString()}`,
+          },
         },
       },
       scales: {
@@ -82,108 +123,74 @@ export default function CaseStudy() {
         },
         y: {
           grid: { color: gridC, lineWidth: 0.5 },
-          ticks: { font: { size: 9 } },
+          ticks: {
+            font: { size: 9 },
+            callback: (v) => Number(v).toLocaleString(),
+          },
         },
       },
-      animation: { duration: 1400, easing: "easeOutQuart" as const },
+      animation: { duration: 1400, easing: "easeOutQuart" },
+    };
+
+    const buildLineChart = (
+      canvas: HTMLCanvasElement,
+      data: number[]
+    ): Chart<"line"> => {
+      const ctx = canvas.getContext("2d");
+      let backgroundColor: CanvasGradient | string = "rgba(184,149,90,0.12)";
+      if (ctx) {
+        const grad = ctx.createLinearGradient(0, 0, 0, 220);
+        grad.addColorStop(0, "rgba(184,149,90,0.28)");
+        grad.addColorStop(1, "rgba(184,149,90,0)");
+        backgroundColor = grad;
+      }
+
+      return new Chart(canvas, {
+        type: "line",
+        data: {
+          labels: csMonths,
+          datasets: [
+            {
+              data,
+              // Dim line color before takeover, gold after
+              segment: {
+                borderColor: (seg) =>
+                  seg.p0DataIndex < TAKEOVER_INDEX - 1 ? GOLD_DIM : GOLD,
+                borderDash: (seg) =>
+                  seg.p0DataIndex < TAKEOVER_INDEX - 1 ? [3, 3] : undefined,
+              },
+              borderColor: GOLD,
+              borderWidth: 2.25,
+              pointBackgroundColor: (ctx: ScriptableContext<"line">) =>
+                ctx.dataIndex < TAKEOVER_INDEX ? GOLD_DIM : GOLD,
+              pointBorderColor: (ctx: ScriptableContext<"line">) =>
+                ctx.dataIndex < TAKEOVER_INDEX ? GOLD_DIM : GOLD,
+              pointRadius: 3.5,
+              pointHoverRadius: 6,
+              fill: true,
+              backgroundColor,
+              tension: 0.35,
+            },
+          ],
+        },
+        options: baseOpts,
+        plugins: [takeoverLinePlugin],
+      });
     };
 
     const charts: Chart[] = [];
 
     if (followersRef.current) {
-      charts.push(
-        new Chart(followersRef.current, {
-          type: "bar",
-          data: {
-            labels: csMonths,
-            datasets: [
-              {
-                data: csNewFollowers,
-                backgroundColor: csNewFollowers.map((_, i) =>
-                  i === 4 ? GOLD : "rgba(184,149,90,0.28)"
-                ),
-                borderWidth: 0,
-                hoverBackgroundColor: GOLD,
-              },
-            ],
-          },
-          options: baseOpts,
-        })
-      );
+      charts.push(buildLineChart(followersRef.current, csCumulativeFollowers));
     }
-
-    if (cumulativeRef.current) {
-      const ctx = cumulativeRef.current.getContext("2d");
-      if (ctx) {
-        const grad = ctx.createLinearGradient(0, 0, 0, 220);
-        grad.addColorStop(0, "rgba(184,149,90,0.2)");
-        grad.addColorStop(1, "rgba(184,149,90,0)");
-        charts.push(
-          new Chart(cumulativeRef.current, {
-            type: "line",
-            data: {
-              labels: csMonths,
-              datasets: [
-                {
-                  data: csCumulative,
-                  borderColor: GOLD,
-                  borderWidth: 2,
-                  pointBackgroundColor: GOLD,
-                  pointRadius: 3,
-                  pointHoverRadius: 5,
-                  fill: true,
-                  backgroundColor: grad,
-                  tension: 0.4,
-                },
-              ],
-            },
-            options: baseOpts,
-          })
-        );
-      }
-    }
-
     if (impressionsRef.current) {
       charts.push(
-        new Chart(impressionsRef.current, {
-          type: "bar",
-          data: {
-            labels: csMonths,
-            datasets: [
-              {
-                data: csImpressions,
-                backgroundColor: csImpressions.map((_, i) =>
-                  i === 4 ? "rgba(184,149,90,0.6)" : "rgba(184,149,90,0.18)"
-                ),
-                borderWidth: 0,
-                hoverBackgroundColor: "rgba(184,149,90,0.7)",
-              },
-            ],
-          },
-          options: baseOpts,
-        })
+        buildLineChart(impressionsRef.current, csCumulativeImpressions)
       );
     }
-
     if (engagementsRef.current) {
       charts.push(
-        new Chart(engagementsRef.current, {
-          type: "bar",
-          data: {
-            labels: csMonths,
-            datasets: [
-              {
-                data: csEngagements,
-                backgroundColor: csEngagements.map((_, i) =>
-                  i === 4 ? GOLD : "rgba(184,149,90,0.28)"
-                ),
-                borderWidth: 0,
-                hoverBackgroundColor: GOLD,
-              },
-            ],
-          },
-          options: baseOpts,
-        })
+        buildLineChart(engagementsRef.current, csCumulativeEngagements)
       );
     }
 
@@ -237,7 +244,8 @@ export default function CaseStudy() {
               className="section-headline reveal"
               style={{
                 marginBottom: 20,
-                fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+                fontFamily:
+                  "var(--font-cormorant), 'Cormorant Garamond', serif",
                 fontSize: "clamp(32px, 4vw, 46px)",
                 fontWeight: 300,
                 color: "var(--cream)",
@@ -253,9 +261,52 @@ export default function CaseStudy() {
               </em>
             </h2>
             <p className="casestudy-disclaimer reveal">
-              Identity withheld at client request. Import/export industry, Vietnam
-              market. Sep 2025 – Apr 2026.
+              Identity withheld at client request. Import/export industry,
+              Vietnam market. Account opened Sep 2025 — fully managed by The
+              Mark from Nov 2025 onwards.
             </p>
+            <div
+              className="reveal"
+              style={{
+                marginTop: 16,
+                display: "flex",
+                gap: 18,
+                alignItems: "center",
+                flexWrap: "wrap",
+                fontSize: 9,
+                fontWeight: 600,
+                letterSpacing: 1.5,
+                color: "var(--muted-lt)",
+                textTransform: "uppercase",
+              }}
+            >
+              <span
+                style={{ display: "inline-flex", alignItems: "center", gap: 8 }}
+              >
+                <span
+                  style={{
+                    width: 18,
+                    height: 2,
+                    background: GOLD_DIM,
+                    display: "inline-block",
+                  }}
+                />
+                Pre-Mark baseline (Sep–Oct)
+              </span>
+              <span
+                style={{ display: "inline-flex", alignItems: "center", gap: 8 }}
+              >
+                <span
+                  style={{
+                    width: 18,
+                    height: 2,
+                    background: GOLD,
+                    display: "inline-block",
+                  }}
+                />
+                Managed by The Mark
+              </span>
+            </div>
           </div>
           <div className="reveal" style={{ paddingTop: 8 }}>
             <div
@@ -311,30 +362,26 @@ export default function CaseStudy() {
           </div>
         </div>
 
-        <div className="cs-chart-row">
+        {/* Headline metric — full width */}
+        <div className="cs-chart-row" style={{ gridTemplateColumns: "1fr" }}>
           <div className="cs-chart-wrap reveal">
-            <div className="cs-chart-title">Monthly New Followers</div>
-            <div style={{ position: "relative", height: 220 }}>
+            <div className="cs-chart-title">Cumulative Followers</div>
+            <div style={{ position: "relative", height: 260 }}>
               <canvas ref={followersRef} />
-            </div>
-          </div>
-          <div className="cs-chart-wrap reveal">
-            <div className="cs-chart-title">Cumulative Growth</div>
-            <div style={{ position: "relative", height: 220 }}>
-              <canvas ref={cumulativeRef} />
             </div>
           </div>
         </div>
 
+        {/* Supporting metrics — side by side */}
         <div className="cs-chart-row">
           <div className="cs-chart-wrap reveal">
-            <div className="cs-chart-title">Monthly Impressions</div>
+            <div className="cs-chart-title">Cumulative Impressions</div>
             <div style={{ position: "relative", height: 220 }}>
               <canvas ref={impressionsRef} />
             </div>
           </div>
           <div className="cs-chart-wrap reveal">
-            <div className="cs-chart-title">Monthly Engagements</div>
+            <div className="cs-chart-title">Cumulative Engagements</div>
             <div style={{ position: "relative", height: 220 }}>
               <canvas ref={engagementsRef} />
             </div>
