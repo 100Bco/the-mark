@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mark — Permanent Presence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:     #0D1B2A;
+  --navy-mid: #152233;
+  --gold:     #B8955A;
+  --gold-lt:  #D4B07A;
+  --gold-dk:  #8A6A35;
+  --cream:    #F7F4EE;
+  --cream-dk: #EDE9E0;
+  --rule:     #D6CEBC;
+  --soft:     #3A3630;
+  --muted:    #8A8278;
+  --muted-lt: #C4BDB4;
+  --white:    #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--navy);
+  color: var(--cream);
+  overflow-x: hidden;
+}
+
+/* ── NAVIGATION ── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 24px 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(13,27,42,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(214,206,188,0.15);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.nav-m {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 0.9;
+  letter-spacing: -1px;
+}
+
+.nav-mark-rule {
+  width: 110%;
+  height: 1.5px;
+  background: var(--gold);
+  margin-top: 4px;
+}
+
+.nav-wordmark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--cream);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.nav-cta {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--gold);
+  padding: 10px 24px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.nav-cta:hover { background: var(--gold-lt); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 60%, rgba(184,149,90,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 80% 20%, rgba(184,149,90,0.04) 0%, transparent 60%);
+}
+
+.hero-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 79px,
+      rgba(214,206,188,0.04) 79px,
+      rgba(214,206,188,0.04) 80px
+    );
+}
+
+.hero-eyebrow {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s forwards;
+}
+
+.hero-logo-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.35s forwards;
+}
+
+.hero-m {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 140px;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 0.85;
+  letter-spacing: -3px;
+}
+
+.hero-rule {
+  width: 115%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold-lt) 50%, var(--gold) 80%, transparent);
+  margin-top: 8px;
+}
+
+.hero-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.15;
+  max-width: 760px;
+  margin: 0 auto 24px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.5s forwards;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted-lt);
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 48px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.65s forwards;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.8s forwards;
+}
+
+.btn-primary {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--gold);
+  padding: 16px 36px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+
+.btn-primary:hover { background: var(--gold-lt); transform: translateY(-1px); }
+
+.btn-ghost {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted-lt);
+  text-decoration: none;
+  padding: 16px 24px;
+  border: 1px solid rgba(214,206,188,0.25);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeUp 1s 1.2s forwards;
+}
+
+.hero-scroll span {
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s 1.5s infinite;
+}
+
+/* ── PROBLEM SECTION ── */
+.problem {
+  background: var(--cream);
+  padding: 120px 64px;
+}
+
+.problem-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.problem-left {}
+
+.problem-label {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.problem-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 300;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+
+.problem-headline em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.problem-right {}
+
+.problem-copy {
+  font-size: 12.5px;
+  font-weight: 300;
+  color: var(--soft);
+  line-height: 2;
+  margin-bottom: 20px;
+}
+
+.problem-copy strong {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.problem-rule {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  margin: 32px 0;
+}
+
+.problem-stat {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.7;
+  padding-left: 20px;
+  border-left: 2px solid var(--gold);
+}
+
+/* ── WHAT IS ── */
+.what {
+  background: var(--navy);
+  padding: 120px 64px;
+}
+
+.what-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.what-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.2;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 72px;
+}
+
+.what-headline em { font-style: italic; color: var(--gold); }
+
+.layers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+}
+
+.layer {
+  padding: 40px 32px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(214,206,188,0.1);
+  position: relative;
+  transition: background 0.3s;
+}
+
+.layer:hover { background: rgba(255,255,255,0.06); }
+
+.layer-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 300;
+  color: rgba(184,149,90,0.15);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.layer-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.layer-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.layer-copy {
+  font-size: 11.5px;
+  font-weight: 300;
+  color: var(--muted-lt);
+  line-height: 1.85;
+}
+
+/* ── PROOF ── */
+.proof {
+  background: var(--cream-dk);
+  padding: 120px 64px;
+}
+
+.proof-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.proof-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 300;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: 64px;
+  max-width: 600px;
+}
+
+.proof-headline em { font-style: italic; color: var(--gold); }
+
+.proof-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 64px;
+}
+
+.stat-block {
+  background: var(--navy);
+  padding: 40px 32px;
+}
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: var(--muted-lt);
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+
+.proof-quote {
+  padding: 40px 48px;
+  background: var(--white);
+  border-left: 3px solid var(--gold);
+  position: relative;
+}
+
+.proof-quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 0.5;
+  opacity: 0.3;
+  position: absolute;
+  top: 24px;
+  left: 32px;
+}
+
+.proof-quote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.65;
+  position: relative;
+  z-index: 1;
+  padding-left: 24px;
+}
+
+.proof-quote-attr {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 20px;
+  padding-left: 24px;
+}
+
+/* ── DELIVERABLES ── */
+.delivers {
+  background: var(--navy);
+  padding: 120px 64px;
+}
+
+.delivers-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.delivers-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 72px;
+  text-align: center;
+}
+
+.delivers-headline em { font-style: italic; color: var(--gold); }
+
+.deliver-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.deliver-item {
+  padding: 40px 36px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(214,206,188,0.1);
+  display: flex;
+  gap: 24px;
+  transition: background 0.3s;
+}
+
+.deliver-item:hover { background: rgba(255,255,255,0.06); }
+
+.deliver-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: rgba(184,149,90,0.3);
+  line-height: 1;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.deliver-content {}
+
+.deliver-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.deliver-outcome {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.deliver-detail {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--muted-lt);
+  line-height: 1.8;
+}
+
+/* ── EVENTS ── */
+.events {
+  background: var(--cream);
+  padding: 120px 64px;
+}
+
+.events-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.events-left {}
+
+.events-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 300;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.events-headline em { font-style: italic; color: var(--gold); }
+
+.events-copy {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--soft);
+  line-height: 2;
+  margin-bottom: 40px;
+}
+
+.event-type {
+  margin-bottom: 32px;
+}
+
+.event-type-label {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.event-type-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.event-type-copy {
+  font-size: 11.5px;
+  font-weight: 300;
+  color: var(--soft);
+  line-height: 1.85;
+}
+
+.events-right {}
+
+.events-visual {
+  background: var(--navy);
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.events-visual-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 70%, rgba(184,149,90,0.12) 0%, transparent 60%);
+}
+
+.events-visual-content {
+  position: relative;
+  z-index: 1;
+}
+
+.events-visual-label {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.events-visual-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 32px;
+}
+
+.events-visual-title em { font-style: italic; color: var(--gold); }
+
+.event-detail {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.event-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.event-detail-text {
+  font-size: 11.5px;
+  font-weight: 300;
+  color: var(--muted-lt);
+  line-height: 1.7;
+}
+
+/* ── FOR WHO ── */
+.forwho {
+  background: var(--navy-mid);
+  padding: 120px 64px;
+  border-top: 1px solid rgba(214,206,188,0.1);
+  border-bottom: 1px solid rgba(214,206,188,0.1);
+}
+
+.forwho-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.forwho-left {}
+
+.forwho-display {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+}
+
+.forwho-display em {
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+}
+
+.forwho-right {}
+
+.criteria {
+  list-style: none;
+  counter-reset: criteria;
+}
+
+.criteria li {
+  counter-increment: criteria;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(214,206,188,0.1);
+}
+
+.criteria li:first-child { padding-top: 0; }
+.criteria li:last-child { border-bottom: none; }
+
+.criteria-num {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 1px;
+  min-width: 24px;
+  padding-top: 3px;
+}
+
+.criteria-text {
+  font-size: 12.5px;
+  font-weight: 300;
+  color: var(--muted-lt);
+  line-height: 1.75;
+}
+
+.criteria-text strong {
+  font-weight: 500;
+  color: var(--cream);
+}
+
+.not-fit {
+  margin-top: 32px;
+  padding: 20px 24px;
+  background: rgba(184,149,90,0.08);
+  border-left: 2px solid var(--gold);
+}
+
+.not-fit-text {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--muted-lt);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* ── MEMBERSHIP ── */
+.membership {
+  background: var(--cream);
+  padding: 120px 64px;
+}
+
+.membership-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.membership-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 300;
+  color: var(--navy);
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.membership-headline em { font-style: italic; color: var(--gold); }
+
+.tiers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  margin-bottom: 48px;
+}
+
+.tier {
+  padding: 40px 32px;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  position: relative;
+}
+
+.tier.featured {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.tier-badge {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+}
+
+.tier-name {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.tier-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 300;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.tier.featured .tier-price { color: var(--cream); }
+
+.tier-period {
+  font-size: 9px;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.tier.featured .tier-period { color: rgba(196,189,180,0.6); }
+
+.tier-divider {
+  height: 1px;
+  background: var(--rule);
+  margin-bottom: 24px;
+}
+
+.tier.featured .tier-divider { background: rgba(255,255,255,0.1); }
+
+.tier-features {
+  list-style: none;
+}
+
+.tier-features li {
+  font-size: 10.5px;
+  font-weight: 300;
+  color: var(--soft);
+  line-height: 1.7;
+  padding: 5px 0;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.tier.featured .tier-features li { color: rgba(196,189,180,0.8); }
+
+.tier-features li::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.membership-note {
+  text-align: center;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--muted);
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* ── ABOUT ── */
+.about {
+  background: var(--navy);
+  padding: 120px 64px;
+}
+
+.about-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-label {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.about-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+
+.about-copy {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--muted-lt);
+  line-height: 2;
+  margin-bottom: 16px;
+}
+
+.about-copy strong { font-weight: 500; color: var(--cream); }
+
+.about-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 8px;
+  transition: opacity 0.2s;
+}
+
+.about-linkedin:hover { opacity: 0.7; }
+
+.about-right {}
+
+.about-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(214,206,188,0.12);
+  padding: 40px 36px;
+}
+
+.about-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+
+.about-card-title {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.about-card-rule {
+  width: 32px;
+  height: 1.5px;
+  background: var(--gold);
+  margin-bottom: 24px;
+}
+
+.about-card-copy {
+  font-size: 11.5px;
+  font-weight: 300;
+  color: var(--muted-lt);
+  line-height: 1.9;
+}
+
+/* ── CTA CLOSE ── */
+.cta-close {
+  background: var(--navy);
+  padding: 160px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(214,206,188,0.15);
+}
+
+.cta-close-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(184,149,90,0.08) 0%, transparent 70%);
+}
+
+.cta-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-m {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 0.9;
+  letter-spacing: -2px;
+}
+
+.cta-rule {
+  width: 115%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold-lt) 50%, var(--gold) 80%, transparent);
+  margin-top: 6px;
+}
+
+.cta-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.3;
+  max-width: 600px;
+  margin: 0 auto 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-headline em { font-style: italic; color: var(--gold); }
+
+.cta-sub {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--muted-lt);
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.cta-btn {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--gold);
+  padding: 18px 48px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, transform 0.15s;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-btn:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+.cta-email {
+  margin-top: 24px;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--muted);
+  position: relative;
+  z-index: 1;
+}
+
+.cta-email a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #080F18;
+  padding: 40px 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(214,206,188,0.08);
+}
+
+.footer-left {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(138,130,120,0.6);
+}
+
+.footer-right {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: rgba(138,130,120,0.5);
+  text-transform: uppercase;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.1); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 20px 32px; }
+  .nav-cta { display: none; }
+  .hero { padding: 100px 32px 80px; }
+  .hero-m { font-size: 90px; }
+  .problem, .what, .proof, .delivers, .events, .forwho, .membership, .about, .cta-close { padding: 80px 32px; }
+  .problem-inner, .events-inner, .about-inner { grid-template-columns: 1fr; gap: 48px; }
+  .forwho-inner { grid-template-columns: 1fr; gap: 40px; }
+  .layers, .deliver-grid, .tiers, .proof-stats { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div>
+      <div class="nav-m">M</div>
+      <div class="nav-mark-rule"></div>
+    </div>
+    <div class="nav-wordmark">The Mark</div>
+  </a>
+  <a href="#apply" class="nav-cta">Request an Introduction</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+
+  <div class="hero-eyebrow">An Invitation-Only Network for Founders and CEOs</div>
+
+  <div class="hero-logo-mark">
+    <div class="hero-m">M</div>
+    <div class="hero-rule"></div>
+  </div>
+
+  <h1 class="hero-headline">
+    Your name should be the<br>
+    first thing <em>they find.</em>
+  </h1>
+
+  <p class="hero-sub">
+    The Mark is a closed network for established founders and CEOs who are ready to build their public authority, command the room, and leave something that lasts.
+  </p>
+
+  <div class="hero-cta-group">
+    <a href="#apply" class="btn-primary">Request an Introduction</a>
+    <a href="#what" class="btn-ghost">Learn More</a>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="problem-inner">
+    <div class="problem-left reveal">
+      <div class="problem-label">The Reality</div>
+      <h2 class="problem-headline">
+        You built something real.<br>
+        Online, you are <em>invisible.</em>
+      </h2>
+    </div>
+    <div class="problem-right reveal">
+      <p class="problem-copy">
+        Your business speaks for itself. Your track record is real. But on the platform where your next investor, your next partner, your next deal is already looking &mdash; you are nowhere to be found.
+      </p>
+      <p class="problem-copy">
+        <strong>Invisibility at your level is not neutral.</strong> It costs you deals you never knew you lost, conversations that never started, and a legacy that exists only in the rooms you physically walk into.
+      </p>
+      <div class="problem-rule"></div>
+      <p class="problem-stat">
+        "The founders who raise capital, recruit the best people, and attract the right partnerships have one thing in common: they show up before the meeting starts."
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS THE MARK -->
+<section class="what" id="what">
+  <div class="what-inner">
+    <div class="section-label reveal">What Is The Mark</div>
+    <h2 class="what-headline reveal">
+      A managed service and a vetted network.<br>
+      <em>Built to compound over time.</em>
+    </h2>
+    <div class="layers">
+      <div class="layer reveal">
+        <div class="layer-num">01</div>
+        <div class="layer-title">The Service</div>
+        <div class="layer-name">Your LinkedIn.<br>Fully managed.</div>
+        <p class="layer-copy">We capture your voice, your thinking, your story. Then we build and run your entire LinkedIn presence &mdash; content, posting, engagement, amplification &mdash; so you show up consistently without lifting a finger.</p>
+      </div>
+      <div class="layer reveal">
+        <div class="layer-num">02</div>
+        <div class="layer-title">The Network</div>
+        <div class="layer-name">Vetted peers.<br>Real deal flow.</div>
+        <p class="layer-copy">Every member is hand-selected. Non-competing. At your level. Private dinners in Austin. Annual retreat in Southeast Asia. The kind of room where one conversation changes the trajectory of a deal.</p>
+      </div>
+      <div class="layer reveal">
+        <div class="layer-num">03</div>
+        <div class="layer-title">First Aura</div>
+        <div class="layer-name">Where it leads<br>for the bold.</div>
+        <p class="layer-copy">As your audience grows, brands, platforms, and media seek access. First Aura &mdash; our creator management firm &mdash; manages those opportunities on your behalf. Pure commission. No ceiling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof">
+  <div class="proof-inner">
+    <div class="section-label reveal">Proof of Concept</div>
+    <h2 class="proof-headline reveal">
+      We built the playbook<br>
+      on a <em>real account.</em><br>
+      Here are the numbers.
+    </h2>
+    <div class="proof-stats">
+      <div class="stat-block reveal">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Followers<br>at the start</div>
+      </div>
+      <div class="stat-block reveal">
+        <div class="stat-num">3,000+</div>
+        <div class="stat-label">Engaged followers<br>in under 9 months</div>
+      </div>
+      <div class="stat-block reveal">
+        <div class="stat-num">Daily</div>
+        <div class="stat-label">Inbound conversations<br>from the right people</div>
+      </div>
+    </div>
+    <div class="proof-quote reveal">
+      <div class="proof-quote-mark">&ldquo;</div>
+      <p class="proof-quote-text">
+        Before this, I had been in the industry for years and nobody outside my immediate circle knew who I was. Within months, the right people were finding me. Investors I had never met were reaching out. That does not happen by accident.
+      </p>
+      <div class="proof-quote-attr">Founding case study &mdash; B2B operator, Austin TX</div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="delivers">
+  <div class="delivers-inner">
+    <div class="section-label reveal">What You Get</div>
+    <h2 class="delivers-headline reveal">
+      Everything. <em>Done for you.</em>
+    </h2>
+    <div class="deliver-grid">
+      <div class="deliver-item reveal">
+        <div class="deliver-num">01</div>
+        <div class="deliver-content">
+          <div class="deliver-title">Voice Capture</div>
+          <div class="deliver-outcome">You sound like yourself. On your best day. Every time.</div>
+          <p class="deliver-detail">3 to 4 hours of deep-dive sessions. We extract your thinking, your stories, your convictions. Everything published under your name sounds like you wrote it in your best moment.</p>
+        </div>
+      </div>
+      <div class="deliver-item reveal">
+        <div class="deliver-num">02</div>
+        <div class="deliver-content">
+          <div class="deliver-title">Content and Presence</div>
+          <div class="deliver-outcome">You show up consistently, without lifting a finger.</div>
+          <p class="deliver-detail">3 to 4 posts per week. Written posts, infographics, strategic commentary. Full account management: replies, connections, inbox. All handled.</p>
+        </div>
+      </div>
+      <div class="deliver-item reveal">
+        <div class="deliver-num">03</div>
+        <div class="deliver-content">
+          <div class="deliver-title">Amplification Network</div>
+          <div class="deliver-outcome">Your reach is engineered from day one.</div>
+          <p class="deliver-detail">The Mark operates a coordinated network of real accounts and established company pages that engage on your content the moment it publishes. Algorithm triggered. Momentum built.</p>
+        </div>
+      </div>
+      <div class="deliver-item reveal">
+        <div class="deliver-num">04</div>
+        <div class="deliver-content">
+          <div class="deliver-title">Monthly Strategy</div>
+          <div class="deliver-outcome">Direct access. Not delegated.</div>
+          <p class="deliver-detail">Monthly strategy sessions with The Mark's founding team. We calibrate the content, the outreach, the narrative. Everything aimed at your specific near-term goals.</p>
+        </div>
+      </div>
+      <div class="deliver-item reveal">
+        <div class="deliver-num">05</div>
+        <div class="deliver-content">
+          <div class="deliver-title">Private Event Series</div>
+          <div class="deliver-outcome">The room you have been missing.</div>
+          <p class="deliver-detail">Curated Austin dinners. Annual retreat in Southeast Asia. Vetted members only. Every gathering has a declared purpose. Not networking &mdash; a room with intention. Separately priced.</p>
+        </div>
+      </div>
+      <div class="deliver-item reveal">
+        <div class="deliver-num">06</div>
+        <div class="deliver-content">
+          <div class="deliver-title">Network Access</div>
+          <div class="deliver-outcome">The right introductions, when it matters.</div>
+          <p class="deliver-detail">Non-competing founders across industries. Warm introductions based on your specific goals. Real deal flow from people who are building at the same level.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events">
+  <div class="events-inner">
+    <div class="events-left reveal">
+      <div class="problem-label">The Gatherings</div>
+      <h2 class="events-headline">
+        The room is half<br>
+        the <em>value.</em>
+      </h2>
+      <p class="events-copy">
+        We design every gathering around a single declared purpose. No panels. No sponsors. No name tags with your company and job title. Just the right people, the right question, and enough space to think at a scale that daily life does not allow.
+      </p>
+      <div class="event-type">
+        <div class="event-type-label">Austin</div>
+        <div class="event-type-name">Quarterly Private Dinners</div>
+        <p class="event-type-copy">10 to 14 members. Rotating curated venues. Each dinner opens with a framing question that sets the tone for the entire evening. Separately priced.</p>
+      </div>
+      <div class="event-type">
+        <div class="event-type-label">Southeast Asia</div>
+        <div class="event-type-name">Annual Retreat &mdash; Vietnam</div>
+        <p class="event-type-copy">Once a year. Founding members only at launch. Private villas, Ha Long Bay cave dinners, artisan experiences, morning meditation. The kind of trip people talk about for years. Separately priced.</p>
+      </div>
+    </div>
+    <div class="events-right reveal">
+      <div class="events-visual">
+        <div class="events-visual-bg"></div>
+        <div class="events-visual-content">
+          <div class="events-visual-label">Vietnam Retreat</div>
+          <h3 class="events-visual-title">
+            A cave dinner on<br>
+            <em>Ha Long Bay.</em><br>
+            No phones.<br>
+            No agenda.
+          </h3>
+          <div class="event-detail">
+            <div class="event-dot"></div>
+            <div class="event-detail-text">Private villa compound outside Hoi An</div>
+          </div>
+          <div class="event-detail">
+            <div class="event-dot"></div>
+            <div class="event-detail-text">Dinner inside the caves of Ha Long Bay</div>
+          </div>
+          <div class="event-detail">
+            <div class="event-dot"></div>
+            <div class="event-detail-text">Morning meditation with a local practitioner</div>
+          </div>
+          <div class="event-detail">
+            <div class="event-dot"></div>
+            <div class="event-detail-text">Private water puppet performance and dinner with the artists</div>
+          </div>
+          <div class="event-detail">
+            <div class="event-dot"></div>
+            <div class="event-detail-text">One half-day with no phones, no schedule, no agenda</div>
+          </div>
+          <div class="event-detail">
+            <div class="event-dot"></div>
+            <div class="event-detail-text">Local partners handle all logistics. You just show up.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="forwho">
+  <div class="forwho-inner">
+    <div class="forwho-left reveal">
+      <div class="forwho-display">
+        Who<br>this is<br><em>for.</em>
+      </div>
+    </div>
+    <div class="forwho-right reveal">
+      <ul class="criteria">
+        <li>
+          <div class="criteria-num">01</div>
+          <div class="criteria-text"><strong>Founders and CEOs</strong> of businesses doing $5M or more in annual revenue</div>
+        </li>
+        <li>
+          <div class="criteria-num">02</div>
+          <div class="criteria-text">Operating in <strong>real estate, construction, development, professional services,</strong> or adjacent industries</div>
+        </li>
+        <li>
+          <div class="criteria-num">03</div>
+          <div class="criteria-text">Ready to become a <strong>public voice</strong> in their industry &mdash; not just a name on a business card</div>
+        </li>
+        <li>
+          <div class="criteria-num">04</div>
+          <div class="criteria-text">Interested in <strong>raising capital, attracting the right partners,</strong> or building something that outlasts the business</div>
+        </li>
+        <li>
+          <div class="criteria-num">05</div>
+          <div class="criteria-text">Here <strong>by invitation.</strong> Membership is extended, not applied for.</div>
+        </li>
+      </ul>
+      <div class="not-fit">
+        <p class="not-fit-text">Not the right fit for those who want to stay anonymous, are not ready to show up publicly, or are looking for a social media agency. The Mark is for founders who understand that presence is an asset &mdash; and are ready to build it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section class="membership" id="membership">
+  <div class="membership-inner">
+    <div class="section-label reveal">Membership</div>
+    <h2 class="membership-headline reveal">
+      An investment that<br>
+      <em>pays for itself.</em>
+    </h2>
+    <div class="tiers">
+      <div class="tier reveal">
+        <div class="tier-badge">Limited</div>
+        <div class="tier-name">Founding Member</div>
+        <div class="tier-price">$4,000</div>
+        <div class="tier-period">per month &mdash; locked for life</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Full service delivery</li>
+          <li>All network benefits</li>
+          <li>Founding member status</li>
+          <li>Rate locked as long as active</li>
+          <li>First cohort only</li>
+        </ul>
+      </div>
+      <div class="tier featured reveal">
+        <div class="tier-name">Member</div>
+        <div class="tier-price">$5,000</div>
+        <div class="tier-period">per month</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Full service delivery</li>
+          <li>All network benefits</li>
+          <li>Monthly strategy call</li>
+          <li>Amplification network</li>
+          <li>Event access (separately priced)</li>
+        </ul>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-name">Strategic</div>
+        <div class="tier-price">Custom</div>
+        <div class="tier-period">for select members</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Capital raise support</li>
+          <li>Brand partnership access</li>
+          <li>Speaking placement</li>
+          <li>International investor network introductions</li>
+        </ul>
+      </div>
+    </div>
+    <p class="membership-note reveal">Membership is by introduction only. The founding cohort is limited.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <div class="about-left reveal">
+      <div class="about-label">Behind The Mark</div>
+      <h2 class="about-headline">Built by someone who has done the work.</h2>
+      <p class="about-copy">
+        <strong>Minh Mac</strong> is the Founder and Brand Builder of 100Bold, a growth marketing agency based in Austin, Texas. Over 15 years he has built businesses, connected communities, and learned what it takes to make a founder's name mean something.
+      </p>
+      <p class="about-copy">
+        The Mark is built on a simple belief: the founders who show up publicly, consistently, and authentically are the ones who raise the money, close the deals, and leave the legacy. Everything else is just noise.
+      </p>
+      <a href="https://linkedin.com/in/minhbmac" class="about-linkedin" target="_blank">
+        Connect on LinkedIn &rarr;
+      </a>
+    </div>
+    <div class="about-right reveal">
+      <div class="about-card">
+        <div class="about-card-name">Minh Mac</div>
+        <div class="about-card-title">Founder &amp; Brand Builder</div>
+        <div class="about-card-rule"></div>
+        <p class="about-card-copy">
+          Founder of 100Bold. 15 years building brands and businesses across Austin and Southeast Asia. Active member of the Greater Austin Asian Chamber of Commerce. Builder of the Tung Cao case study that proved this model works.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="cta-close" id="apply">
+  <div class="cta-close-bg"></div>
+  <div class="cta-logo reveal">
+    <div class="cta-m">M</div>
+    <div class="cta-rule"></div>
+  </div>
+  <h2 class="cta-headline reveal">
+    Membership is by<br>
+    <em>introduction only.</em>
+  </h2>
+  <p class="cta-sub reveal">If you believe this is for you, let's have a conversation.</p>
+  <a href="mailto:start@100bold.co?subject=The Mark — Introduction Request" class="cta-btn reveal">Request an Introduction</a>
+  <p class="cta-email reveal">Or reach us directly at <a href="mailto:start@100bold.co">start@100bold.co</a></p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">The Mark &mdash; Permanent Presence &mdash; Powered by 100Bold</div>
+  <div class="footer-right">Austin, Texas &mdash; By Invitation Only</div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
