@@ -249,15 +249,15 @@ export default function Home() {
           <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32, marginTop: 40 }}>
             <div>
               <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: 24, fontWeight: 300, color: "var(--navy)", marginBottom: 12, lineHeight: 1.3 }}>Founders building<br /><em style={{ color: "var(--gold)" }}>pipeline.</em></h3>
-              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You want LinkedIn to generate inbound leads, attract investors, and open doors to partnerships that drive revenue.</p>
+              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>Inbound leads. Investor attention. Partner deals. All from LinkedIn.</p>
             </div>
             <div>
               <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: 24, fontWeight: 300, color: "var(--navy)", marginBottom: 12, lineHeight: 1.3 }}>CEOs building<br /><em style={{ color: "var(--gold)" }}>authority.</em></h3>
-              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You want to be the recognized leader in your industry. The one invited to speak, sought out by the right people, and trusted before the first meeting.</p>
+              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>Be the name people trust before the first meeting. Get invited to speak, not apply.</p>
             </div>
             <div>
               <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: 24, fontWeight: 300, color: "var(--navy)", marginBottom: 12, lineHeight: 1.3 }}>Leaders building<br /><em style={{ color: "var(--gold)" }}>legacy.</em></h3>
-              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You have built something real and want your name to carry weight beyond your company, in your industry and your market.</p>
+              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>Your name carries weight beyond your company. Your industry knows who you are.</p>
             </div>
           </div>
         </div>
