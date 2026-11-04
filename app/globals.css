@@ -1432,17 +1432,23 @@ footer {
 .cs-detail-images-inner {
   max-width: 1000px;
   margin: 0 auto;
+  border: 1px solid rgba(214,206,188,0.12);
+  padding: 40px;
 }
 .cs-detail-images-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 6px;
 }
 .cs-detail-images-grid img {
   width: 100%;
-  height: auto;
+  height: 240px;
+  object-fit: cover;
   display: block;
-  border: 1px solid rgba(214,206,188,0.1);
+  border: 1px solid rgba(214,206,188,0.08);
+}
+.cs-detail-images-grid--3col {
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .cs-detail-cta {
@@ -1471,7 +1477,7 @@ footer {
   .cs-detail-stats-grid { grid-template-columns: 1fr 1fr; }
   .cs-detail-big-stats { grid-template-columns: 1fr; }
   .cs-detail-milestones-inner { grid-template-columns: 1fr; }
-  .cs-detail-images-grid { grid-template-columns: 1fr; }
+  .cs-detail-images-grid, .cs-detail-images-grid--3col { grid-template-columns: 1fr; }
 }
 
 /* ── RESPONSIVE ── */

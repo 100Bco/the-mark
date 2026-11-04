@@ -238,70 +238,70 @@ export default function TungCaoPage() {
 
       {/* IMAGES */}
       <section className="cs-detail-images">
-        <div className="cs-detail-images-inner">
-          <div className="section-label">The Proof</div>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <div className="section-label" style={{ marginBottom: 32 }}>The Proof</div>
+          <div className="cs-detail-images-inner">
+            {/* Analytics & Events */}
+            <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 16 }}>
+              Analytics &amp; Events
+            </div>
+            <div className="cs-detail-images-grid" style={{ marginBottom: 32 }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/tung-cao/linkedin-analytics.png"
+                alt="Tung Cao LinkedIn analytics — 1M impressions"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/tung-cao/1789130366372.jpeg"
+                alt="Tung Cao at International Manufacturing Congress"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/tung-cao/1789130366853.jpeg"
+                alt="Tung Cao on stage at IMC 2026"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/tung-cao/1793612259323_5866711668054345223_g1762829536104583963_feab5d33ba7fa217235c0968fa87ea39.jpg"
+                alt="Tung Cao podcast recording"
+              />
+            </div>
 
-          {/* Analytics & Events */}
-          <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 16 }}>
-            Analytics &amp; Events
-          </div>
-          <div className="cs-detail-images-grid" style={{ marginBottom: 48 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/tung-cao/linkedin-analytics.png"
-              alt="Tung Cao LinkedIn analytics — 1M impressions"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/tung-cao/1789130366372.jpeg"
-              alt="Tung Cao at International Manufacturing Congress"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/tung-cao/1789130366853.jpeg"
-              alt="Tung Cao on stage at IMC 2026"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/tung-cao/1793612259323_5866711668054345223_g1762829536104583963_feab5d33ba7fa217235c0968fa87ea39.jpg"
-              alt="Tung Cao podcast recording"
-            />
-          </div>
-
-          {/* Inbound & Collaboration */}
-          <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 8 }}>
-            Inbound &amp; Collaboration Requests
-          </div>
-          <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 20, fontStyle: "italic" }}>
-            Names and profile photos redacted for privacy.
-          </p>
-          <div className="cs-detail-images-grid">
-            {[
-              { src: "/images/tung-cao/dm-akanksha-imc.png", alt: "Speaker invitation — International Manufacturing Congress" },
-              { src: "/images/tung-cao/dm-vscn-podcast.png", alt: "Podcast invitation — Vietnam Supply Chain Network" },
-              { src: "/images/tung-cao/dm-andhika.png", alt: "Partnership proposal — Indonesia commodities" },
-              { src: "/images/tung-cao/dm-eduardo.png", alt: "Collaboration request — Entrepreneur & Investor" },
-              { src: "/images/tung-cao/dm-nus-singapore.png", alt: "University collaboration — NUS Singapore" },
-              { src: "/images/tung-cao/dm-ryan-sourcing.png", alt: "Sourcing inquiry — Brazil export" },
-            ].map((dm) => (
-              <div key={dm.src} style={{ position: "relative", overflow: "hidden", borderRadius: 4 }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={dm.src} alt={dm.alt} />
-                {/* Blur overlay on name/avatar area */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: 72,
-                    backdropFilter: "blur(12px)",
-                    WebkitBackdropFilter: "blur(12px)",
-                    background: "linear-gradient(rgba(13,27,42,0.3), transparent)",
-                  }}
-                />
-              </div>
-            ))}
+            {/* Inbound & Collaboration */}
+            <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 8 }}>
+              Inbound &amp; Collaboration Requests
+            </div>
+            <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 16, fontStyle: "italic" }}>
+              Names and profile photos redacted for privacy.
+            </p>
+            <div className="cs-detail-images-grid cs-detail-images-grid--3col">
+              {[
+                { src: "/images/tung-cao/dm-akanksha-imc.png", alt: "Speaker invitation — International Manufacturing Congress" },
+                { src: "/images/tung-cao/dm-vscn-podcast.png", alt: "Podcast invitation — Vietnam Supply Chain Network" },
+                { src: "/images/tung-cao/dm-andhika.png", alt: "Partnership proposal — Indonesia commodities" },
+                { src: "/images/tung-cao/dm-eduardo.png", alt: "Collaboration request — Entrepreneur & Investor" },
+                { src: "/images/tung-cao/dm-nus-singapore.png", alt: "University collaboration — NUS Singapore" },
+                { src: "/images/tung-cao/dm-ryan-sourcing.png", alt: "Sourcing inquiry — Brazil export" },
+              ].map((dm) => (
+                <div key={dm.src} style={{ position: "relative", overflow: "hidden" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={dm.src} alt={dm.alt} style={{ height: 280, objectPosition: "top" }} />
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: 64,
+                      backdropFilter: "blur(12px)",
+                      WebkitBackdropFilter: "blur(12px)",
+                      background: "linear-gradient(rgba(13,27,42,0.4), transparent)",
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
