@@ -222,16 +222,6 @@ export default function LocDangPage() {
             </p>
           </div>
 
-          <div className="cs-detail-milestone">
-            <div className="cs-detail-milestone-num">04</div>
-            <div className="cs-detail-milestone-title">
-              Right Audience, Proven
-            </div>
-            <p className="cs-detail-milestone-text">
-              12% Attorneys, 8% Founders, 4% Owners, 2% CEOs &mdash; exactly
-              the referral partners a law firm needs.
-            </p>
-          </div>
         </div>
       </section>
 
