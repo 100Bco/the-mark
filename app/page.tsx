@@ -184,58 +184,136 @@ export default function Home() {
             Real founders. <em>Real outcomes.</em>
           </h2>
 
-          {/* Case 1: Tung Cao */}
-          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 2 }}>
-            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(214,206,188,0.1)", padding: "40px 32px" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 3, color: "var(--gold)", textTransform: "uppercase", marginBottom: 20 }}>Import &amp; Export</div>
-              <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: 32, fontWeight: 300, color: "var(--cream)", marginBottom: 6 }}>Tung Cao</h3>
-              <p style={{ fontSize: 12, fontWeight: 300, color: "var(--muted)", marginBottom: 24 }}>Co-Founder, 100B Global &mdash; Vietnam</p>
-              <div style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: 48, fontWeight: 300, color: "var(--gold)", lineHeight: 1, marginBottom: 8 }}>1M+</div>
-              <p style={{ fontSize: 12, fontWeight: 500, letterSpacing: 1.5, color: "var(--muted-lt)", textTransform: "uppercase", marginBottom: 24 }}>LinkedIn impressions in 12 months</p>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                {["0 → 7,000 followers, 296K members reached", "89% of reach from outside existing network", "2x speaker invitations sourced via LinkedIn", "Podcast feature by Vietnam Supply Chain Network (9K members)", "Inbound: partnership proposals, sourcing inquiries, investor meetings"].map((item) => (
-                  <li key={item} style={{ fontSize: 14, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.7, padding: "4px 0", paddingLeft: 16, position: "relative" }}>
-                    <span style={{ position: "absolute", left: 0, top: 10, width: 4, height: 4, background: "var(--gold)", borderRadius: "50%" }} />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <a href="/case-studies/tung-cao" className="cs-case-link">Read the case study &rarr;</a>
+          {/* Case cards — LeverBrands style */}
+          <div
+            className="reveal"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 2,
+              marginBottom: 48,
+            }}
+          >
+            {/* Case 1: Tung Cao */}
+            <div
+              style={{
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid rgba(214,206,188,0.1)",
+                padding: "48px 36px",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: 18,
+                  fontWeight: 400,
+                  color: "var(--white)",
+                  lineHeight: 1.6,
+                  marginBottom: 24,
+                }}
+              >
+                From zero to 1M+ impressions in 12 months. 2 speaker
+                invitations, daily inbound from decision-makers worldwide.
+              </p>
+              <p
+                style={{
+                  fontSize: 14,
+                  fontWeight: 400,
+                  color: "var(--muted)",
+                  marginBottom: 32,
+                }}
+              >
+                Tung Cao, Co-Founder, 100B Global
+              </p>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "20px 32px",
+                  marginBottom: 32,
+                }}
+              >
+                <div>
+                  <div style={{ fontSize: 36, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>1M+</div>
+                  <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Impressions</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: 36, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>7K</div>
+                  <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Followers</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: 36, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>296K</div>
+                  <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Members Reached</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: 36, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>2x</div>
+                  <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Speaker Events</div>
+                </div>
+              </div>
+              <a href="/case-studies/tung-cao" className="cs-case-link">
+                Read the case study &rarr;
+              </a>
             </div>
-            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", minHeight: 400, background: "var(--navy-mid)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/tung-cao/1789130366853.jpeg" alt="Tung Cao speaking at International Manufacturing Congress 2026" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "16px 20px", background: "linear-gradient(transparent, rgba(13,27,42,0.92))", fontSize: 9, fontWeight: 600, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase" }}>Speaker &mdash; International Manufacturing Congress 2026, Hanoi</div>
+
+            {/* Case 2: Loc Dang */}
+            <div
+              style={{
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid rgba(214,206,188,0.1)",
+                padding: "48px 36px",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: 18,
+                  fontWeight: 400,
+                  color: "var(--white)",
+                  lineHeight: 1.6,
+                  marginBottom: 24,
+                }}
+              >
+                Never used social media. 49K+ impressions and 3,596 followers
+                in 4 months &mdash; reaching attorneys, founders, and CEOs.
+              </p>
+              <p
+                style={{
+                  fontSize: 14,
+                  fontWeight: 400,
+                  color: "var(--muted)",
+                  marginBottom: 32,
+                }}
+              >
+                Loc Dang, Founder, Dang Law Group
+              </p>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "20px 32px",
+                  marginBottom: 32,
+                }}
+              >
+                <div>
+                  <div style={{ fontSize: 36, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>49K+</div>
+                  <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Impressions</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: 36, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>3,596</div>
+                  <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Followers</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: 36, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>4,632%</div>
+                  <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Growth Rate</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: 36, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>10+</div>
+                  <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Inbound Conversations</div>
+                </div>
+              </div>
+              <a href="/case-studies/loc-dang" className="cs-case-link">
+                Read the case study &rarr;
+              </a>
             </div>
           </div>
-
-          {/* Case 2: Loc Dang */}
-          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 48 }}>
-            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", minHeight: 400, aspectRatio: "1 / 1", background: "var(--navy-mid)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/loc-dang/Loc Dang.png" alt="Loc Dang, Founder of Dang Law Group" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
-            </div>
-            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(214,206,188,0.1)", padding: "40px 32px" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 3, color: "var(--gold)", textTransform: "uppercase", marginBottom: 20 }}>Legal</div>
-              <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: 32, fontWeight: 300, color: "var(--cream)", marginBottom: 6 }}>Loc Dang</h3>
-              <p style={{ fontSize: 12, fontWeight: 300, color: "var(--muted)", marginBottom: 24 }}>Founder, Dang Law Group &mdash; Austin, TX</p>
-              <div style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: 48, fontWeight: 300, color: "var(--gold)", lineHeight: 1, marginBottom: 8 }}>49K+</div>
-              <p style={{ fontSize: 12, fontWeight: 500, letterSpacing: 1.5, color: "var(--muted-lt)", textTransform: "uppercase", marginBottom: 24 }}>Impressions in 4 months &mdash; from zero</p>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                {["Never used social media before — started June 2026", "0 → 3,596 followers (+4,632% growth)", "Audience: 12% Attorneys, 8% Founders, 4% Owners", "Podcast invitation from Austin Business Spotlight (200+ episodes)", "Inbound: peer attorneys, strategic events, partnership requests"].map((item) => (
-                  <li key={item} style={{ fontSize: 14, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.7, padding: "4px 0", paddingLeft: 16, position: "relative" }}>
-                    <span style={{ position: "absolute", left: 0, top: 10, width: 4, height: 4, background: "var(--gold)", borderRadius: "50%" }} />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <a href="/case-studies/loc-dang" className="cs-case-link">Read the case study &rarr;</a>
-            </div>
-          </div>
-
-          <p className="reveal" style={{ textAlign: "center", fontSize: 12, fontWeight: 300, fontStyle: "italic", color: "var(--muted)", fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif" }}>
-            Every client starts from zero. The system is the same. The results speak for themselves.
-          </p>
         </div>
       </section>
 
