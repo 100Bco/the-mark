@@ -186,7 +186,7 @@ export default function Home() {
 
           {/* Case 1: Tung Cao — image left, stats right */}
           <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 2 }}>
-            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", minHeight: 420, background: "var(--navy-mid)" }}>
+            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", height: 420, background: "var(--navy-mid)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/images/tung-cao/1789130366853.jpeg" alt="Tung Cao at International Manufacturing Congress 2026" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             </div>
@@ -248,7 +248,7 @@ export default function Home() {
               </div>
               <a href="/case-studies/loc-dang" className="cs-case-link">Read the case study &rarr;</a>
             </div>
-            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", minHeight: 420, background: "var(--navy-mid)" }}>
+            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", height: 420, background: "var(--navy-mid)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/images/loc-dang/loc-dang-headshot.webp" alt="Loc Dang, Founder of Dang Law Group" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 20%", display: "block" }} />
             </div>
