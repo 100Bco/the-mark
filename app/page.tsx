@@ -87,46 +87,109 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
+      {/* YOUR JOURNEY */}
       <section className="what" id="what">
         <div className="what-inner">
-          <div className="section-label reveal">How It Works</div>
+          <div className="section-label reveal">Your Journey With Us</div>
           <h2 className="what-headline reveal">
-            Your LinkedIn. Fully managed.
-            <br />
-            <em>Built to convert.</em>
+            From onboarding to <em>inbound pipeline.</em>
           </h2>
-          <div className="layers">
-            <div className="layer reveal">
-              <div className="layer-num">01</div>
-              <div className="layer-title">Voice Capture</div>
-              <div className="layer-name">We learn how<br />you think.</div>
-              <p className="layer-copy">
-                3 to 4 hours of deep-dive sessions. We extract your expertise,
-                your stories, and your point of view. Everything published
-                sounds like you wrote it on your best day.
-              </p>
-            </div>
-            <div className="layer reveal">
-              <div className="layer-num">02</div>
-              <div className="layer-title">Content &amp; Management</div>
-              <div className="layer-name">We run your<br />entire presence.</div>
-              <p className="layer-copy">
-                3 to 4 posts per week. Replies, connections, inbox. Full
-                account management. You stay visible without touching
-                LinkedIn once.
-              </p>
-            </div>
-            <div className="layer reveal">
-              <div className="layer-num">03</div>
-              <div className="layer-title">Distribution &amp; Conversion</div>
-              <div className="layer-name">We turn reach<br />into results.</div>
-              <p className="layer-copy">
-                Amplification network triggers the algorithm on publish.
-                Strategic outreach to your ideal prospects. Impressions become
-                conversations. Conversations become deals.
-              </p>
-            </div>
+
+          {/* Timeline */}
+          <div className="reveal" style={{ maxWidth: 800, margin: "0 auto", position: "relative", paddingLeft: 40 }}>
+            {/* Vertical line */}
+            <div style={{ position: "absolute", left: 15, top: 0, bottom: 0, width: 2, background: "linear-gradient(to bottom, var(--gold), rgba(184,149,90,0.1))" }} />
+
+            {[
+              {
+                week: "Week 1-2",
+                title: "Research & Strategy",
+                desc: "We research your industry, competitors, and target audience. Build your ICP (Ideal Customer Profile), brand guidelines, and content strategy tailored to your goals.",
+              },
+              {
+                week: "Week 2-3",
+                title: "Voice Capture & Profile Setup",
+                desc: "3 to 4 hours of deep-dive sessions to extract your expertise, stories, and point of view. Optimize your LinkedIn profile for conversion. Everything ready to launch.",
+              },
+              {
+                week: "Week 3-4",
+                title: "Channel Launch",
+                desc: "First posts go live. 3 to 4 posts per week. Full account management begins: replies, connections, inbox. Amplification network activated from day one.",
+              },
+              {
+                week: "Month 2-3",
+                title: "Personal Branding & Authority",
+                desc: "Content builds momentum. Your name starts appearing in your industry. Engagement grows. The algorithm recognizes your account as a consistent, high-value voice.",
+              },
+              {
+                week: "Month 3-6",
+                title: "Outreach & Inbound Pipeline",
+                desc: "Strategic outreach to decision-makers in your target market. Inbound conversations start flowing. Podcast invitations, partnership proposals, meeting requests.",
+              },
+              {
+                week: "Month 6+",
+                title: "Scale & Compound",
+                desc: "Your presence compounds. Speaker invitations. Media features. Consistent deal flow from LinkedIn. The system runs. You focus on closing.",
+              },
+            ].map((step, i) => (
+              <div
+                key={step.week}
+                className="reveal"
+                style={{
+                  position: "relative",
+                  paddingBottom: i === 5 ? 0 : 48,
+                  paddingLeft: 40,
+                }}
+              >
+                {/* Dot */}
+                <div
+                  style={{
+                    position: "absolute",
+                    left: -33,
+                    top: 4,
+                    width: 12,
+                    height: 12,
+                    borderRadius: "50%",
+                    background: i === 0 ? "var(--gold)" : "var(--navy-mid)",
+                    border: "2px solid var(--gold)",
+                  }}
+                />
+                <div
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: 2,
+                    color: "var(--gold)",
+                    textTransform: "uppercase",
+                    marginBottom: 8,
+                  }}
+                >
+                  {step.week}
+                </div>
+                <h3
+                  style={{
+                    fontSize: 20,
+                    fontWeight: 600,
+                    color: "var(--white)",
+                    marginBottom: 8,
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {step.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: 15,
+                    fontWeight: 300,
+                    color: "var(--muted-lt)",
+                    lineHeight: 1.8,
+                    maxWidth: 600,
+                  }}
+                >
+                  {step.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
