@@ -153,61 +153,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROOF */}
-      <section className="proof">
-        <div className="proof-inner">
-          <div className="section-label reveal">Proven Results</div>
-          <h2 className="proof-headline reveal">
-            One client. One year.
-            <br />
-            <em>1 million impressions.</em>
-            <br />
-            Zero paid ads.
-          </h2>
-          <div className="proof-stats">
-            <div className="stat-block reveal">
-              <div className="stat-num">1M+</div>
-              <div className="stat-label">
-                LinkedIn impressions
-                <br />
-                in 12 months
-              </div>
-            </div>
-            <div className="stat-block reveal">
-              <div className="stat-num">296K</div>
-              <div className="stat-label">
-                Members reached
-                <br />
-                on the platform
-              </div>
-            </div>
-            <div className="stat-block reveal">
-              <div className="stat-num">89%</div>
-              <div className="stat-label">
-                Out-of-network
-                <br />
-                reach
-              </div>
-            </div>
-          </div>
-          <div className="proof-quote reveal">
-            <div className="proof-quote-mark">&ldquo;</div>
-            <p className="proof-quote-text">
-              Within 12 months, I went from zero LinkedIn presence to 1 million
-              impressions. I was invited to speak at the International
-              Manufacturing Congress in Hanoi and featured on a podcast by
-              Vietnam Supply Chain Network. Investors and partners I had never
-              met started reaching out directly. The content did not just build
-              visibility — it opened doors that moved my business forward.
-            </p>
-            <div className="proof-quote-attr">
-              Tung Cao — Co-Founder &amp; Head of International Trade, 100B
-              Global
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CASE STUDY */}
       <CaseStudy />
 

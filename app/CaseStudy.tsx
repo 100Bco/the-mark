@@ -13,11 +13,6 @@ const csMonthlyImpressions = [
   55000, 70000, 90000, 115000, 145000, 175000, 247521,
 ];
 
-const csMonthlyReach = [
-  600, 1500, 3000, 5400, 8400, 12000,
-  16500, 21000, 27000, 34500, 43500, 52500, 70223,
-];
-
 const cumulate = (arr: number[]) =>
   arr.reduce<number[]>((acc, v, i) => {
     acc.push(i === 0 ? v : acc[i - 1] + v);
@@ -25,13 +20,11 @@ const cumulate = (arr: number[]) =>
   }, []);
 
 const csCumImpressions = cumulate(csMonthlyImpressions);
-const csCumReach = cumulate(csMonthlyReach);
 
 const GOLD = "#B8955A";
 const GOLD_DIM = "rgba(184,149,90,0.45)";
 const gridC = "rgba(214,206,188,0.07)";
-
-const TAKEOVER_INDEX = 1; // Nov 25 = index 1
+const TAKEOVER_INDEX = 1;
 
 function animateCounter(el: HTMLElement) {
   const target = parseInt(el.dataset.target ?? "0", 10);
@@ -55,24 +48,19 @@ const takeoverLinePlugin: Plugin<"line"> = {
     ctx.save();
     ctx.beginPath();
     ctx.setLineDash([4, 4]);
-    ctx.strokeStyle = "rgba(184,149,90,0.55)";
+    ctx.strokeStyle = "rgba(184,149,90,0.5)";
     ctx.lineWidth = 1;
     ctx.moveTo(x, chartArea.top);
     ctx.lineTo(x, chartArea.bottom);
     ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillStyle = "rgba(184,149,90,0.85)";
-    ctx.font = "600 8px 'Montserrat', sans-serif";
-    ctx.textAlign = "left";
-    ctx.fillText("THE MARK TAKES OVER", x + 6, chartArea.top + 12);
     ctx.restore();
   },
 };
 
 export default function CaseStudy() {
-  const impressionsRef = useRef<HTMLCanvasElement>(null);
-  const reachRef = useRef<HTMLCanvasElement>(null);
-  const introRef = useRef<HTMLDivElement>(null);
+  const chartRef = useRef<HTMLCanvasElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     Chart.defaults.color = "#8A8278";
@@ -93,7 +81,7 @@ export default function CaseStudy() {
           padding: 10,
           callbacks: {
             label: (ctx) =>
-              `Total: ${(ctx.parsed.y ?? 0).toLocaleString()}`,
+              `${(ctx.parsed.y ?? 0).toLocaleString()} impressions`,
           },
         },
       },
@@ -118,26 +106,25 @@ export default function CaseStudy() {
       animation: { duration: 1400, easing: "easeOutQuart" },
     };
 
-    const buildLineChart = (
-      canvas: HTMLCanvasElement,
-      data: number[]
-    ): Chart<"line"> => {
-      const ctx = canvas.getContext("2d");
-      let backgroundColor: CanvasGradient | string = "rgba(184,149,90,0.12)";
+    let chart: Chart<"line"> | null = null;
+
+    if (chartRef.current) {
+      const ctx = chartRef.current.getContext("2d");
+      let bg: CanvasGradient | string = "rgba(184,149,90,0.12)";
       if (ctx) {
-        const grad = ctx.createLinearGradient(0, 0, 0, 260);
-        grad.addColorStop(0, "rgba(184,149,90,0.28)");
+        const grad = ctx.createLinearGradient(0, 0, 0, 280);
+        grad.addColorStop(0, "rgba(184,149,90,0.25)");
         grad.addColorStop(1, "rgba(184,149,90,0)");
-        backgroundColor = grad;
+        bg = grad;
       }
 
-      return new Chart(canvas, {
+      chart = new Chart(chartRef.current, {
         type: "line",
         data: {
           labels: csMonths,
           datasets: [
             {
-              data,
+              data: csCumImpressions,
               segment: {
                 borderColor: (seg) =>
                   seg.p0DataIndex < TAKEOVER_INDEX ? GOLD_DIM : GOLD,
@@ -145,7 +132,7 @@ export default function CaseStudy() {
                   seg.p0DataIndex < TAKEOVER_INDEX ? [3, 3] : undefined,
               },
               borderColor: GOLD,
-              borderWidth: 2.25,
+              borderWidth: 2.5,
               pointBackgroundColor: (ctx: ScriptableContext<"line">) =>
                 ctx.dataIndex < TAKEOVER_INDEX ? GOLD_DIM : GOLD,
               pointBorderColor: (ctx: ScriptableContext<"line">) =>
@@ -153,7 +140,7 @@ export default function CaseStudy() {
               pointRadius: 3,
               pointHoverRadius: 5,
               fill: true,
-              backgroundColor,
+              backgroundColor: bg,
               tension: 0.35,
             },
           ],
@@ -161,15 +148,6 @@ export default function CaseStudy() {
         options: baseOpts,
         plugins: [takeoverLinePlugin],
       });
-    };
-
-    const charts: Chart[] = [];
-
-    if (impressionsRef.current) {
-      charts.push(buildLineChart(impressionsRef.current, csCumImpressions));
-    }
-    if (reachRef.current) {
-      charts.push(buildLineChart(reachRef.current, csCumReach));
     }
 
     const counterObs = new IntersectionObserver(
@@ -185,413 +163,226 @@ export default function CaseStudy() {
       },
       { threshold: 0.3 }
     );
-    if (introRef.current) counterObs.observe(introRef.current);
+    if (sectionRef.current) counterObs.observe(sectionRef.current);
 
     return () => {
-      charts.forEach((c) => c.destroy());
+      chart?.destroy();
       counterObs.disconnect();
     };
   }, []);
 
   return (
     <section className="casestudy">
-      <div className="casestudy-inner">
-        <div className="casestudy-intro" ref={introRef}>
-          <div>
-            <div className="section-label reveal">Case Study</div>
-            <h2
-              className="section-headline reveal"
-              style={{
-                marginBottom: 20,
-                fontFamily:
-                  "var(--font-cormorant), 'Cormorant Garamond', serif",
-                fontSize: "clamp(32px, 4vw, 46px)",
-                fontWeight: 300,
-                color: "var(--cream)",
-                lineHeight: 1.2,
-              }}
-            >
-              12 months.
-              <br />
-              Zero paid ads.
-              <br />
-              <em style={{ fontStyle: "italic", color: "var(--gold)" }}>
-                One proven system.
-              </em>
-            </h2>
-            <p className="casestudy-disclaimer reveal">
-              Tung Cao — Co-Founder &amp; Head of International Trade, 100B
-              Global. Import/export &amp; manufacturing industry, Vietnam
-              market. Account managed by The Mark from Nov 2025.
-            </p>
-            <div
-              className="reveal"
-              style={{
-                marginTop: 16,
-                display: "flex",
-                gap: 18,
-                alignItems: "center",
-                flexWrap: "wrap",
-                fontSize: 9,
-                fontWeight: 600,
-                letterSpacing: 1.5,
-                color: "var(--muted-lt)",
-                textTransform: "uppercase",
-              }}
-            >
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                }}
-              >
-                <span
-                  style={{
-                    width: 18,
-                    height: 2,
-                    background: GOLD_DIM,
-                    display: "inline-block",
-                  }}
-                />
-                Pre-Mark (Oct 25)
-              </span>
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                }}
-              >
-                <span
-                  style={{
-                    width: 18,
-                    height: 2,
-                    background: GOLD,
-                    display: "inline-block",
-                  }}
-                />
-                Managed by The Mark
-              </span>
-            </div>
-          </div>
-          <div className="reveal" style={{ paddingTop: 8 }}>
-            <div
-              className="cs-stat-row"
-              style={{ gridTemplateColumns: "1fr 1fr", marginBottom: 2 }}
-            >
-              <div className="cs-stat">
-                <div className="cs-stat-num cs-counter" data-target="1000521">
-                  0
-                </div>
-                <div className="cs-stat-label">
-                  Total
-                  <br />
-                  Impressions
-                </div>
-              </div>
-              <div className="cs-stat">
-                <div className="cs-stat-num cs-counter" data-target="296123">
-                  0
-                </div>
-                <div className="cs-stat-label">
-                  Members
-                  <br />
-                  Reached
-                </div>
-              </div>
-            </div>
-            <div
-              className="cs-stat-row"
-              style={{ gridTemplateColumns: "1fr 1fr" }}
-            >
-              <div className="cs-stat">
-                <div
-                  className="cs-stat-num"
-                  style={{ fontSize: 32 }}
-                >
-                  89%
-                </div>
-                <div className="cs-stat-label">
-                  Out-of-Network
-                  <br />
-                  Reach
-                </div>
-              </div>
-              <div className="cs-stat">
-                <div
-                  className="cs-stat-num"
-                  style={{ fontSize: 32 }}
-                >
-                  2x
-                </div>
-                <div className="cs-stat-label">
-                  Speaker
-                  <br />
-                  Invitations
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="casestudy-inner" ref={sectionRef}>
+        {/* Header */}
+        <div className="section-label reveal">Case Study — Tung Cao</div>
+        <h2
+          className="reveal"
+          style={{
+            fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+            fontSize: "clamp(30px, 4vw, 46px)",
+            fontWeight: 300,
+            color: "var(--cream)",
+            lineHeight: 1.2,
+            textAlign: "center",
+            maxWidth: 700,
+            margin: "0 auto 16px",
+          }}
+        >
+          From zero to{" "}
+          <em style={{ fontStyle: "italic", color: "var(--gold)" }}>
+            1 million impressions
+          </em>{" "}
+          in 12 months.
+        </h2>
+        <p
+          className="reveal"
+          style={{
+            fontSize: 12,
+            fontWeight: 300,
+            color: "var(--muted-lt)",
+            textAlign: "center",
+            maxWidth: 520,
+            margin: "0 auto 56px",
+            lineHeight: 1.8,
+          }}
+        >
+          Co-Founder &amp; Head of International Trade at 100B Global.
+          Import/export &amp; manufacturing, Vietnam market. Zero paid ads.
+        </p>
 
-        {/* Milestones */}
+        {/* 4 Stats */}
         <div
           className="reveal"
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "repeat(4, 1fr)",
             gap: 2,
-            marginBottom: 2,
+            marginBottom: 32,
+          }}
+        >
+          {[
+            ["1000521", "Total Impressions"],
+            ["296123", "Members Reached"],
+            ["7000", "Followers"],
+          ].map(([target, label]) => (
+            <div className="cs-stat" key={label}>
+              <div className="cs-stat-num cs-counter" data-target={target}>
+                0
+              </div>
+              <div className="cs-stat-label">{label}</div>
+            </div>
+          ))}
+          <div className="cs-stat">
+            <div className="cs-stat-num" style={{ fontSize: 32 }}>
+              89%
+            </div>
+            <div className="cs-stat-label">Out-of-Network</div>
+          </div>
+        </div>
+
+        {/* Chart */}
+        <div className="cs-chart-wrap reveal" style={{ marginBottom: 32 }}>
+          <div className="cs-chart-title">Cumulative Impressions</div>
+          <div style={{ position: "relative", height: 280 }}>
+            <canvas ref={chartRef} />
+          </div>
+        </div>
+
+        {/* Quote */}
+        <div
+          className="proof-quote reveal"
+          style={{
+            marginBottom: 32,
+            background: "rgba(255,255,255,0.04)",
+            borderLeftColor: "var(--gold)",
           }}
         >
           <div
-            style={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(214,206,188,0.1)",
-              padding: "28px 24px",
-            }}
+            className="proof-quote-mark"
+            style={{ color: "var(--gold)" }}
           >
-            <div
-              style={{
-                fontSize: 8,
-                fontWeight: 700,
-                letterSpacing: 3,
-                color: "var(--gold)",
-                textTransform: "uppercase",
-                marginBottom: 12,
-              }}
-            >
-              Speaker Invitation #1
-            </div>
-            <div
-              style={{
-                fontFamily:
-                  "var(--font-cormorant), 'Cormorant Garamond', serif",
-                fontSize: 18,
-                fontWeight: 400,
-                color: "var(--cream)",
-                lineHeight: 1.35,
-                marginBottom: 8,
-              }}
-            >
-              International Manufacturing Congress 2026
-            </div>
-            <p
-              style={{
-                fontSize: 10.5,
-                fontWeight: 300,
-                color: "var(--muted-lt)",
-                lineHeight: 1.75,
-              }}
-            >
-              VIIF, Hanoi — Dubai-based organizers invited Tung as a panelist
-              for a fireside chat on smart factory transformation. The invitation
-              came directly through LinkedIn.
-            </p>
+            &ldquo;
           </div>
+          <p
+            className="proof-quote-text"
+            style={{ color: "var(--cream)" }}
+          >
+            I was invited to speak at the International Manufacturing Congress
+            in Hanoi and featured on a podcast by Vietnam Supply Chain Network.
+            Investors and partners I had never met started reaching out. The
+            content opened doors that moved my business forward.
+          </p>
           <div
-            style={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(214,206,188,0.1)",
-              padding: "28px 24px",
-            }}
+            className="proof-quote-attr"
+            style={{ color: "var(--muted-lt)" }}
           >
-            <div
-              style={{
-                fontSize: 8,
-                fontWeight: 700,
-                letterSpacing: 3,
-                color: "var(--gold)",
-                textTransform: "uppercase",
-                marginBottom: 12,
-              }}
-            >
-              Speaker Invitation #2
-            </div>
-            <div
-              style={{
-                fontFamily:
-                  "var(--font-cormorant), 'Cormorant Garamond', serif",
-                fontSize: 18,
-                fontWeight: 400,
-                color: "var(--cream)",
-                lineHeight: 1.35,
-                marginBottom: 8,
-              }}
-            >
-              Vietnam Supply Chain Network Podcast
-            </div>
-            <p
-              style={{
-                fontSize: 10.5,
-                fontWeight: 300,
-                color: "var(--muted-lt)",
-                lineHeight: 1.75,
-              }}
-            >
-              VSCN (9K+ members) invited Tung for a podcast on why
-              international buyers choose — and leave — Vietnamese suppliers.
-              Sourced entirely from his LinkedIn presence.
-            </p>
+            Tung Cao — 100B Global
           </div>
         </div>
 
-        {/* Main chart — Cumulative Impressions */}
-        <div className="cs-chart-row" style={{ gridTemplateColumns: "1fr" }}>
-          <div className="cs-chart-wrap reveal">
-            <div className="cs-chart-title">
-              Cumulative Impressions — 0 to 1 Million
-            </div>
-            <div style={{ position: "relative", height: 280 }}>
-              <canvas ref={impressionsRef} />
-            </div>
-          </div>
-        </div>
-
-        {/* Secondary chart */}
-        <div className="cs-chart-row" style={{ gridTemplateColumns: "1fr" }}>
-          <div className="cs-chart-wrap reveal">
-            <div className="cs-chart-title">
-              Cumulative Members Reached — 296,123 Total
-            </div>
-            <div style={{ position: "relative", height: 220 }}>
-              <canvas ref={reachRef} />
-            </div>
-          </div>
-        </div>
-
-        {/* Inbound proof */}
+        {/* Highlights */}
         <div
           className="reveal"
           style={{
-            background: "rgba(184,149,90,0.06)",
-            border: "1px solid rgba(184,149,90,0.2)",
-            padding: "28px 32px",
-            marginTop: 2,
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            gap: 2,
           }}
         >
           <div
             style={{
-              fontSize: 8,
-              fontWeight: 700,
-              letterSpacing: 3,
-              color: "var(--gold)",
-              textTransform: "uppercase",
-              marginBottom: 14,
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(214,206,188,0.1)",
+              padding: "24px 20px",
             }}
           >
-            Beyond the Numbers
+            <div
+              style={{
+                fontSize: 8,
+                fontWeight: 700,
+                letterSpacing: 3,
+                color: "var(--gold)",
+                textTransform: "uppercase",
+                marginBottom: 10,
+              }}
+            >
+              Speaker
+            </div>
+            <p
+              style={{
+                fontSize: 11,
+                fontWeight: 300,
+                color: "var(--muted-lt)",
+                lineHeight: 1.75,
+              }}
+            >
+              International Manufacturing Congress 2026, Hanoi — invited
+              directly via LinkedIn DM
+            </p>
           </div>
           <div
             style={{
-              fontFamily:
-                "var(--font-cormorant), 'Cormorant Garamond', serif",
-              fontSize: 22,
-              fontWeight: 300,
-              color: "var(--cream)",
-              lineHeight: 1.45,
-              marginBottom: 20,
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(214,206,188,0.1)",
+              padding: "24px 20px",
             }}
           >
-            Inbound that{" "}
-            <em style={{ fontStyle: "italic", color: "var(--gold)" }}>
-              never existed before
-            </em>{" "}
-            — all arriving through LinkedIn.
+            <div
+              style={{
+                fontSize: 8,
+                fontWeight: 700,
+                letterSpacing: 3,
+                color: "var(--gold)",
+                textTransform: "uppercase",
+                marginBottom: 10,
+              }}
+            >
+              Podcast
+            </div>
+            <p
+              style={{
+                fontSize: 11,
+                fontWeight: 300,
+                color: "var(--muted-lt)",
+                lineHeight: 1.75,
+              }}
+            >
+              Vietnam Supply Chain Network (9K+ members) — founder reached out
+              after reading LinkedIn content
+            </p>
           </div>
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 16,
+              background: "rgba(184,149,90,0.06)",
+              border: "1px solid rgba(184,149,90,0.2)",
+              padding: "24px 20px",
             }}
           >
-            {[
-              [
-                "Conference Speaker Invitations",
-                "International event organizers reaching out directly via LinkedIn DM to invite Tung as a panelist",
-              ],
-              [
-                "Podcast & Media Features",
-                "Industry network founders inviting Tung to share expertise on supply chain and sourcing podcasts",
-              ],
-              [
-                "International Partnership Proposals",
-                "Founders from Indonesia, Singapore, and Brazil proposing supply partnerships and market entry collaborations",
-              ],
-              [
-                "Direct Sourcing Inquiries",
-                "International buyers reaching out with specific product specs, certifications, and export requirements",
-              ],
-              [
-                "University Collaborations",
-                "Top universities (NUS Singapore) seeking Vietnamese startups for real business challenge programs",
-              ],
-              [
-                "Investor & Business Meetings",
-                "Entrepreneurs and investors requesting coffee meetings, online calls, and strategic discussions",
-              ],
-            ].map(([title, desc]) => (
-              <div
-                key={title}
-                style={{
-                  display: "flex",
-                  gap: 12,
-                  alignItems: "flex-start",
-                }}
-              >
-                <span
-                  style={{
-                    width: 5,
-                    height: 5,
-                    background: "var(--gold)",
-                    borderRadius: "50%",
-                    flexShrink: 0,
-                    marginTop: 6,
-                  }}
-                />
-                <div>
-                  <div
-                    style={{
-                      fontSize: 10.5,
-                      fontWeight: 500,
-                      color: "var(--cream)",
-                      marginBottom: 3,
-                    }}
-                  >
-                    {title}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: 10.5,
-                      fontWeight: 300,
-                      color: "var(--muted-lt)",
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    {desc}
-                  </div>
-                </div>
-              </div>
-            ))}
+            <div
+              style={{
+                fontSize: 8,
+                fontWeight: 700,
+                letterSpacing: 3,
+                color: "var(--gold)",
+                textTransform: "uppercase",
+                marginBottom: 10,
+              }}
+            >
+              Inbound Pipeline
+            </div>
+            <p
+              style={{
+                fontSize: 11,
+                fontWeight: 300,
+                color: "var(--muted-lt)",
+                lineHeight: 1.75,
+              }}
+            >
+              Partnership proposals, sourcing inquiries, investor meetings — all
+              from LinkedIn presence alone
+            </p>
           </div>
-          <p
-            style={{
-              fontSize: 11,
-              fontWeight: 300,
-              color: "var(--muted)",
-              lineHeight: 1.8,
-              fontStyle: "italic",
-              marginTop: 20,
-              paddingTop: 16,
-              borderTop: "1px solid rgba(214,206,188,0.1)",
-            }}
-          >
-            89% of impressions reached people outside Tung&apos;s existing
-            network — new prospects, new industries, new geographies. None of
-            these opportunities existed before The Mark.
-          </p>
         </div>
       </div>
     </section>
