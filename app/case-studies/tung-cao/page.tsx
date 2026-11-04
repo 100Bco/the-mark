@@ -23,102 +23,96 @@ export default function TungCaoPage() {
         </a>
       </nav>
 
-      {/* HERO */}
+      {/* HERO — Quote + Avatar + Intro */}
       <section className="cs-detail-hero">
         <div className="cs-detail-hero-inner">
           <a href="/" className="cs-detail-back">
             &larr; Back to Home
           </a>
 
-          <div className="cs-detail-quote">
-            <p className="cs-detail-quote-text">
-              &ldquo;Within 12 months, investors and partners I had never met
-              started reaching out. I was invited to speak at the International
-              Manufacturing Congress in Hanoi. The content opened doors that
-              moved my business forward.&rdquo;
-            </p>
-            <div className="cs-detail-quote-attr">
-              Tung Cao &mdash; Co-Founder &amp; Head of International Trade,
-              100B Global
-            </div>
-          </div>
-
-          <div className="cs-detail-headline-stat">1M+</div>
-          <div className="cs-detail-headline-label">
-            LinkedIn Impressions in 12 Months
-          </div>
-        </div>
-      </section>
-
-      {/* PORTRAIT + INTRO */}
-      <section
-        style={{
-          background: "var(--navy-mid)",
-          padding: "80px 64px",
-          borderTop: "1px solid rgba(214,206,188,0.1)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1000,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "280px 1fr",
-            gap: 48,
-            alignItems: "center",
-          }}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/tung-cao/Tung Cao Photo.png"
-            alt="Tung Cao"
+          <div
             style={{
-              width: "100%",
-              height: "auto",
-              border: "1px solid rgba(214,206,188,0.12)",
+              display: "grid",
+              gridTemplateColumns: "100px 1fr",
+              gap: 32,
+              alignItems: "start",
+              marginBottom: 48,
             }}
-          />
-          <div>
-            <div
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/tung-cao/Tung Cao Photo.png"
+              alt="Tung Cao"
               style={{
-                fontSize: 8,
-                fontWeight: 700,
-                letterSpacing: 3,
-                color: "var(--gold)",
-                textTransform: "uppercase",
-                marginBottom: 12,
+                width: 100,
+                height: 100,
+                borderRadius: "50%",
+                objectFit: "cover",
+                border: "2px solid rgba(184,149,90,0.3)",
               }}
-            >
-              Import &amp; Export &bull; Manufacturing &bull; Vietnam
+            />
+            <div>
+              <div className="cs-detail-quote">
+                <p className="cs-detail-quote-text">
+                  &ldquo;Within 12 months, investors and partners I had never met
+                  started reaching out. I was invited to speak at the International
+                  Manufacturing Congress in Hanoi. The content opened doors that
+                  moved my business forward.&rdquo;
+                </p>
+              </div>
+              <div style={{ marginTop: 20 }}>
+                <h2
+                  style={{
+                    fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+                    fontSize: 32,
+                    fontWeight: 300,
+                    color: "var(--cream)",
+                    lineHeight: 1.25,
+                    marginBottom: 6,
+                  }}
+                >
+                  Tung Cao
+                </h2>
+                <div
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 500,
+                    color: "var(--muted)",
+                    marginBottom: 12,
+                  }}
+                >
+                  Co-Founder &amp; Head of International Trade, 100B Global
+                </div>
+                <div
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 600,
+                    letterSpacing: 2,
+                    color: "var(--gold)",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Import &amp; Export &bull; Manufacturing &bull; Vietnam
+                </div>
+              </div>
             </div>
-            <h2
-              style={{
-                fontFamily:
-                  "var(--font-cormorant), 'Cormorant Garamond', serif",
-                fontSize: 36,
-                fontWeight: 300,
-                color: "var(--cream)",
-                lineHeight: 1.25,
-                marginBottom: 16,
-              }}
-            >
-              Tung Cao
-            </h2>
-            <p
-              style={{
-                fontSize: 14,
-                fontWeight: 300,
-                color: "var(--muted-lt)",
-                lineHeight: 1.85,
-              }}
-            >
-              Co-Founder and Head of International Trade at 100B Global, a
-              company bridging Vietnamese manufacturers with international
-              buyers. Despite years of industry expertise, Tung had zero
-              LinkedIn presence &mdash; no followers, no content, no visibility
-              to the global buyers and partners he needed to reach.
-            </p>
           </div>
+
+          <p
+            style={{
+              fontSize: 15,
+              fontWeight: 300,
+              color: "var(--muted-lt)",
+              lineHeight: 1.85,
+              maxWidth: 700,
+            }}
+          >
+            Co-Founder and Head of International Trade at 100B Global, a
+            company bridging Vietnamese manufacturers with international
+            buyers. Despite years of industry expertise, Tung had zero
+            LinkedIn presence &mdash; no followers, no content, no visibility
+            to the global buyers and partners he needed to reach.
+          </p>
         </div>
       </section>
 

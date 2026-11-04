@@ -23,102 +23,98 @@ export default function LocDangPage() {
         </a>
       </nav>
 
-      {/* HERO */}
+      {/* HERO — Quote + Avatar + Intro */}
       <section className="cs-detail-hero">
         <div className="cs-detail-hero-inner">
           <a href="/" className="cs-detail-back">
             &larr; Back to Home
           </a>
 
-          <div className="cs-detail-quote">
-            <p className="cs-detail-quote-text">
-              &ldquo;I never used social media before. Within 4 months,
-              attorneys and business owners were reaching out to connect,
-              podcast hosts were inviting me on their shows, and my name was
-              being recognized in the Austin legal community &mdash; all from
-              LinkedIn.&rdquo;
-            </p>
-            <div className="cs-detail-quote-attr">
-              Loc Dang &mdash; Founder, Dang Law Group
-            </div>
-          </div>
-
-          <div className="cs-detail-headline-stat">49K+</div>
-          <div className="cs-detail-headline-label">
-            Impressions in 4 Months &mdash; From Zero
-          </div>
-        </div>
-      </section>
-
-      {/* PORTRAIT + INTRO */}
-      <section
-        style={{
-          background: "var(--navy-mid)",
-          padding: "80px 64px",
-          borderTop: "1px solid rgba(214,206,188,0.1)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1000,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "280px 1fr",
-            gap: 48,
-            alignItems: "center",
-          }}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/loc-dang/Loc Dang.png"
-            alt="Loc Dang"
+          <div
             style={{
-              width: "100%",
-              height: "auto",
-              border: "1px solid rgba(214,206,188,0.12)",
+              display: "grid",
+              gridTemplateColumns: "100px 1fr",
+              gap: 32,
+              alignItems: "start",
+              marginBottom: 48,
             }}
-          />
-          <div>
-            <div
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/loc-dang/loc-dang-headshot.webp"
+              alt="Loc Dang"
               style={{
-                fontSize: 8,
-                fontWeight: 700,
-                letterSpacing: 3,
-                color: "var(--gold)",
-                textTransform: "uppercase",
-                marginBottom: 12,
+                width: 100,
+                height: 100,
+                borderRadius: "50%",
+                objectFit: "cover",
+                objectPosition: "center 20%",
+                border: "2px solid rgba(184,149,90,0.3)",
               }}
-            >
-              Legal &bull; Personal Injury &bull; Austin, TX
+            />
+            <div>
+              <div className="cs-detail-quote">
+                <p className="cs-detail-quote-text">
+                  &ldquo;I never used social media before. Within 4 months,
+                  attorneys and business owners were reaching out to connect,
+                  podcast hosts were inviting me on their shows, and my name was
+                  being recognized in the Austin legal community &mdash; all from
+                  LinkedIn.&rdquo;
+                </p>
+              </div>
+              <div style={{ marginTop: 20 }}>
+                <h2
+                  style={{
+                    fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+                    fontSize: 32,
+                    fontWeight: 300,
+                    color: "var(--cream)",
+                    lineHeight: 1.25,
+                    marginBottom: 6,
+                  }}
+                >
+                  Loc Dang
+                </h2>
+                <div
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 500,
+                    color: "var(--muted)",
+                    marginBottom: 12,
+                  }}
+                >
+                  Founder, Dang Law Group
+                </div>
+                <div
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 600,
+                    letterSpacing: 2,
+                    color: "var(--gold)",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Legal &bull; Personal Injury &bull; Austin, TX
+                </div>
+              </div>
             </div>
-            <h2
-              style={{
-                fontFamily:
-                  "var(--font-cormorant), 'Cormorant Garamond', serif",
-                fontSize: 36,
-                fontWeight: 300,
-                color: "var(--cream)",
-                lineHeight: 1.25,
-                marginBottom: 16,
-              }}
-            >
-              Loc Dang
-            </h2>
-            <p
-              style={{
-                fontSize: 14,
-                fontWeight: 300,
-                color: "var(--muted-lt)",
-                lineHeight: 1.85,
-              }}
-            >
-              Founder of Dang Law Group, a personal injury law firm based in
-              Austin, Texas. Before working with The Mark, Loc had never used
-              social media &mdash; no LinkedIn profile activity, no content, no
-              online presence. His reputation was built entirely through word of
-              mouth and courtroom results.
-            </p>
           </div>
+
+          <p
+            style={{
+              fontSize: 15,
+              fontWeight: 300,
+              color: "var(--muted-lt)",
+              lineHeight: 1.85,
+              maxWidth: 700,
+            }}
+          >
+            Founder of Dang Law Group, a personal injury law firm based in
+            Austin, Texas. Before working with The Mark, Loc had never used
+            social media &mdash; no LinkedIn profile activity, no content, no
+            online presence. His reputation was built entirely through word of
+            mouth and courtroom results.
+          </p>
         </div>
       </section>
 
