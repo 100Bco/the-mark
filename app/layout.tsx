@@ -18,9 +18,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "The Mark — Permanent Presence",
+  title: "The Mark — Done-for-you LinkedIn Growth for Founders & CEOs",
   description:
-    "An invitation-only network for established founders and CEOs. Build your public authority, command the room, and leave something that lasts.",
+    "Fully managed LinkedIn service that builds your authority and turns attention into deals, partnerships, and speaking invitations. By 100Bold.",
 };
 
 export default function RootLayout({
