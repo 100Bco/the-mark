@@ -192,10 +192,10 @@ export default function LocDangPage() {
           <div className="cs-detail-milestone">
             <div className="cs-detail-milestone-num">01</div>
             <div className="cs-detail-milestone-title">
-              Podcast Invitation
+              Podcast &mdash; Austin Business Spotlight Series
             </div>
             <p className="cs-detail-milestone-text">
-              A top Austin podcast (200+ episodes) reached out via LinkedIn
+              Featured podcast (200+ episodes) reached out via LinkedIn
               and followed up three times to book Loc as a guest.
             </p>
           </div>
@@ -203,11 +203,11 @@ export default function LocDangPage() {
           <div className="cs-detail-milestone">
             <div className="cs-detail-milestone-num">02</div>
             <div className="cs-detail-milestone-title">
-              VIP Event Invitations
+              VIP Event &mdash; Moody Center
             </div>
             <p className="cs-detail-milestone-text">
-              Invited to exclusive industry events for strategic partnerships
-              &mdash; connections that started from LinkedIn content alone.
+              Invited to exclusive Moody Center events for strategic
+              partnerships within the legal industry.
             </p>
           </div>
 

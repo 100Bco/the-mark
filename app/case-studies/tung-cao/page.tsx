@@ -192,22 +192,22 @@ export default function TungCaoPage() {
           <div className="cs-detail-milestone">
             <div className="cs-detail-milestone-num">01</div>
             <div className="cs-detail-milestone-title">
-              International Conference Speaker
+              Speaker &mdash; International Manufacturing Congress 2026
             </div>
             <p className="cs-detail-milestone-text">
-              Invited as a panelist at a major manufacturing congress in Hanoi
-              &mdash; organizers found Tung directly through LinkedIn.
+              Invited as a panelist at VIIF Hanoi &mdash; organizers found
+              Tung directly through LinkedIn content.
             </p>
           </div>
 
           <div className="cs-detail-milestone">
             <div className="cs-detail-milestone-num">02</div>
             <div className="cs-detail-milestone-title">
-              Industry Podcast Feature
+              Podcast &mdash; Vietnam Supply Chain Network
             </div>
             <p className="cs-detail-milestone-text">
-              A 9K-member supply chain community invited Tung for a podcast
-              after reading his LinkedIn content on sourcing and export.
+              VSCN (9K+ members) invited Tung for a podcast on sourcing
+              and export &mdash; sourced from his LinkedIn posts.
             </p>
           </div>
 
@@ -218,8 +218,8 @@ export default function TungCaoPage() {
             </div>
             <p className="cs-detail-milestone-text">
               Partnership proposals from Indonesia, sourcing inquiries from
-              Brazil, university collaborations from Singapore &mdash; all
-              inbound through LinkedIn. Zero paid ads.
+              Brazil, collaboration from NUS Singapore &mdash; all inbound
+              through LinkedIn. Zero paid ads.
             </p>
           </div>
         </div>
