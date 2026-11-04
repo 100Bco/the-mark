@@ -87,7 +87,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* YOUR JOURNEY */}
+      {/* YOUR JOURNEY — Horizontal Timeline */}
       <section className="what" id="what">
         <div className="what-inner">
           <div className="section-label reveal">Your Journey With Us</div>
@@ -95,101 +95,87 @@ export default function Home() {
             From onboarding to <em>inbound pipeline.</em>
           </h2>
 
-          {/* Timeline */}
-          <div className="reveal" style={{ maxWidth: 800, margin: "0 auto", position: "relative", paddingLeft: 40 }}>
-            {/* Vertical line */}
-            <div style={{ position: "absolute", left: 15, top: 0, bottom: 0, width: 2, background: "linear-gradient(to bottom, var(--gold), rgba(184,149,90,0.1))" }} />
+          <div className="reveal" style={{ position: "relative", marginTop: 48 }}>
+            {/* Horizontal line */}
+            <div style={{ position: "absolute", top: 28, left: 0, right: 0, height: 2, background: "linear-gradient(to right, var(--gold), rgba(184,149,90,0.15))" }} />
 
-            {[
-              {
-                week: "Week 1-2",
-                title: "Research & Strategy",
-                desc: "We research your industry, competitors, and target audience. Build your ICP (Ideal Customer Profile), brand guidelines, and content strategy tailored to your goals.",
-              },
-              {
-                week: "Week 2-3",
-                title: "Voice Capture & Profile Setup",
-                desc: "3 to 4 hours of deep-dive sessions to extract your expertise, stories, and point of view. Optimize your LinkedIn profile for conversion. Everything ready to launch.",
-              },
-              {
-                week: "Week 3-4",
-                title: "Channel Launch",
-                desc: "First posts go live. 3 to 4 posts per week. Full account management begins: replies, connections, inbox. Amplification network activated from day one.",
-              },
-              {
-                week: "Month 2-3",
-                title: "Personal Branding & Authority",
-                desc: "Content builds momentum. Your name starts appearing in your industry. Engagement grows. The algorithm recognizes your account as a consistent, high-value voice.",
-              },
-              {
-                week: "Month 3-6",
-                title: "Outreach & Inbound Pipeline",
-                desc: "Strategic outreach to decision-makers in your target market. Inbound conversations start flowing. Podcast invitations, partnership proposals, meeting requests.",
-              },
-              {
-                week: "Month 6+",
-                title: "Scale & Compound",
-                desc: "Your presence compounds. Speaker invitations. Media features. Consistent deal flow from LinkedIn. The system runs. You focus on closing.",
-              },
-            ].map((step, i) => (
-              <div
-                key={step.week}
-                className="reveal"
-                style={{
-                  position: "relative",
-                  paddingBottom: i === 5 ? 0 : 48,
-                  paddingLeft: 40,
-                }}
-              >
-                {/* Dot */}
-                <div
-                  style={{
-                    position: "absolute",
-                    left: -33,
-                    top: 4,
-                    width: 12,
-                    height: 12,
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 0, position: "relative" }}>
+              {[
+                { week: "Week 1", title: "Research", sub: "ICP & Strategy", icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" },
+                { week: "Week 2", title: "Voice Capture", sub: "Profile Setup", icon: "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" },
+                { week: "Week 3-4", title: "Launch", sub: "Go Live", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
+                { week: "Month 2-3", title: "Authority", sub: "Build Trust", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
+                { week: "Month 3-6", title: "Outreach", sub: "Inbound Deals", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" },
+                { week: "Month 6+", title: "Scale", sub: "Compound Growth", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" },
+              ].map((step, i) => (
+                <div key={step.week} style={{ textAlign: "center", position: "relative", padding: "0 8px" }}>
+                  {/* Icon circle */}
+                  <div style={{
+                    width: 56,
+                    height: 56,
                     borderRadius: "50%",
-                    background: i === 0 ? "var(--gold)" : "var(--navy-mid)",
                     border: "2px solid var(--gold)",
-                  }}
-                />
-                <div
-                  style={{
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: 2,
-                    color: "var(--gold)",
-                    textTransform: "uppercase",
-                    marginBottom: 8,
-                  }}
-                >
-                  {step.week}
+                    background: i === 0 ? "rgba(184,149,90,0.15)" : "var(--navy)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "0 auto 20px",
+                    position: "relative",
+                    zIndex: 1,
+                  }}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d={step.icon} />
+                    </svg>
+                  </div>
+
+                  {/* Arrow between dots (except last) */}
+                  {i < 5 && (
+                    <div style={{
+                      position: "absolute",
+                      top: 26,
+                      right: -8,
+                      color: "var(--gold)",
+                      fontSize: 14,
+                      zIndex: 2,
+                    }}>
+                      &rarr;
+                    </div>
+                  )}
+
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 8 }}>
+                    {step.week}
+                  </div>
+                  <div style={{ fontSize: 16, fontWeight: 600, color: "var(--white)", marginBottom: 4, lineHeight: 1.3 }}>
+                    {step.title}
+                  </div>
+                  <div style={{ fontSize: 13, fontWeight: 300, color: "var(--muted-lt)" }}>
+                    {step.sub}
+                  </div>
                 </div>
-                <h3
-                  style={{
-                    fontSize: 20,
-                    fontWeight: 600,
-                    color: "var(--white)",
-                    marginBottom: 8,
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {step.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: 15,
-                    fontWeight: 300,
-                    color: "var(--muted-lt)",
-                    lineHeight: 1.8,
-                    maxWidth: 600,
-                  }}
-                >
-                  {step.desc}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          {/* Detail cards below timeline */}
+          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 2, marginTop: 48 }}>
+            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(214,206,188,0.1)", padding: "28px 24px" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 10 }}>Phase 1: Foundation</div>
+              <p style={{ fontSize: 14, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.8 }}>
+                Research your market. Define your ICP. Capture your voice. Optimize your profile for conversion. Launch with 3-4 posts per week.
+              </p>
+            </div>
+            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(214,206,188,0.1)", padding: "28px 24px" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 10 }}>Phase 2: Growth</div>
+              <p style={{ fontSize: 14, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.8 }}>
+                Build authority in your industry. Grow engagement and followers. Strategic outreach to decision-makers. Convert impressions into conversations.
+              </p>
+            </div>
+            <div style={{ background: "rgba(184,149,90,0.06)", border: "1px solid rgba(184,149,90,0.2)", padding: "28px 24px" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 10 }}>Phase 3: Revenue</div>
+              <p style={{ fontSize: 14, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.8 }}>
+                Inbound pipeline running. Speaker invitations. Partnership deals. Consistent deal flow. The system compounds. You focus on closing.
+              </p>
+            </div>
           </div>
         </div>
       </section>
