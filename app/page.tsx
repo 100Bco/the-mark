@@ -200,6 +200,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+              <a href="/case-studies/tung-cao" className="cs-case-link">Read the case study &rarr;</a>
             </div>
             <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", minHeight: 400, background: "var(--navy-mid)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -210,9 +211,9 @@ export default function Home() {
 
           {/* Case 2: Loc Dang */}
           <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 48 }}>
-            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", minHeight: 400, background: "var(--navy-mid)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", minHeight: 400, background: "var(--navy-mid)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/loc-dang/loc-dang-portrait.svg" alt="Loc Dang, Founder of Dang Law Group" style={{ width: "60%", height: "auto", opacity: 0.6 }} />
+              <img src="/images/loc-dang/Loc Dang.png" alt="Loc Dang, Founder of Dang Law Group" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             </div>
             <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(214,206,188,0.1)", padding: "40px 32px" }}>
               <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: 3, color: "var(--gold)", textTransform: "uppercase", marginBottom: 20 }}>Legal</div>
@@ -228,6 +229,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+              <a href="/case-studies/loc-dang" className="cs-case-link">Read the case study &rarr;</a>
             </div>
           </div>
 
