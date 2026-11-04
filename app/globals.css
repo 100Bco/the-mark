@@ -438,9 +438,9 @@ nav {
 }
 
 .stat-num {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
-  font-size: 52px;
-  font-weight: 300;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 44px;
+  font-weight: 700;
   color: var(--gold);
   line-height: 1;
   margin-bottom: 8px;
@@ -1178,9 +1178,9 @@ footer {
   padding: 28px 24px;
 }
 .cs-stat-num {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 36px;
-  font-weight: 300;
+  font-weight: 700;
   color: var(--gold);
   line-height: 1;
   margin-bottom: 6px;
@@ -1365,9 +1365,9 @@ footer {
   text-align: center;
 }
 .cs-detail-big-stat-num {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
-  font-size: 56px;
-  font-weight: 300;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 52px;
+  font-weight: 700;
   color: var(--gold);
   line-height: 1;
   margin-bottom: 8px;
@@ -1386,27 +1386,36 @@ footer {
   border-top: 1px solid rgba(214,206,188,0.1);
 }
 .cs-detail-milestones-inner {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+}
+.cs-detail-milestones-inner > .section-label {
+  grid-column: 1 / -1;
+  margin-bottom: 32px;
 }
 .cs-detail-milestone {
-  padding: 28px 0;
-  border-bottom: 1px solid rgba(214,206,188,0.08);
+  padding: 28px 24px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(214,206,188,0.1);
 }
-.cs-detail-milestone:last-child { border-bottom: none; }
+.cs-detail-milestone:last-child { border-bottom: 1px solid rgba(214,206,188,0.1); }
 .cs-detail-milestone-num {
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--gold);
   letter-spacing: 2px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .cs-detail-milestone-title {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-weight: 400;
-  color: var(--cream);
-  margin-bottom: 8px;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 10px;
+  line-height: 1.35;
   line-height: 1.35;
 }
 .cs-detail-milestone-text {
@@ -1461,6 +1470,7 @@ footer {
   .cs-detail-milestones, .cs-detail-images, .cs-detail-cta { padding: 80px 32px; }
   .cs-detail-stats-grid { grid-template-columns: 1fr 1fr; }
   .cs-detail-big-stats { grid-template-columns: 1fr; }
+  .cs-detail-milestones-inner { grid-template-columns: 1fr; }
   .cs-detail-images-grid { grid-template-columns: 1fr; }
 }
 
