@@ -184,54 +184,23 @@ export default function Home() {
             Real founders. <em>Real outcomes.</em>
           </h2>
 
-          {/* Case cards — LeverBrands style */}
-          <div
-            className="reveal"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 2,
-              marginBottom: 48,
-            }}
-          >
-            {/* Case 1: Tung Cao */}
-            <div
-              style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(214,206,188,0.1)",
-                padding: "48px 36px",
-              }}
-            >
-              <p
-                style={{
-                  fontSize: 18,
-                  fontWeight: 400,
-                  color: "var(--white)",
-                  lineHeight: 1.6,
-                  marginBottom: 24,
-                }}
-              >
-                From zero to 1M+ impressions in 12 months. 2 speaker
-                invitations, daily inbound from decision-makers worldwide.
+          {/* Case 1: Tung Cao — image left, stats right */}
+          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 2 }}>
+            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", minHeight: 420, background: "var(--navy-mid)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/tung-cao/1789130366853.jpeg" alt="Tung Cao at International Manufacturing Congress 2026" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "16px 20px", background: "linear-gradient(transparent, rgba(13,27,42,0.92))", fontSize: 11, fontWeight: 600, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase" }}>
+                Speaker &mdash; International Manufacturing Congress 2026
+              </div>
+            </div>
+            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(214,206,188,0.1)", padding: "48px 36px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <p style={{ fontSize: 18, fontWeight: 400, color: "var(--white)", lineHeight: 1.6, marginBottom: 20 }}>
+                From zero to 1M+ impressions in 12 months. 2 speaker invitations, daily inbound from decision-makers worldwide.
               </p>
-              <p
-                style={{
-                  fontSize: 14,
-                  fontWeight: 400,
-                  color: "var(--muted)",
-                  marginBottom: 32,
-                }}
-              >
+              <p style={{ fontSize: 14, fontWeight: 400, color: "var(--muted)", marginBottom: 32 }}>
                 Tung Cao, Co-Founder, 100B Global
               </p>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "20px 32px",
-                  marginBottom: 32,
-                }}
-              >
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px 32px", marginBottom: 32 }}>
                 <div>
                   <div style={{ fontSize: 36, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>1M+</div>
                   <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Impressions</div>
@@ -249,49 +218,20 @@ export default function Home() {
                   <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Speaker Events</div>
                 </div>
               </div>
-              <a href="/case-studies/tung-cao" className="cs-case-link">
-                Read the case study &rarr;
-              </a>
+              <a href="/case-studies/tung-cao" className="cs-case-link">Read the case study &rarr;</a>
             </div>
+          </div>
 
-            {/* Case 2: Loc Dang */}
-            <div
-              style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(214,206,188,0.1)",
-                padding: "48px 36px",
-              }}
-            >
-              <p
-                style={{
-                  fontSize: 18,
-                  fontWeight: 400,
-                  color: "var(--white)",
-                  lineHeight: 1.6,
-                  marginBottom: 24,
-                }}
-              >
-                Never used social media. 49K+ impressions and 3,596 followers
-                in 4 months &mdash; reaching attorneys, founders, and CEOs.
+          {/* Case 2: Loc Dang — stats left, image right */}
+          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 48 }}>
+            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(214,206,188,0.1)", padding: "48px 36px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <p style={{ fontSize: 18, fontWeight: 400, color: "var(--white)", lineHeight: 1.6, marginBottom: 20 }}>
+                Never used social media. 49K+ impressions and 3,596 followers in 4 months &mdash; reaching attorneys, founders, and CEOs.
               </p>
-              <p
-                style={{
-                  fontSize: 14,
-                  fontWeight: 400,
-                  color: "var(--muted)",
-                  marginBottom: 32,
-                }}
-              >
+              <p style={{ fontSize: 14, fontWeight: 400, color: "var(--muted)", marginBottom: 32 }}>
                 Loc Dang, Founder, Dang Law Group
               </p>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "20px 32px",
-                  marginBottom: 32,
-                }}
-              >
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px 32px", marginBottom: 32 }}>
                 <div>
                   <div style={{ fontSize: 36, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>49K+</div>
                   <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Impressions</div>
@@ -309,9 +249,11 @@ export default function Home() {
                   <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Inbound Conversations</div>
                 </div>
               </div>
-              <a href="/case-studies/loc-dang" className="cs-case-link">
-                Read the case study &rarr;
-              </a>
+              <a href="/case-studies/loc-dang" className="cs-case-link">Read the case study &rarr;</a>
+            </div>
+            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", minHeight: 420, background: "var(--navy-mid)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/loc-dang/Loc Dang.png" alt="Loc Dang, Founder of Dang Law Group" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
             </div>
           </div>
         </div>
