@@ -309,11 +309,17 @@ export default function Home() {
             <a href="https://linkedin.com/in/minhbmac" className="about-linkedin" target="_blank" rel="noopener noreferrer">Connect on LinkedIn &rarr;</a>
           </div>
           <div className="about-right reveal">
-            <div className="about-card">
-              <div className="about-card-name">Minh Mac</div>
-              <div className="about-card-title">Founder, 100Bold</div>
-              <div className="about-card-rule" />
-              <p className="about-card-copy">15 years building brands across Austin and Southeast Asia. Builder of the Tung Cao case study (0 &rarr; 1M impressions) and the Loc Dang case study (0 &rarr; 49K impressions in 4 months). The system works.</p>
+            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.12)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/team/minh-mac.webp"
+                alt="Minh Mac, Founder of 100Bold"
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+              <div style={{ padding: "20px 24px", background: "rgba(255,255,255,0.04)" }}>
+                <div className="about-card-name">Minh Mac</div>
+                <div className="about-card-title">Founder, 100Bold</div>
+              </div>
             </div>
           </div>
         </div>
