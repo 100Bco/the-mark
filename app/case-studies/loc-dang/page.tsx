@@ -192,49 +192,44 @@ export default function LocDangPage() {
           <div className="cs-detail-milestone">
             <div className="cs-detail-milestone-num">01</div>
             <div className="cs-detail-milestone-title">
-              Podcast Invitation &mdash; Austin Business Spotlight
+              Podcast Invitation
             </div>
             <p className="cs-detail-milestone-text">
-              Host Tanner O&apos;Brien (200+ episodes featuring Austin&apos;s
-              top local leaders) reached out directly through LinkedIn,
-              following up three times to get Loc on the show.
+              A top Austin podcast (200+ episodes) reached out via LinkedIn
+              and followed up three times to book Loc as a guest.
             </p>
           </div>
 
           <div className="cs-detail-milestone">
             <div className="cs-detail-milestone-num">02</div>
             <div className="cs-detail-milestone-title">
-              Strategic Partnership Invitations
+              VIP Event Invitations
             </div>
             <p className="cs-detail-milestone-text">
-              Nicole Gomez, a fellow UT Austin Longhorn, invited Loc to Moody
-              Center events for strategic partnerships within the legal
-              industry &mdash; inspired by his LinkedIn profile and content.
+              Invited to exclusive industry events for strategic partnerships
+              &mdash; connections that started from LinkedIn content alone.
             </p>
           </div>
 
           <div className="cs-detail-milestone">
             <div className="cs-detail-milestone-num">03</div>
             <div className="cs-detail-milestone-title">
-              Peer Attorney &amp; Business Owner Outreach
+              Peer &amp; Partner Inbound
             </div>
             <p className="cs-detail-milestone-text">
-              Cassandra Fox Charles, Esq. reached out for a lunch meeting to
-              discuss staying competitive. Nathan Ohler expressed interest in
-              learning more about the practice. Matthew Alvarez requested a
-              call &mdash; all inbound, all from LinkedIn.
+              Attorneys, firm owners, and sales directors reaching out for
+              lunch meetings, calls, and collaboration &mdash; all inbound.
             </p>
           </div>
 
           <div className="cs-detail-milestone">
             <div className="cs-detail-milestone-num">04</div>
             <div className="cs-detail-milestone-title">
-              Audience Demographics Prove the System
+              Right Audience, Proven
             </div>
             <p className="cs-detail-milestone-text">
-              12% Attorneys, 8% Founders, 4% Owners, 2% CEOs, 2% Managing
-              Partners &mdash; exactly the referral partners and
-              decision-makers a personal injury law firm needs to grow.
+              12% Attorneys, 8% Founders, 4% Owners, 2% CEOs &mdash; exactly
+              the referral partners a law firm needs.
             </p>
           </div>
         </div>

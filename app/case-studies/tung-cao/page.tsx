@@ -192,39 +192,34 @@ export default function TungCaoPage() {
           <div className="cs-detail-milestone">
             <div className="cs-detail-milestone-num">01</div>
             <div className="cs-detail-milestone-title">
-              Speaker at International Manufacturing Congress 2026
+              International Conference Speaker
             </div>
             <p className="cs-detail-milestone-text">
-              Dubai-based organizers found Tung through his LinkedIn content and
-              invited him as a panelist for a fireside chat on smart factory
-              transformation. VIIF, Hanoi &mdash; the first time this
-              international congress was held in Vietnam.
+              Invited as a panelist at a major manufacturing congress in Hanoi
+              &mdash; organizers found Tung directly through LinkedIn.
             </p>
           </div>
 
           <div className="cs-detail-milestone">
             <div className="cs-detail-milestone-num">02</div>
             <div className="cs-detail-milestone-title">
-              Podcast Feature &mdash; Vietnam Supply Chain Network
+              Industry Podcast Feature
             </div>
             <p className="cs-detail-milestone-text">
-              VSCN&apos;s founder (9K+ member community) reached out after
-              reading Tung&apos;s posts about sourcing and supply chain. Invited
-              to discuss why international buyers choose &mdash; and leave
-              &mdash; Vietnamese suppliers.
+              A 9K-member supply chain community invited Tung for a podcast
+              after reading his LinkedIn content on sourcing and export.
             </p>
           </div>
 
           <div className="cs-detail-milestone">
             <div className="cs-detail-milestone-num">03</div>
             <div className="cs-detail-milestone-title">
-              Inbound Pipeline from Multiple Geographies
+              Global Inbound Pipeline
             </div>
             <p className="cs-detail-milestone-text">
-              Partnership proposals from Indonesia (Mukara Global Nusantara),
-              sourcing inquiries from Brazil, university collaboration offers
-              from NUS Singapore, investor meeting requests &mdash; all arriving
-              through LinkedIn without a single paid ad.
+              Partnership proposals from Indonesia, sourcing inquiries from
+              Brazil, university collaborations from Singapore &mdash; all
+              inbound through LinkedIn. Zero paid ads.
             </p>
           </div>
         </div>
