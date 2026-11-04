@@ -95,65 +95,72 @@ export default function Home() {
             From onboarding to <em>inbound pipeline.</em>
           </h2>
 
-          <div className="reveal" style={{ position: "relative", marginTop: 48 }}>
-            {/* Horizontal line */}
-            <div style={{ position: "absolute", top: 28, left: 0, right: 0, height: 2, background: "linear-gradient(to right, var(--gold), rgba(184,149,90,0.15))" }} />
-
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 0, position: "relative" }}>
-              {[
-                { week: "Week 1", title: "Research", sub: "ICP & Strategy", icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" },
-                { week: "Week 2", title: "Voice Capture", sub: "Profile Setup", icon: "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" },
-                { week: "Week 3-4", title: "Launch", sub: "Go Live", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
-                { week: "Month 2-3", title: "Authority", sub: "Build Trust", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
-                { week: "Month 3-6", title: "Outreach", sub: "Inbound Deals", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" },
-                { week: "Month 6+", title: "Scale", sub: "Compound Growth", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" },
-              ].map((step, i) => (
-                <div key={step.week} style={{ textAlign: "center", position: "relative", padding: "0 8px" }}>
-                  {/* Icon circle */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(11, auto)", gap: 0, alignItems: "center", justifyContent: "center", marginTop: 48 }}>
+            {[
+              { week: "Week 1", title: "Research", sub: "ICP & Strategy", icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" },
+              { week: "Week 2", title: "Voice Capture", sub: "Profile Setup", icon: "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" },
+              { week: "Week 3-4", title: "Launch", sub: "Go Live", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
+              { week: "Month 2-3", title: "Authority", sub: "Build Trust", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
+              { week: "Month 3-6", title: "Outreach", sub: "Inbound Deals", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" },
+              { week: "Month 6+", title: "Scale", sub: "Compound Growth", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" },
+            ].flatMap((step, i, arr) => {
+              const stepEl = (
+                <div
+                  key={step.week}
+                  className="reveal"
+                  style={{
+                    textAlign: "center",
+                    padding: "0 4px",
+                    opacity: 0,
+                    animation: `fadeUp 0.6s ${0.15 * i}s forwards`,
+                  }}
+                >
                   <div style={{
                     width: 56,
                     height: 56,
                     borderRadius: "50%",
                     border: "2px solid var(--gold)",
-                    background: i === 0 ? "rgba(184,149,90,0.15)" : "var(--navy)",
+                    background: i === arr.length - 1 ? "rgba(184,149,90,0.15)" : "var(--navy)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    margin: "0 auto 20px",
-                    position: "relative",
-                    zIndex: 1,
+                    margin: "0 auto 16px",
                   }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d={step.icon} />
                     </svg>
                   </div>
-
-                  {/* Arrow between dots (except last) */}
-                  {i < 5 && (
-                    <div style={{
-                      position: "absolute",
-                      top: 26,
-                      right: -8,
-                      color: "var(--gold)",
-                      fontSize: 14,
-                      zIndex: 2,
-                    }}>
-                      &rarr;
-                    </div>
-                  )}
-
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 8 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 6 }}>
                     {step.week}
                   </div>
-                  <div style={{ fontSize: 16, fontWeight: 600, color: "var(--white)", marginBottom: 4, lineHeight: 1.3 }}>
+                  <div style={{ fontSize: 15, fontWeight: 600, color: "var(--white)", marginBottom: 3, lineHeight: 1.3 }}>
                     {step.title}
                   </div>
                   <div style={{ fontSize: 13, fontWeight: 300, color: "var(--muted-lt)" }}>
                     {step.sub}
                   </div>
                 </div>
-              ))}
-            </div>
+              );
+              if (i < arr.length - 1) {
+                const arrowEl = (
+                  <div
+                    key={`arrow-${i}`}
+                    style={{
+                      color: "var(--gold)",
+                      fontSize: 18,
+                      padding: "0 8px",
+                      paddingBottom: 60,
+                      opacity: 0,
+                      animation: `fadeUp 0.4s ${0.15 * i + 0.1}s forwards`,
+                    }}
+                  >
+                    &rarr;
+                  </div>
+                );
+                return [stepEl, arrowEl];
+              }
+              return [stepEl];
+            })}
           </div>
 
           {/* Detail cards below timeline */}
