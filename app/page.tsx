@@ -250,7 +250,7 @@ export default function Home() {
             </div>
             <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", minHeight: 420, background: "var(--navy-mid)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/loc-dang/Loc Dang.png" alt="Loc Dang, Founder of Dang Law Group" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+              <img src="/images/loc-dang/loc-dang-headshot.webp" alt="Loc Dang, Founder of Dang Law Group" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 20%", display: "block" }} />
             </div>
           </div>
         </div>
