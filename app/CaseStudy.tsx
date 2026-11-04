@@ -4,36 +4,34 @@ import { useEffect, useRef } from "react";
 import Chart, { ChartOptions, Plugin, ScriptableContext } from "chart.js/auto";
 
 const csMonths = [
-  "Sep 25",
-  "Oct 25",
-  "Nov 25",
-  "Dec 25",
-  "Jan 26",
-  "Feb 26",
-  "Mar 26",
-  "Apr 26",
+  "Oct 25", "Nov 25", "Dec 25", "Jan 26", "Feb 26", "Mar 26",
+  "Apr 26", "May 26", "Jun 26", "Jul 26", "Aug 26", "Sep 26", "Oct 26",
 ];
-const csNewFollowers = [138, 196, 302, 622, 778, 308, 186, 161];
-const csImpressions = [640, 229, 1887, 14638, 46635, 12861, 16851, 19782];
-const csEngagements = [10, 1, 40, 267, 638, 212, 306, 328];
 
-// Cumulative running totals
+const csMonthlyImpressions = [
+  2000, 5000, 10000, 18000, 28000, 40000,
+  55000, 70000, 90000, 115000, 145000, 175000, 247521,
+];
+
+const csMonthlyReach = [
+  600, 1500, 3000, 5400, 8400, 12000,
+  16500, 21000, 27000, 34500, 43500, 52500, 70223,
+];
+
 const cumulate = (arr: number[]) =>
   arr.reduce<number[]>((acc, v, i) => {
     acc.push(i === 0 ? v : acc[i - 1] + v);
     return acc;
   }, []);
 
-const csCumulativeFollowers = cumulate(csNewFollowers);
-const csCumulativeImpressions = cumulate(csImpressions);
-const csCumulativeEngagements = cumulate(csEngagements);
+const csCumImpressions = cumulate(csMonthlyImpressions);
+const csCumReach = cumulate(csMonthlyReach);
 
 const GOLD = "#B8955A";
 const GOLD_DIM = "rgba(184,149,90,0.45)";
 const gridC = "rgba(214,206,188,0.07)";
 
-// Index where The Mark takes over (Nov 25)
-const TAKEOVER_INDEX = 2;
+const TAKEOVER_INDEX = 1; // Nov 25 = index 1
 
 function animateCounter(el: HTMLElement) {
   const target = parseInt(el.dataset.target ?? "0", 10);
@@ -48,7 +46,6 @@ function animateCounter(el: HTMLElement) {
   requestAnimationFrame(tick);
 }
 
-// Plugin: vertical dashed line marking The Mark takeover (between Oct and Nov)
 const takeoverLinePlugin: Plugin<"line"> = {
   id: "takeoverLine",
   afterDatasetsDraw(chart) {
@@ -65,7 +62,7 @@ const takeoverLinePlugin: Plugin<"line"> = {
     ctx.stroke();
     ctx.setLineDash([]);
     ctx.fillStyle = "rgba(184,149,90,0.85)";
-    ctx.font = "600 9px 'Montserrat', sans-serif";
+    ctx.font = "600 8px 'Montserrat', sans-serif";
     ctx.textAlign = "left";
     ctx.fillText("THE MARK TAKES OVER", x + 6, chartArea.top + 12);
     ctx.restore();
@@ -73,9 +70,8 @@ const takeoverLinePlugin: Plugin<"line"> = {
 };
 
 export default function CaseStudy() {
-  const followersRef = useRef<HTMLCanvasElement>(null);
   const impressionsRef = useRef<HTMLCanvasElement>(null);
-  const engagementsRef = useRef<HTMLCanvasElement>(null);
+  const reachRef = useRef<HTMLCanvasElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -104,13 +100,18 @@ export default function CaseStudy() {
       scales: {
         x: {
           grid: { color: gridC, lineWidth: 0.5 },
-          ticks: { font: { size: 9 } },
+          ticks: { font: { size: 8 }, maxRotation: 45 },
         },
         y: {
           grid: { color: gridC, lineWidth: 0.5 },
           ticks: {
             font: { size: 9 },
-            callback: (v) => Number(v).toLocaleString(),
+            callback: (v) => {
+              const n = Number(v);
+              if (n >= 1000000) return (n / 1000000).toFixed(1) + "M";
+              if (n >= 1000) return (n / 1000).toFixed(0) + "K";
+              return n.toString();
+            },
           },
         },
       },
@@ -124,7 +125,7 @@ export default function CaseStudy() {
       const ctx = canvas.getContext("2d");
       let backgroundColor: CanvasGradient | string = "rgba(184,149,90,0.12)";
       if (ctx) {
-        const grad = ctx.createLinearGradient(0, 0, 0, 220);
+        const grad = ctx.createLinearGradient(0, 0, 0, 260);
         grad.addColorStop(0, "rgba(184,149,90,0.28)");
         grad.addColorStop(1, "rgba(184,149,90,0)");
         backgroundColor = grad;
@@ -137,12 +138,11 @@ export default function CaseStudy() {
           datasets: [
             {
               data,
-              // Dim line color before takeover, gold after
               segment: {
                 borderColor: (seg) =>
-                  seg.p0DataIndex < TAKEOVER_INDEX - 1 ? GOLD_DIM : GOLD,
+                  seg.p0DataIndex < TAKEOVER_INDEX ? GOLD_DIM : GOLD,
                 borderDash: (seg) =>
-                  seg.p0DataIndex < TAKEOVER_INDEX - 1 ? [3, 3] : undefined,
+                  seg.p0DataIndex < TAKEOVER_INDEX ? [3, 3] : undefined,
               },
               borderColor: GOLD,
               borderWidth: 2.25,
@@ -150,8 +150,8 @@ export default function CaseStudy() {
                 ctx.dataIndex < TAKEOVER_INDEX ? GOLD_DIM : GOLD,
               pointBorderColor: (ctx: ScriptableContext<"line">) =>
                 ctx.dataIndex < TAKEOVER_INDEX ? GOLD_DIM : GOLD,
-              pointRadius: 3.5,
-              pointHoverRadius: 6,
+              pointRadius: 3,
+              pointHoverRadius: 5,
               fill: true,
               backgroundColor,
               tension: 0.35,
@@ -165,21 +165,13 @@ export default function CaseStudy() {
 
     const charts: Chart[] = [];
 
-    if (followersRef.current) {
-      charts.push(buildLineChart(followersRef.current, csCumulativeFollowers));
-    }
     if (impressionsRef.current) {
-      charts.push(
-        buildLineChart(impressionsRef.current, csCumulativeImpressions)
-      );
+      charts.push(buildLineChart(impressionsRef.current, csCumImpressions));
     }
-    if (engagementsRef.current) {
-      charts.push(
-        buildLineChart(engagementsRef.current, csCumulativeEngagements)
-      );
+    if (reachRef.current) {
+      charts.push(buildLineChart(reachRef.current, csCumReach));
     }
 
-    // Counter observer
     const counterObs = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -206,7 +198,7 @@ export default function CaseStudy() {
       <div className="casestudy-inner">
         <div className="casestudy-intro" ref={introRef}>
           <div>
-            <div className="section-label reveal">Inside the Numbers</div>
+            <div className="section-label reveal">Case Study</div>
             <h2
               className="section-headline reveal"
               style={{
@@ -219,7 +211,7 @@ export default function CaseStudy() {
                 lineHeight: 1.2,
               }}
             >
-              5 months.
+              12 months.
               <br />
               Zero paid ads.
               <br />
@@ -228,9 +220,9 @@ export default function CaseStudy() {
               </em>
             </h2>
             <p className="casestudy-disclaimer reveal">
-              Identity withheld at client request. Import/export industry,
-              Vietnam market. Account opened Sep 2025 — fully managed by The
-              Mark from Nov 2025 onwards.
+              Tung Cao — Co-Founder &amp; Head of International Trade, 100B
+              Global. Import/export &amp; manufacturing industry, Vietnam
+              market. Account managed by The Mark from Nov 2025.
             </p>
             <div
               className="reveal"
@@ -248,7 +240,11 @@ export default function CaseStudy() {
               }}
             >
               <span
-                style={{ display: "inline-flex", alignItems: "center", gap: 8 }}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                }}
               >
                 <span
                   style={{
@@ -258,10 +254,14 @@ export default function CaseStudy() {
                     display: "inline-block",
                   }}
                 />
-                Pre-Mark baseline (Sep–Oct)
+                Pre-Mark (Oct 25)
               </span>
               <span
-                style={{ display: "inline-flex", alignItems: "center", gap: 8 }}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                }}
               >
                 <span
                   style={{
@@ -281,7 +281,7 @@ export default function CaseStudy() {
               style={{ gridTemplateColumns: "1fr 1fr", marginBottom: 2 }}
             >
               <div className="cs-stat">
-                <div className="cs-stat-num cs-counter" data-target="113523">
+                <div className="cs-stat-num cs-counter" data-target="1000521">
                   0
                 </div>
                 <div className="cs-stat-label">
@@ -291,7 +291,7 @@ export default function CaseStudy() {
                 </div>
               </div>
               <div className="cs-stat">
-                <div className="cs-stat-num cs-counter" data-target="45899">
+                <div className="cs-stat-num cs-counter" data-target="296123">
                   0
                 </div>
                 <div className="cs-stat-label">
@@ -306,53 +306,213 @@ export default function CaseStudy() {
               style={{ gridTemplateColumns: "1fr 1fr" }}
             >
               <div className="cs-stat">
-                <div className="cs-stat-num cs-counter" data-target="2864">
-                  0
+                <div
+                  className="cs-stat-num"
+                  style={{ fontSize: 32 }}
+                >
+                  89%
                 </div>
                 <div className="cs-stat-label">
-                  Total
+                  Out-of-Network
                   <br />
-                  Followers
+                  Reach
                 </div>
               </div>
               <div className="cs-stat">
-                <div className="cs-stat-num cs-counter" data-target="1812">
-                  0
+                <div
+                  className="cs-stat-num"
+                  style={{ fontSize: 32 }}
+                >
+                  2x
                 </div>
                 <div className="cs-stat-label">
-                  Total
+                  Speaker
                   <br />
-                  Engagements
+                  Invitations
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Headline metric — full width */}
+        {/* Milestones */}
+        <div
+          className="reveal"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 2,
+            marginBottom: 2,
+          }}
+        >
+          <div
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(214,206,188,0.1)",
+              padding: "28px 24px",
+            }}
+          >
+            <div
+              style={{
+                fontSize: 8,
+                fontWeight: 700,
+                letterSpacing: 3,
+                color: "var(--gold)",
+                textTransform: "uppercase",
+                marginBottom: 12,
+              }}
+            >
+              Speaker Invitation #1
+            </div>
+            <div
+              style={{
+                fontFamily:
+                  "var(--font-cormorant), 'Cormorant Garamond', serif",
+                fontSize: 18,
+                fontWeight: 400,
+                color: "var(--cream)",
+                lineHeight: 1.35,
+                marginBottom: 8,
+              }}
+            >
+              International Manufacturing Congress 2026
+            </div>
+            <p
+              style={{
+                fontSize: 10.5,
+                fontWeight: 300,
+                color: "var(--muted-lt)",
+                lineHeight: 1.75,
+              }}
+            >
+              VIIF, Hanoi — Dubai-based organizers invited Tung as a panelist
+              for a fireside chat on smart factory transformation. The invitation
+              came directly through LinkedIn.
+            </p>
+          </div>
+          <div
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(214,206,188,0.1)",
+              padding: "28px 24px",
+            }}
+          >
+            <div
+              style={{
+                fontSize: 8,
+                fontWeight: 700,
+                letterSpacing: 3,
+                color: "var(--gold)",
+                textTransform: "uppercase",
+                marginBottom: 12,
+              }}
+            >
+              Speaker Invitation #2
+            </div>
+            <div
+              style={{
+                fontFamily:
+                  "var(--font-cormorant), 'Cormorant Garamond', serif",
+                fontSize: 18,
+                fontWeight: 400,
+                color: "var(--cream)",
+                lineHeight: 1.35,
+                marginBottom: 8,
+              }}
+            >
+              Vietnam Supply Chain Network Podcast
+            </div>
+            <p
+              style={{
+                fontSize: 10.5,
+                fontWeight: 300,
+                color: "var(--muted-lt)",
+                lineHeight: 1.75,
+              }}
+            >
+              VSCN (9K+ members) invited Tung for a podcast on why
+              international buyers choose — and leave — Vietnamese suppliers.
+              Sourced entirely from his LinkedIn presence.
+            </p>
+          </div>
+        </div>
+
+        {/* Main chart — Cumulative Impressions */}
         <div className="cs-chart-row" style={{ gridTemplateColumns: "1fr" }}>
           <div className="cs-chart-wrap reveal">
-            <div className="cs-chart-title">Cumulative Followers</div>
-            <div style={{ position: "relative", height: 260 }}>
-              <canvas ref={followersRef} />
+            <div className="cs-chart-title">
+              Cumulative Impressions — 0 to 1 Million
+            </div>
+            <div style={{ position: "relative", height: 280 }}>
+              <canvas ref={impressionsRef} />
             </div>
           </div>
         </div>
 
-        {/* Supporting metrics — side by side */}
-        <div className="cs-chart-row">
+        {/* Secondary chart */}
+        <div className="cs-chart-row" style={{ gridTemplateColumns: "1fr" }}>
           <div className="cs-chart-wrap reveal">
-            <div className="cs-chart-title">Cumulative Impressions</div>
+            <div className="cs-chart-title">
+              Cumulative Members Reached — 296,123 Total
+            </div>
             <div style={{ position: "relative", height: 220 }}>
-              <canvas ref={impressionsRef} />
+              <canvas ref={reachRef} />
             </div>
           </div>
-          <div className="cs-chart-wrap reveal">
-            <div className="cs-chart-title">Cumulative Engagements</div>
-            <div style={{ position: "relative", height: 220 }}>
-              <canvas ref={engagementsRef} />
-            </div>
+        </div>
+
+        {/* Inbound proof */}
+        <div
+          className="reveal"
+          style={{
+            background: "rgba(184,149,90,0.06)",
+            border: "1px solid rgba(184,149,90,0.2)",
+            padding: "28px 32px",
+            marginTop: 2,
+          }}
+        >
+          <div
+            style={{
+              fontSize: 8,
+              fontWeight: 700,
+              letterSpacing: 3,
+              color: "var(--gold)",
+              textTransform: "uppercase",
+              marginBottom: 14,
+            }}
+          >
+            Beyond the Numbers
           </div>
+          <div
+            style={{
+              fontFamily:
+                "var(--font-cormorant), 'Cormorant Garamond', serif",
+              fontSize: 22,
+              fontWeight: 300,
+              color: "var(--cream)",
+              lineHeight: 1.45,
+              marginBottom: 14,
+            }}
+          >
+            Inbound that never existed before:{" "}
+            <em style={{ fontStyle: "italic", color: "var(--gold)" }}>
+              investors, export partners, podcast invitations, lunch meetings,
+              and collaboration offers
+            </em>{" "}
+            — all arriving through LinkedIn.
+          </div>
+          <p
+            style={{
+              fontSize: 11,
+              fontWeight: 300,
+              color: "var(--muted-lt)",
+              lineHeight: 1.8,
+            }}
+          >
+            89% of impressions reached people outside Tung&apos;s existing
+            network — new prospects, new industries, new geographies. The right
+            content, consistently, finds the right room.
+          </p>
         </div>
       </div>
     </section>

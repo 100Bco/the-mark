@@ -193,13 +193,16 @@ export default function Home() {
           <div className="proof-quote reveal">
             <div className="proof-quote-mark">&ldquo;</div>
             <p className="proof-quote-text">
-              Within months of working with The Mark, decision-makers I had
-              never met were reaching out to me directly on LinkedIn. I was
-              invited to speak at two industry events. The content did not just
-              build visibility — it opened doors that moved my business forward.
+              Within 12 months, I went from zero LinkedIn presence to 1 million
+              impressions. I was invited to speak at the International
+              Manufacturing Congress in Hanoi and featured on a podcast by
+              Vietnam Supply Chain Network. Investors and partners I had never
+              met started reaching out directly. The content did not just build
+              visibility — it opened doors that moved my business forward.
             </p>
             <div className="proof-quote-attr">
-              Tung Cao / Thomas Cao — Import &amp; Export, Vietnam Market
+              Tung Cao — Co-Founder &amp; Head of International Trade, 100B
+              Global
             </div>
           </div>
         </div>
