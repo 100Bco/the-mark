@@ -189,9 +189,6 @@ export default function Home() {
             <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", minHeight: 420, background: "var(--navy-mid)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/images/tung-cao/1789130366853.jpeg" alt="Tung Cao at International Manufacturing Congress 2026" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "16px 20px", background: "linear-gradient(transparent, rgba(13,27,42,0.92))", fontSize: 11, fontWeight: 600, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase" }}>
-                Speaker &mdash; International Manufacturing Congress 2026
-              </div>
             </div>
             <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(214,206,188,0.1)", padding: "48px 36px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
               <p style={{ fontSize: 18, fontWeight: 400, color: "var(--white)", lineHeight: 1.6, marginBottom: 20 }}>
