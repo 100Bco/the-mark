@@ -194,7 +194,7 @@ export default function Home() {
               <p style={{ fontSize: 12, fontWeight: 500, letterSpacing: 1.5, color: "var(--muted-lt)", textTransform: "uppercase", marginBottom: 24 }}>LinkedIn impressions in 12 months</p>
               <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                 {["0 → 7,000 followers, 296K members reached", "89% of reach from outside existing network", "2x speaker invitations sourced via LinkedIn", "Podcast feature by Vietnam Supply Chain Network (9K members)", "Inbound: partnership proposals, sourcing inquiries, investor meetings"].map((item) => (
-                  <li key={item} style={{ fontSize: 13, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.7, padding: "4px 0", paddingLeft: 16, position: "relative" }}>
+                  <li key={item} style={{ fontSize: 14, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.7, padding: "4px 0", paddingLeft: 16, position: "relative" }}>
                     <span style={{ position: "absolute", left: 0, top: 10, width: 4, height: 4, background: "var(--gold)", borderRadius: "50%" }} />
                     {item}
                   </li>
@@ -211,9 +211,9 @@ export default function Home() {
 
           {/* Case 2: Loc Dang */}
           <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 48 }}>
-            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", minHeight: 400, background: "var(--navy-mid)" }}>
+            <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", minHeight: 400, aspectRatio: "1 / 1", background: "var(--navy-mid)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/loc-dang/Loc Dang.png" alt="Loc Dang, Founder of Dang Law Group" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+              <img src="/images/loc-dang/Loc Dang.png" alt="Loc Dang, Founder of Dang Law Group" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
             </div>
             <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(214,206,188,0.1)", padding: "40px 32px" }}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 3, color: "var(--gold)", textTransform: "uppercase", marginBottom: 20 }}>Legal</div>
@@ -223,7 +223,7 @@ export default function Home() {
               <p style={{ fontSize: 12, fontWeight: 500, letterSpacing: 1.5, color: "var(--muted-lt)", textTransform: "uppercase", marginBottom: 24 }}>Impressions in 4 months &mdash; from zero</p>
               <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                 {["Never used social media before — started June 2026", "0 → 3,596 followers (+4,632% growth)", "Audience: 12% Attorneys, 8% Founders, 4% Owners", "Podcast invitation from Austin Business Spotlight (200+ episodes)", "Inbound: peer attorneys, strategic events, partnership requests"].map((item) => (
-                  <li key={item} style={{ fontSize: 13, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.7, padding: "4px 0", paddingLeft: 16, position: "relative" }}>
+                  <li key={item} style={{ fontSize: 14, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.7, padding: "4px 0", paddingLeft: 16, position: "relative" }}>
                     <span style={{ position: "absolute", left: 0, top: 10, width: 4, height: 4, background: "var(--gold)", borderRadius: "50%" }} />
                     {item}
                   </li>
@@ -246,15 +246,15 @@ export default function Home() {
           <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32, marginTop: 40 }}>
             <div>
               <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: 24, fontWeight: 300, color: "var(--navy)", marginBottom: 12, lineHeight: 1.3 }}>Founders building<br /><em style={{ color: "var(--gold)" }}>pipeline.</em></h3>
-              <p style={{ fontSize: 14, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You want LinkedIn to generate inbound leads, attract investors, and open doors to the partnerships that move your business forward.</p>
+              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You want LinkedIn to generate inbound leads, attract investors, and open doors to the partnerships that move your business forward.</p>
             </div>
             <div>
               <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: 24, fontWeight: 300, color: "var(--navy)", marginBottom: 12, lineHeight: 1.3 }}>CEOs building<br /><em style={{ color: "var(--gold)" }}>authority.</em></h3>
-              <p style={{ fontSize: 14, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You want to be the recognized leader in your industry &mdash; the one invited to speak, quoted by media, and sought out by the right people.</p>
+              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You want to be the recognized leader in your industry &mdash; the one invited to speak, quoted by media, and sought out by the right people.</p>
             </div>
             <div>
               <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: 24, fontWeight: 300, color: "var(--navy)", marginBottom: 12, lineHeight: 1.3 }}>Leaders building<br /><em style={{ color: "var(--gold)" }}>legacy.</em></h3>
-              <p style={{ fontSize: 14, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You have built something real and want your name to carry weight beyond your company &mdash; in your industry, your community, and your market.</p>
+              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You have built something real and want your name to carry weight beyond your company &mdash; in your industry, your community, and your market.</p>
             </div>
           </div>
         </div>
@@ -275,7 +275,7 @@ export default function Home() {
           ].map(([q, a]) => (
             <div key={q} className="reveal" style={{ borderBottom: "1px solid rgba(214,206,188,0.1)", padding: "24px 0" }}>
               <h3 style={{ fontSize: 15, fontWeight: 500, color: "var(--cream)", marginBottom: 10, lineHeight: 1.5 }}>{q}</h3>
-              <p style={{ fontSize: 14, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.85 }}>{a}</p>
+              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.85 }}>{a}</p>
             </div>
           ))}
         </div>

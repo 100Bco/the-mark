@@ -11,7 +11,7 @@
   --rule:     #D6CEBC;
   --soft:     #3A3630;
   --muted:    #8A8278;
-  --muted-lt: #C4BDB4;
+  --muted-lt: #DAD5CE;
   --white:    #FFFFFF;
 }
 
@@ -19,9 +19,9 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-inter), 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   background: var(--navy);
-  color: var(--cream);
+  color: var(--white);
   overflow-x: hidden;
 }
 
@@ -289,7 +289,7 @@ nav {
 }
 
 .problem-copy {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 300;
   color: var(--soft);
   line-height: 2;
@@ -310,7 +310,7 @@ nav {
 
 .problem-stat {
   font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
-  font-size: 15px;
+  font-size: 16px;
   font-style: italic;
   color: var(--muted);
   line-height: 1.7;
@@ -396,7 +396,7 @@ nav {
 }
 
 .layer-copy {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 300;
   color: var(--muted-lt);
   line-height: 1.85;
@@ -565,7 +565,7 @@ nav {
 }
 
 .deliver-detail {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 300;
   color: var(--muted-lt);
   line-height: 1.8;
@@ -938,7 +938,7 @@ nav {
 }
 
 .about-copy {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 300;
   color: var(--muted-lt);
   line-height: 2;
@@ -994,7 +994,7 @@ nav {
 }
 
 .about-card-copy {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 300;
   color: var(--muted-lt);
   line-height: 1.9;
@@ -1056,7 +1056,7 @@ nav {
 .cta-headline em { font-style: italic; color: var(--gold); }
 
 .cta-sub {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   color: var(--muted-lt);
   margin-bottom: 48px;
@@ -1085,7 +1085,7 @@ nav {
 
 .cta-email {
   margin-top: 24px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 300;
   color: var(--muted);
   position: relative;
