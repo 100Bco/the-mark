@@ -95,50 +95,47 @@ export default function Home() {
             From onboarding to <em>inbound pipeline.</em>
           </h2>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(11, auto)", gap: 0, alignItems: "center", justifyContent: "center", marginTop: 48 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(7, auto)", gap: 0, alignItems: "start", justifyContent: "center", marginTop: 48 }}>
             {[
-              { week: "Week 1", title: "Research", sub: "ICP & Strategy", icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" },
-              { week: "Week 2", title: "Voice Capture", sub: "Profile Setup", icon: "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" },
-              { week: "Week 3-4", title: "Launch", sub: "Go Live", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
-              { week: "Month 2-3", title: "Authority", sub: "Build Trust", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
-              { week: "Month 3-6", title: "Outreach", sub: "Inbound Deals", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" },
-              { week: "Month 6+", title: "Scale", sub: "Compound Growth", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" },
+              { week: "Week 1-2", title: "Strategy & Voice", desc: "We study your market, capture your voice, and build a content system designed to attract the right people.", icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" },
+              { week: "Week 3-4", title: "Launch & Manage", desc: "Your LinkedIn goes live. 3-4 posts/week. Full account management. You don't touch a thing.", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
+              { week: "Month 2-4", title: "Grow & Engage", desc: "Your name shows up where it matters. Decision-makers start paying attention. Conversations begin.", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" },
+              { week: "Month 5+", title: "Convert & Scale", desc: "The pipeline builds. Inbound flows. You close deals while we keep the engine running.", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" },
             ].flatMap((step, i, arr) => {
               const stepEl = (
                 <div
                   key={step.week}
-                  className="reveal"
                   style={{
                     textAlign: "center",
-                    padding: "0 4px",
+                    maxWidth: 180,
                     opacity: 0,
-                    animation: `fadeUp 0.6s ${0.15 * i}s forwards`,
+                    animation: `fadeUp 0.6s ${0.2 * i}s forwards`,
                   }}
                 >
                   <div style={{
-                    width: 56,
-                    height: 56,
+                    width: 64,
+                    height: 64,
                     borderRadius: "50%",
                     border: "2px solid var(--gold)",
                     background: i === arr.length - 1 ? "rgba(184,149,90,0.15)" : "var(--navy)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    margin: "0 auto 16px",
+                    margin: "0 auto 20px",
                   }}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d={step.icon} />
                     </svg>
                   </div>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 6 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 8 }}>
                     {step.week}
                   </div>
-                  <div style={{ fontSize: 15, fontWeight: 600, color: "var(--white)", marginBottom: 3, lineHeight: 1.3 }}>
+                  <div style={{ fontSize: 17, fontWeight: 600, color: "var(--white)", marginBottom: 8, lineHeight: 1.3 }}>
                     {step.title}
                   </div>
-                  <div style={{ fontSize: 13, fontWeight: 300, color: "var(--muted-lt)" }}>
-                    {step.sub}
-                  </div>
+                  <p style={{ fontSize: 13, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.7 }}>
+                    {step.desc}
+                  </p>
                 </div>
               );
               if (i < arr.length - 1) {
@@ -147,11 +144,11 @@ export default function Home() {
                     key={`arrow-${i}`}
                     style={{
                       color: "var(--gold)",
-                      fontSize: 18,
-                      padding: "0 8px",
-                      paddingBottom: 60,
+                      fontSize: 20,
+                      padding: "0 16px",
+                      paddingTop: 20,
                       opacity: 0,
-                      animation: `fadeUp 0.4s ${0.15 * i + 0.1}s forwards`,
+                      animation: `fadeUp 0.4s ${0.2 * i + 0.12}s forwards`,
                     }}
                   >
                     &rarr;
@@ -161,28 +158,6 @@ export default function Home() {
               }
               return [stepEl];
             })}
-          </div>
-
-          {/* Detail cards below timeline */}
-          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 2, marginTop: 48 }}>
-            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(214,206,188,0.1)", padding: "28px 24px" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 10 }}>Phase 1: Foundation</div>
-              <p style={{ fontSize: 14, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.8 }}>
-                Research your market. Define your ICP. Capture your voice. Optimize your profile for conversion. Launch with 3-4 posts per week.
-              </p>
-            </div>
-            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(214,206,188,0.1)", padding: "28px 24px" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 10 }}>Phase 2: Growth</div>
-              <p style={{ fontSize: 14, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.8 }}>
-                Build authority in your industry. Grow engagement and followers. Strategic outreach to decision-makers. Convert impressions into conversations.
-              </p>
-            </div>
-            <div style={{ background: "rgba(184,149,90,0.06)", border: "1px solid rgba(184,149,90,0.2)", padding: "28px 24px" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 10 }}>Phase 3: Revenue</div>
-              <p style={{ fontSize: 14, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.8 }}>
-                Inbound pipeline running. Speaker invitations. Partnership deals. Consistent deal flow. The system compounds. You focus on closing.
-              </p>
-            </div>
           </div>
         </div>
       </section>
