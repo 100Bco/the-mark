@@ -22,7 +22,7 @@ export default function Home() {
         <div className="hero-bg" />
         <div className="hero-lines" />
 
-        <div className="hero-eyebrow">The Mark &mdash; by 100Bold</div>
+        <div className="hero-eyebrow">The Mark by 100Bold</div>
 
         <div className="hero-logo-mark">
           <div className="hero-m">M</div>
@@ -36,9 +36,9 @@ export default function Home() {
         </h1>
 
         <p className="hero-sub">
-          We build your authority on LinkedIn, then turn that attention into
-          deals, partnerships, and speaking invitations &mdash; so you never
-          have to post a thing yourself.
+          We build your LinkedIn presence, generate inbound leads, and turn
+          your profile into a pipeline of deals, partnerships, and speaking
+          invitations.
         </p>
 
         <div className="hero-cta-group">
@@ -48,50 +48,6 @@ export default function Home() {
           <a href="#results" className="btn-ghost">
             See Client Results
           </a>
-        </div>
-
-        {/* Aggregate stats */}
-        <div
-          style={{
-            display: "flex",
-            gap: 48,
-            justifyContent: "center",
-            marginTop: 64,
-            opacity: 0,
-            animation: "fadeUp 0.9s 1s forwards",
-          }}
-        >
-          {[
-            ["1M+", "Impressions Generated"],
-            ["10K+", "Followers Grown"],
-            ["2", "Industries Proven"],
-          ].map(([num, label]) => (
-            <div key={label} style={{ textAlign: "center" }}>
-              <div
-                style={{
-                  fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
-                  fontSize: 28,
-                  fontWeight: 300,
-                  color: "var(--gold)",
-                  lineHeight: 1,
-                  marginBottom: 4,
-                }}
-              >
-                {num}
-              </div>
-              <div
-                style={{
-                  fontSize: 8,
-                  fontWeight: 600,
-                  letterSpacing: 2,
-                  color: "var(--muted)",
-                  textTransform: "uppercase",
-                }}
-              >
-                {label}
-              </div>
-            </div>
-          ))}
         </div>
 
         <div className="hero-scroll">
@@ -111,22 +67,21 @@ export default function Home() {
           </div>
           <div className="problem-right reveal">
             <p className="problem-copy">
-              <strong>Build your authority and attention.</strong> We capture
-              your voice, create the content, and run your entire LinkedIn
-              presence &mdash; so the right people find you before you ever walk
-              into the room.
+              <strong>Build your authority and reach.</strong> We capture
+              your voice, create the content, and manage your entire LinkedIn
+              so the right people find you before you ever walk into the room.
             </p>
             <p className="problem-copy">
-              <strong>Turn that attention into revenue.</strong> Speaker
+              <strong>Turn that reach into revenue.</strong> Speaker
               invitations. Partnership proposals. Inbound from decision-makers
-              who found you through your content. We build the system that makes
-              it happen consistently.
+              who found you through your content. We build the system that
+              delivers results consistently.
             </p>
             <div className="problem-rule" />
             <p className="problem-stat">
-              The Mark is a fully managed LinkedIn service &mdash; not a
-              ghostwriting agency, not a social media tool. We are the team
-              behind founders who want to be known.
+              The Mark is a fully managed LinkedIn growth service. We are the
+              team behind founders and CEOs who want measurable results from
+              their online presence.
             </p>
           </div>
         </div>
@@ -147,9 +102,9 @@ export default function Home() {
               <div className="layer-title">Voice Capture</div>
               <div className="layer-name">We learn how<br />you think.</div>
               <p className="layer-copy">
-                3&ndash;4 hours of deep-dive sessions. We extract your
-                expertise, your stories, and your point of view. Everything
-                published sounds like you wrote it on your best day.
+                3 to 4 hours of deep-dive sessions. We extract your expertise,
+                your stories, and your point of view. Everything published
+                sounds like you wrote it on your best day.
               </p>
             </div>
             <div className="layer reveal">
@@ -157,9 +112,9 @@ export default function Home() {
               <div className="layer-title">Content &amp; Management</div>
               <div className="layer-name">We run your<br />entire presence.</div>
               <p className="layer-copy">
-                3&ndash;4 posts per week. Replies, connections, inbox. Full
-                account management. You stay visible and authoritative without
-                touching LinkedIn once.
+                3 to 4 posts per week. Replies, connections, inbox. Full
+                account management. You stay visible without touching
+                LinkedIn once.
               </p>
             </div>
             <div className="layer reveal">
@@ -184,7 +139,7 @@ export default function Home() {
             Real founders. <em>Real outcomes.</em>
           </h2>
 
-          {/* Case 1: Tung Cao — image left, stats right */}
+          {/* Case 1: Tung Cao */}
           <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 2 }}>
             <div style={{ position: "relative", overflow: "hidden", border: "1px solid rgba(214,206,188,0.1)", height: 420, background: "var(--navy-mid)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -219,11 +174,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Case 2: Loc Dang — stats left, image right */}
+          {/* Case 2: Loc Dang */}
           <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 48 }}>
             <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(214,206,188,0.1)", padding: "48px 36px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
               <p style={{ fontSize: 18, fontWeight: 400, color: "var(--white)", lineHeight: 1.6, marginBottom: 20 }}>
-                Never used social media. 49K+ impressions and 3,596 followers in 4 months &mdash; reaching attorneys, founders, and CEOs.
+                Never used social media. 49K+ impressions and 3,596 followers in 4 months, reaching attorneys, founders, and CEOs.
               </p>
               <p style={{ fontSize: 14, fontWeight: 400, color: "var(--muted)", marginBottom: 32 }}>
                 Loc Dang, Founder, Dang Law Group
@@ -263,15 +218,15 @@ export default function Home() {
           <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32, marginTop: 40 }}>
             <div>
               <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: 24, fontWeight: 300, color: "var(--navy)", marginBottom: 12, lineHeight: 1.3 }}>Founders building<br /><em style={{ color: "var(--gold)" }}>pipeline.</em></h3>
-              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You want LinkedIn to generate inbound leads, attract investors, and open doors to the partnerships that move your business forward.</p>
+              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You want LinkedIn to generate inbound leads, attract investors, and open doors to partnerships that drive revenue.</p>
             </div>
             <div>
               <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: 24, fontWeight: 300, color: "var(--navy)", marginBottom: 12, lineHeight: 1.3 }}>CEOs building<br /><em style={{ color: "var(--gold)" }}>authority.</em></h3>
-              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You want to be the recognized leader in your industry &mdash; the one invited to speak, quoted by media, and sought out by the right people.</p>
+              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You want to be the recognized leader in your industry. The one invited to speak, sought out by the right people, and trusted before the first meeting.</p>
             </div>
             <div>
               <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: 24, fontWeight: 300, color: "var(--navy)", marginBottom: 12, lineHeight: 1.3 }}>Leaders building<br /><em style={{ color: "var(--gold)" }}>legacy.</em></h3>
-              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You have built something real and want your name to carry weight beyond your company &mdash; in your industry, your community, and your market.</p>
+              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You have built something real and want your name to carry weight beyond your company, in your industry and your market.</p>
             </div>
           </div>
         </div>
@@ -283,12 +238,11 @@ export default function Home() {
           <div className="section-label reveal">Questions</div>
           <h2 className="what-headline reveal" style={{ marginBottom: 48 }}>Frequently asked.</h2>
           {[
-            ["How is The Mark different from a LinkedIn ghostwriter?", "A ghostwriter writes posts. We build and run your entire LinkedIn presence — content, engagement, connections, inbox, amplification, and outreach. We are a growth system, not a writing service."],
-            ["How much of my time does this take?", "3–4 hours upfront for voice capture sessions. After that, less than 30 minutes per month for strategy alignment. We handle everything else."],
-            ["How long until I see results?", "Most clients see meaningful engagement within the first 30 days. Inbound conversations typically start within 60–90 days. Compounding growth accelerates from month 3 onward."],
-            ["Do you only manage LinkedIn?", "LinkedIn is our core focus — it is the highest-leverage platform for B2B founders and CEOs. For select clients, we offer multi-platform expansion through our Strategic tier."],
+            ["How much of my time does this take?", "3 to 4 hours upfront for voice capture sessions. After that, less than 30 minutes per month for strategy alignment. We handle everything else."],
+            ["How long until I see results?", "Most clients see meaningful engagement within the first 30 days. Inbound conversations typically start within 60 to 90 days. Growth accelerates from month 3 onward."],
+            ["Do you manage other platforms besides LinkedIn?", "LinkedIn is our primary focus. For clients who need it, we also manage content on company pages and provide full-service marketing through 100Bold, including paid ads, SEO, video production, and brand strategy."],
             ["Who writes the content?", "Our team writes every post, but it sounds like you. The voice capture process ensures your thinking, your stories, and your expertise come through in every piece."],
-            ["Is this for a specific industry?", "No. Our system works across industries — we have proven results in import/export, manufacturing, and legal. The positioning strategy adapts to your market."],
+            ["What industries do you work with?", "We work across multiple industries with proven results in legal, real estate, investment, import/export, and manufacturing. The strategy adapts to your market and your target audience."],
           ].map(([q, a]) => (
             <div key={q} className="reveal" style={{ borderBottom: "1px solid rgba(214,206,188,0.1)", padding: "24px 0" }}>
               <h3 style={{ fontSize: 15, fontWeight: 500, color: "var(--cream)", marginBottom: 10, lineHeight: 1.5 }}>{q}</h3>
@@ -305,7 +259,7 @@ export default function Home() {
             <div className="about-label">Behind The Mark</div>
             <h2 className="about-headline">Built by someone who has done the work.</h2>
             <p className="about-copy"><strong>Minh Mac</strong> is the Founder of 100Bold, a growth agency based in Austin, Texas. Over 15 years he has built businesses, scaled brands, and learned what it takes to turn a founder&apos;s LinkedIn into a real growth channel.</p>
-            <p className="about-copy">Everything downstream of attention &mdash; the deals, the partnerships, the speaking invitations &mdash; starts with showing up. The Mark is the system that makes it happen.</p>
+            <p className="about-copy">The deals, the partnerships, the speaking invitations. It all starts with showing up. The Mark is the system that makes it happen.</p>
             <a href="https://linkedin.com/in/minhbmac" className="about-linkedin" target="_blank" rel="noopener noreferrer">Connect on LinkedIn &rarr;</a>
           </div>
           <div className="about-right reveal">
@@ -334,13 +288,13 @@ export default function Home() {
         </div>
         <h2 className="cta-headline reveal">Become the best-known name<br /><em>in your industry.</em></h2>
         <p className="cta-sub reveal">Limited spots. Application only.</p>
-        <a href="mailto:start@100bold.co?subject=The Mark — Application" className="cta-btn reveal">Apply to Work With Us</a>
+        <a href="mailto:start@100bold.co?subject=The Mark - Application" className="cta-btn reveal">Apply to Work With Us</a>
         <p className="cta-email reveal">Or reach us directly at{" "}<a href="mailto:start@100bold.co">start@100bold.co</a></p>
       </section>
 
       {/* FOOTER */}
       <footer>
-        <div className="footer-left">The Mark &mdash; by 100Bold &mdash; Austin, Texas</div>
+        <div className="footer-left">The Mark by 100Bold. Austin, Texas</div>
         <div className="footer-right">Application Only</div>
       </footer>
 
