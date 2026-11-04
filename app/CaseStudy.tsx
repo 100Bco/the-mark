@@ -491,27 +491,106 @@ export default function CaseStudy() {
               fontWeight: 300,
               color: "var(--cream)",
               lineHeight: 1.45,
-              marginBottom: 14,
+              marginBottom: 20,
             }}
           >
-            Inbound that never existed before:{" "}
+            Inbound that{" "}
             <em style={{ fontStyle: "italic", color: "var(--gold)" }}>
-              investors, export partners, podcast invitations, lunch meetings,
-              and collaboration offers
+              never existed before
             </em>{" "}
             — all arriving through LinkedIn.
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 16,
+            }}
+          >
+            {[
+              [
+                "Conference Speaker Invitations",
+                "International event organizers reaching out directly via LinkedIn DM to invite Tung as a panelist",
+              ],
+              [
+                "Podcast & Media Features",
+                "Industry network founders inviting Tung to share expertise on supply chain and sourcing podcasts",
+              ],
+              [
+                "International Partnership Proposals",
+                "Founders from Indonesia, Singapore, and Brazil proposing supply partnerships and market entry collaborations",
+              ],
+              [
+                "Direct Sourcing Inquiries",
+                "International buyers reaching out with specific product specs, certifications, and export requirements",
+              ],
+              [
+                "University Collaborations",
+                "Top universities (NUS Singapore) seeking Vietnamese startups for real business challenge programs",
+              ],
+              [
+                "Investor & Business Meetings",
+                "Entrepreneurs and investors requesting coffee meetings, online calls, and strategic discussions",
+              ],
+            ].map(([title, desc]) => (
+              <div
+                key={title}
+                style={{
+                  display: "flex",
+                  gap: 12,
+                  alignItems: "flex-start",
+                }}
+              >
+                <span
+                  style={{
+                    width: 5,
+                    height: 5,
+                    background: "var(--gold)",
+                    borderRadius: "50%",
+                    flexShrink: 0,
+                    marginTop: 6,
+                  }}
+                />
+                <div>
+                  <div
+                    style={{
+                      fontSize: 10.5,
+                      fontWeight: 500,
+                      color: "var(--cream)",
+                      marginBottom: 3,
+                    }}
+                  >
+                    {title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 10.5,
+                      fontWeight: 300,
+                      color: "var(--muted-lt)",
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {desc}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
           <p
             style={{
               fontSize: 11,
               fontWeight: 300,
-              color: "var(--muted-lt)",
+              color: "var(--muted)",
               lineHeight: 1.8,
+              fontStyle: "italic",
+              marginTop: 20,
+              paddingTop: 16,
+              borderTop: "1px solid rgba(214,206,188,0.1)",
             }}
           >
             89% of impressions reached people outside Tung&apos;s existing
-            network — new prospects, new industries, new geographies. The right
-            content, consistently, finds the right room.
+            network — new prospects, new industries, new geographies. None of
+            these opportunities existed before The Mark.
           </p>
         </div>
       </div>
