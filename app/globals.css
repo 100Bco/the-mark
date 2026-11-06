@@ -1092,6 +1092,15 @@ footer {
   50% { opacity: 1; transform: scaleY(1.1); }
 }
 
+/* Footer brand glow — gradient sweep */
+.footer-brand-glow {
+  animation: brandGlowSweep 4s ease-in-out infinite;
+}
+@keyframes brandGlowSweep {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
 /* Notification pop — staggered pulse glow */
 @keyframes notifPop {
   0%, 100% { opacity: 0.5; transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); }
