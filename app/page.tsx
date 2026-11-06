@@ -10,8 +10,10 @@ export default function Home() {
           <div className="nav-wordmark">The Mark</div>
         </a>
         <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
-          <a href="/case-studies" style={{ fontSize: 14, fontWeight: 500, color: "var(--muted-lt)", textDecoration: "none" }}>Case Studies</a>
-          <a href="/about" style={{ fontSize: 14, fontWeight: 500, color: "var(--muted-lt)", textDecoration: "none" }}>About</a>
+          <div className="nav-links" style={{ display: "flex", gap: 24 }}>
+            <a href="/case-studies" style={{ fontSize: 14, fontWeight: 500, color: "var(--muted-lt)", textDecoration: "none" }}>Case Studies</a>
+            <a href="/about" style={{ fontSize: 14, fontWeight: 500, color: "var(--muted-lt)", textDecoration: "none" }}>About</a>
+          </div>
           <a href="#apply" className="nav-cta">Apply to Work With Us</a>
         </div>
       </nav>
@@ -489,7 +491,7 @@ export default function Home() {
           </div>
 
           {/* Copyright bar */}
-          <div style={{ borderTop: "1px solid rgba(91,155,213,0.08)", padding: "24px 0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div className="footer-bar" style={{ borderTop: "1px solid rgba(91,155,213,0.08)", padding: "24px 0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <p style={{ fontSize: 13, fontWeight: 400, color: "var(--muted)" }}>&copy; 2026 The Mark by 100Bold</p>
             <p style={{ fontSize: 13, fontWeight: 400, color: "var(--muted)" }}>Application Only</p>
           </div>

@@ -1470,45 +1470,93 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
+  /* ── NAV ── */
   nav { padding: 16px 20px; gap: 12px; }
   .nav-cta { display: none; }
   .nav-wordmark { font-size: 13px; letter-spacing: 3px; }
+  .nav-links { display: none !important; }
 
-  .hero { padding: 80px 24px 60px; }
-  .hero-headline { font-size: clamp(28px, 7vw, 42px) !important; }
-  .hero-sub { font-size: 15px !important; }
-  .hero-eyebrow { font-size: 10px; }
+  /* ── HERO ── */
+  .hero { padding: 80px 24px 48px; min-height: auto; }
+  .hero-headline { font-size: 28px !important; max-width: 100% !important; letter-spacing: -0.3px !important; line-height: 1.2 !important; }
+  .hero-sub { font-size: 15px !important; max-width: 100% !important; margin-bottom: 32px !important; }
+  .hero-eyebrow { font-size: 10px; margin-bottom: 20px; }
+  .hero-logo-mark { margin-bottom: 24px; }
+  .hero-m { font-size: 80px; }
+  .hero-cta-group { flex-direction: column !important; gap: 12px !important; width: 100%; }
+  .hero-cta-group .btn-primary,
+  .hero-cta-group .btn-ghost { width: 100%; text-align: center; padding: 16px 24px !important; }
 
-  .problem, .what, .proof, .casestudy, .delivers, .events, .forwho, .membership, .about, .cta-close { padding: 60px 24px !important; }
-  .problem-inner, .events-inner, .about-inner { grid-template-columns: 1fr; gap: 32px; }
-  .forwho-inner { grid-template-columns: 1fr; gap: 32px; }
-  .layers, .deliver-grid, .tiers, .proof-stats, .cs-stat-row, .cs-chart-row, .cs-demo-grid, .casestudy-intro { grid-template-columns: 1fr; }
+  /* Stats bar — horizontal row, smaller */
+  .stats-bar-wrap { gap: 0 !important; margin-top: 36px !important; }
+  .stats-bar-wrap > div { padding: 0 16px !important; }
+  .stats-bar-wrap > div > div:first-child { font-size: 28px !important; }
+  .stats-bar-wrap > div > div:last-child { font-size: 9px !important; }
 
-  .what-headline { font-size: clamp(24px, 6vw, 36px) !important; }
-  .what-inner { max-width: 100% !important; padding: 0 !important; }
+  /* Trust line */
+  .hero .trust-line { margin-top: 28px !important; }
 
-  /* Who cards stack */
+  /* ── ALL SECTIONS ── */
+  section[style] { padding: 60px 24px !important; }
+
+  /* ── WHAT WE DO ── */
+  .what-headline { font-size: 24px !important; white-space: normal !important; }
+  .cards-2col { grid-template-columns: 1fr !important; gap: 16px !important; }
+
+  /* ── JOURNEY ── */
+  .journey-wrap {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0 !important;
+  }
+  .journey-wrap > div[style*="width: 180"] { width: 100% !important; max-width: 260px; }
+  .journey-wrap > div[style*="width: 66"] {
+    width: auto !important;
+    padding: 8px 0 !important;
+    margin-bottom: 0 !important;
+  }
+  .journey-wrap > div[style*="width: 66"] > div:first-child {
+    width: 2px !important;
+    height: 24px !important;
+  }
+  .journey-wrap > div[style*="width: 66"] > div:nth-child(2) {
+    border-top: 6px solid var(--gold) !important;
+    border-left: 5px solid transparent !important;
+    border-right: 5px solid transparent !important;
+    border-bottom: none !important;
+    margin-left: 0 !important;
+    margin-top: -1px;
+  }
+
+  /* ── RESULTS ── */
+  .casestudy-inner { max-width: 100% !important; }
+  .casestudy-inner h2 { white-space: normal !important; }
+
+  /* ── WHO THIS IS FOR ── */
   .who-card { margin-bottom: 12px; }
 
-  /* Stats bar mobile */
-  .hero .stats-bar-wrap { flex-direction: column !important; gap: 24px !important; }
-  .hero .stats-bar-wrap > div { border-right: none !important; padding: 0 !important; border-bottom: 1px solid rgba(91,155,213,0.15); padding-bottom: 16px !important; }
-  .hero .stats-bar-wrap > div:last-child { border-bottom: none; }
+  /* ── ABOUT CARD ── */
+  .about-card-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+    gap: 24px !important;
+    padding: 32px 24px !important;
+  }
+  .about-card-grid img {
+    margin: 0 auto !important;
+    width: 160px !important;
+    height: 160px !important;
+    border-radius: 50% !important;
+  }
 
-  /* Two cards stack on mobile */
-  .cards-2col { grid-template-columns: 1fr !important; }
+  /* ── CTA ── */
+  #apply { padding: 80px 24px !important; }
+  #apply h2 { font-size: 28px !important; }
+  #apply .btn-primary { width: 100%; text-align: center; }
 
-  /* Journey stack */
-  .journey-wrap { flex-direction: column !important; align-items: center !important; }
-  .journey-wrap > div { width: 100% !important; max-width: 280px; }
-  .journey-arrow-mobile { transform: rotate(90deg); }
-
-  /* About card mobile */
-  .about-card-grid { grid-template-columns: 1fr !important; text-align: center; }
-  .about-card-grid img { margin: 0 auto !important; width: 200px !important; height: 200px !important; }
-
-  /* Footer mobile */
-  .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; text-align: center; }
-  .footer-brand-glow { font-size: clamp(40px, 12vw, 80px) !important; }
+  /* ── FOOTER ── */
   footer { padding: 48px 24px 0 !important; }
+  .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
+  .footer-brand-glow { font-size: clamp(36px, 12vw, 64px) !important; letter-spacing: 4px !important; }
+  .footer-bar { flex-direction: column !important; gap: 8px !important; text-align: center; }
 }

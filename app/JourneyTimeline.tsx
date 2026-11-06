@@ -68,6 +68,7 @@ export default function JourneyTimeline() {
   return (
     <div
       ref={containerRef}
+      className="journey-wrap"
       style={{
         display: "flex",
         alignItems: "center",
