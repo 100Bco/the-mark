@@ -1093,6 +1093,26 @@ footer {
   40% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); }
 }
 
+/* Journey circles — staggered entrance */
+.journey-circle { opacity: 0; animation: journeyPop 0.5s ease forwards; }
+.journey-circle-1 { animation-delay: 0.2s; }
+.journey-circle-2 { animation-delay: 0.8s; }
+.journey-circle-3 { animation-delay: 1.4s; }
+.journey-circle-4 { animation-delay: 2.0s; }
+@keyframes journeyPop {
+  0% { opacity: 0; transform: scale(0.5); }
+  60% { transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.journey-arrow { opacity: 0; animation: journeyArrow 0.4s ease forwards; }
+.journey-arrow-1 { animation-delay: 0.6s; }
+.journey-arrow-2 { animation-delay: 1.2s; }
+.journey-arrow-3 { animation-delay: 1.8s; }
+@keyframes journeyArrow {
+  0% { opacity: 0; transform: translateX(-10px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
 /* Broadcast ripple — waves expanding outward */
 .ripple-wave {
   animation: rippleExpand 3s ease-out infinite;
