@@ -1503,30 +1503,50 @@ footer {
   .what-headline { font-size: 24px !important; white-space: normal !important; }
   .cards-2col { grid-template-columns: 1fr !important; gap: 16px !important; }
 
-  /* ── JOURNEY ── */
+  /* ── JOURNEY — vertical timeline ── */
   .journey-wrap {
     flex-direction: column !important;
-    align-items: center !important;
+    align-items: flex-start !important;
     gap: 0 !important;
+    padding-left: 24px !important;
   }
-  .journey-wrap > div[style*="width: 180"] { width: 100% !important; max-width: 260px; }
-  .journey-wrap > div[style*="width: 66"] {
+  /* Hide desktop arrow connectors */
+  .journey-wrap > div > div[style*="width: 66"] { display: none !important; }
+  /* Step container: horizontal (circle left + text right) */
+  .journey-wrap > div { flex-direction: row !important; align-items: flex-start !important; gap: 16px !important; }
+  .journey-wrap > div > div[style*="width: 180"] {
     width: auto !important;
-    padding: 8px 0 !important;
-    margin-bottom: 0 !important;
+    text-align: left !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    position: relative;
+    padding-bottom: 32px;
   }
-  .journey-wrap > div[style*="width: 66"] > div:first-child {
-    width: 2px !important;
-    height: 24px !important;
+  /* Circle smaller */
+  .journey-wrap > div > div[style*="width: 180"] > div:first-child {
+    width: 60px !important;
+    height: 60px !important;
+    min-width: 60px !important;
+    min-height: 60px !important;
   }
-  .journey-wrap > div[style*="width: 66"] > div:nth-child(2) {
-    border-top: 6px solid var(--gold) !important;
-    border-left: 5px solid transparent !important;
-    border-right: 5px solid transparent !important;
-    border-bottom: none !important;
-    margin-left: 0 !important;
-    margin-top: -1px;
+  .journey-wrap > div > div[style*="width: 180"] > div:first-child svg {
+    width: 28px !important;
+    height: 28px !important;
   }
+  /* Vertical line between steps */
+  .journey-wrap > div:not(:last-child) > div[style*="width: 180"]::after {
+    content: "";
+    position: absolute;
+    left: 29px;
+    top: 64px;
+    width: 2px;
+    height: calc(100% - 64px);
+    background: rgba(91,155,213,0.2);
+  }
+  /* Text size on mobile */
+  .journey-wrap > div > div[style*="width: 180"] > div:nth-child(2) { font-size: 18px !important; }
+  .journey-wrap > div > div[style*="width: 180"] > div:nth-child(3) { font-size: 12px !important; }
 
   /* ── RESULTS ── */
   .casestudy-inner { max-width: 100% !important; }
