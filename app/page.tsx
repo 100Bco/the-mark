@@ -237,7 +237,7 @@ export default function Home() {
             From onboarding to <em>inbound pipeline.</em>
           </h2>
 
-          {/* Horizontal flow — circles + arrows */}
+          {/* Horizontal flow — large circles + animated arrows */}
           <div className="reveal" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 0, flexWrap: "nowrap" }}>
             {[
               { label: "Strategy\n& Voice", week: "Week 1-2", icon: "M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" },
@@ -247,45 +247,60 @@ export default function Home() {
             ].map((step, i, arr) => (
               <div key={step.week} style={{ display: "flex", alignItems: "center" }}>
                 {/* Circle + labels */}
-                <div style={{ textAlign: "center", width: 140 }}>
+                <div style={{ textAlign: "center", width: 180 }}>
                   <div
-                    className={`journey-circle journey-circle-${i + 1}`}
+                    className={`journey-circle journey-circle-${i + 1} journey-breathe`}
                     style={{
-                      width: 80,
-                      height: 80,
+                      width: 110,
+                      height: 110,
                       borderRadius: "50%",
                       border: "2px solid var(--gold)",
                       background: i === arr.length - 1 ? "rgba(91,155,213,0.12)" : "transparent",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      margin: "0 auto 16px",
+                      margin: "0 auto 20px",
                     }}
                   >
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d={step.icon} />
                     </svg>
                   </div>
-                  <div style={{ fontSize: 15, fontWeight: 600, color: "var(--white)", lineHeight: 1.3, marginBottom: 6, whiteSpace: "pre-line" }}>
+                  <div style={{ fontSize: 17, fontWeight: 600, color: "var(--white)", lineHeight: 1.3, marginBottom: 8, whiteSpace: "pre-line" }}>
                     {step.label}
                   </div>
-                  <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--gold)", textTransform: "uppercase" }}>
+                  <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: 1.5, color: "var(--gold)", textTransform: "uppercase" }}>
                     {step.week}
                   </div>
                 </div>
-                {/* Arrow */}
+                {/* Arrow with pulse dot */}
                 {i < arr.length - 1 && (
                   <div
                     className={`journey-arrow journey-arrow-${i + 1}`}
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      padding: "0 8px",
-                      marginBottom: 40,
+                      padding: "0 4px",
+                      marginBottom: 56,
+                      position: "relative",
                     }}
                   >
-                    <div style={{ width: 40, height: 1.5, background: "rgba(91,155,213,0.25)" }} />
-                    <div style={{ width: 0, height: 0, borderTop: "5px solid transparent", borderBottom: "5px solid transparent", borderLeft: "8px solid var(--gold)", marginLeft: -1 }} />
+                    <div style={{ width: 56, height: 2, background: "rgba(91,155,213,0.2)" }} />
+                    <div style={{ width: 0, height: 0, borderTop: "6px solid transparent", borderBottom: "6px solid transparent", borderLeft: "10px solid var(--gold)", marginLeft: -1 }} />
+                    {/* Pulse dot traveling along arrow */}
+                    <div
+                      className={`journey-pulse journey-pulse-${i + 1}`}
+                      style={{
+                        position: "absolute",
+                        width: 8,
+                        height: 8,
+                        borderRadius: "50%",
+                        background: "var(--gold)",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        boxShadow: "0 0 12px rgba(91,155,213,0.6)",
+                      }}
+                    />
                   </div>
                 )}
               </div>
