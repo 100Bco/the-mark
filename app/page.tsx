@@ -6,10 +6,6 @@ export default function Home() {
       {/* NAVIGATION */}
       <nav>
         <a href="#" className="nav-logo">
-          <div>
-            <div className="nav-m">M</div>
-            <div className="nav-mark-rule" />
-          </div>
           <div className="nav-wordmark">The Mark</div>
         </a>
         <a href="#apply" className="nav-cta">
@@ -21,15 +17,10 @@ export default function Home() {
       <section className="hero">
         <div className="hero-eyebrow">The Mark by 100Bold</div>
 
-        <div className="hero-logo-mark">
-          <div className="hero-m">M</div>
-          <div className="hero-rule" />
-        </div>
-
         <h1 className="hero-headline">
           Done-for-you LinkedIn growth
           <br />
-          for <em>founders and CEOs.</em>
+          for <span style={{ color: "var(--gold)" }}>founders and CEOs.</span>
         </h1>
 
         <p className="hero-sub">
