@@ -356,13 +356,13 @@ export default function Home() {
             className="reveal"
             style={{
               display: "grid",
-              gridTemplateColumns: "200px 1fr",
-              gap: 40,
+              gridTemplateColumns: "280px 1fr",
+              gap: 48,
               alignItems: "center",
               background: "rgba(91,155,213,0.06)",
               border: "1px solid rgba(91,155,213,0.15)",
               borderRadius: 10,
-              padding: "40px 48px",
+              padding: "56px 56px",
             }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -370,8 +370,8 @@ export default function Home() {
               src="/images/team/minh-mac.webp"
               alt="Minh Mac, Founder of 100Bold"
               style={{
-                width: 200,
-                height: 200,
+                width: 280,
+                height: 280,
                 borderRadius: 8,
                 objectFit: "cover",
                 display: "block",
@@ -379,9 +379,9 @@ export default function Home() {
               }}
             />
             <div>
-              <div style={{ fontSize: 28, fontWeight: 700, color: "var(--white)", marginBottom: 4 }}>Minh Mac</div>
-              <div style={{ fontSize: 14, fontWeight: 500, color: "var(--gold)", marginBottom: 20 }}>Founder, 100Bold</div>
-              <p style={{ fontSize: 17, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8, marginBottom: 24 }}>
+              <div style={{ fontSize: 32, fontWeight: 700, color: "var(--white)", marginBottom: 6 }}>Minh Mac</div>
+              <div style={{ fontSize: 15, fontWeight: 500, color: "var(--gold)", marginBottom: 24 }}>Founder, 100Bold</div>
+              <p style={{ fontSize: 18, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8, marginBottom: 28 }}>
                 15 years building businesses and scaling brands across Austin and Southeast Asia. The Mark is the system he built to turn a founder&apos;s LinkedIn into a real growth channel.
               </p>
               <a href="/about" className="cs-case-link">Learn more &rarr;</a>
