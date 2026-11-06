@@ -255,31 +255,31 @@ export default function Home() {
 
             {/* Case 1: Tung Cao */}
             <div style={{ border: "1px solid rgba(91,155,213,0.15)", borderRadius: 10, overflow: "hidden" }}>
-              {/* Top: photo + name card on gradient bg */}
-              <div style={{ position: "relative", height: 280, background: "linear-gradient(135deg, #0D1F3C, #1a3a5c)", display: "flex", alignItems: "flex-end", padding: 24, gap: 16 }}>
+              {/* Top: large photo + name */}
+              <div style={{ position: "relative", height: 320, background: "linear-gradient(135deg, #102a4a, #1a4570, #102a4a)", display: "flex", alignItems: "flex-end", padding: "0 28px 0 0" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/tung-cao/Tung Cao Photo.png" alt="Tung Cao" style={{ width: 140, height: 180, objectFit: "cover", borderRadius: 6, border: "2px solid rgba(91,155,213,0.2)", position: "relative", zIndex: 1 }} />
-                <div style={{ position: "relative", zIndex: 1, paddingBottom: 8 }}>
-                  <div style={{ fontSize: 28, fontWeight: 700, color: "var(--white)", lineHeight: 1.2, marginBottom: 6 }}>Tung Cao</div>
-                  <div style={{ fontSize: 13, fontWeight: 400, color: "var(--gold)" }}>Co-Founder, 100B Global</div>
+                <img src="/images/tung-cao/Tung Cao Photo.png" alt="Tung Cao" style={{ width: "48%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+                <div style={{ padding: "28px 0", flex: 1 }}>
+                  <div style={{ fontSize: 36, fontWeight: 700, color: "var(--white)", lineHeight: 1.15, marginBottom: 8 }}>Tung<br />Cao</div>
+                  <div style={{ fontSize: 14, fontWeight: 500, color: "var(--gold)" }}>Co-Founder, 100B Global</div>
                 </div>
               </div>
               {/* Bottom: intro + stats + link */}
               <div style={{ padding: "32px 28px" }}>
-                <p style={{ fontSize: 17, fontWeight: 400, color: "var(--white)", lineHeight: 1.65, marginBottom: 20 }}>
+                <p style={{ fontSize: 17, fontWeight: 400, color: "var(--white)", lineHeight: 1.65, marginBottom: 16 }}>
                   From zero to 1M+ impressions in 12 months. 2 speaker invitations, daily inbound from decision-makers worldwide.
                 </p>
-                <p style={{ fontSize: 13, fontWeight: 400, color: "var(--muted)", marginBottom: 24 }}>
+                <p style={{ fontSize: 13, fontWeight: 400, color: "var(--muted)", marginBottom: 28 }}>
                   Tung Cao, Co-Founder, 100B Global
                 </p>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px 24px", marginBottom: 24 }}>
+                <div style={{ display: "flex", gap: 40, marginBottom: 28 }}>
                   <div>
-                    <div style={{ fontSize: 32, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>1M+</div>
-                    <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 5 }}>Impressions</div>
+                    <div style={{ fontSize: 40, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>1M+</div>
+                    <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Impressions</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: 32, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>7K</div>
-                    <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 5 }}>Followers</div>
+                    <div style={{ fontSize: 40, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>7K</div>
+                    <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Followers</div>
                   </div>
                 </div>
                 <a href="/case-studies/tung-cao" className="cs-case-link">Read the case study &rarr;</a>
@@ -288,31 +288,31 @@ export default function Home() {
 
             {/* Case 2: Loc Dang */}
             <div style={{ border: "1px solid rgba(91,155,213,0.15)", borderRadius: 10, overflow: "hidden" }}>
-              {/* Top: photo + name card on gradient bg */}
-              <div style={{ position: "relative", height: 280, background: "linear-gradient(135deg, #0D1F3C, #1a3a5c)", display: "flex", alignItems: "flex-end", padding: 24, gap: 16 }}>
+              {/* Top: large photo + name */}
+              <div style={{ position: "relative", height: 320, background: "linear-gradient(135deg, #102a4a, #1a4570, #102a4a)", display: "flex", alignItems: "flex-end", padding: "0 28px 0 0" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/loc-dang/loc-dang-headshot.webp" alt="Loc Dang" style={{ width: 140, height: 180, objectFit: "cover", objectPosition: "center 20%", borderRadius: 6, border: "2px solid rgba(91,155,213,0.2)", position: "relative", zIndex: 1 }} />
-                <div style={{ position: "relative", zIndex: 1, paddingBottom: 8 }}>
-                  <div style={{ fontSize: 28, fontWeight: 700, color: "var(--white)", lineHeight: 1.2, marginBottom: 6 }}>Loc Dang</div>
-                  <div style={{ fontSize: 13, fontWeight: 400, color: "var(--gold)" }}>Founder, Dang Law Group</div>
+                <img src="/images/loc-dang/loc-dang-headshot.webp" alt="Loc Dang" style={{ width: "48%", height: "100%", objectFit: "cover", objectPosition: "center 15%", display: "block" }} />
+                <div style={{ padding: "28px 0", flex: 1 }}>
+                  <div style={{ fontSize: 36, fontWeight: 700, color: "var(--white)", lineHeight: 1.15, marginBottom: 8 }}>Loc<br />Dang</div>
+                  <div style={{ fontSize: 14, fontWeight: 500, color: "var(--gold)" }}>Founder, Dang Law Group</div>
                 </div>
               </div>
               {/* Bottom: intro + stats + link */}
               <div style={{ padding: "32px 28px" }}>
-                <p style={{ fontSize: 17, fontWeight: 400, color: "var(--white)", lineHeight: 1.65, marginBottom: 20 }}>
+                <p style={{ fontSize: 17, fontWeight: 400, color: "var(--white)", lineHeight: 1.65, marginBottom: 16 }}>
                   Never used social media. 49K+ impressions and 3,596 followers in 4 months, reaching attorneys, founders, and CEOs.
                 </p>
-                <p style={{ fontSize: 13, fontWeight: 400, color: "var(--muted)", marginBottom: 24 }}>
+                <p style={{ fontSize: 13, fontWeight: 400, color: "var(--muted)", marginBottom: 28 }}>
                   Loc Dang, Founder, Dang Law Group
                 </p>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px 24px", marginBottom: 24 }}>
+                <div style={{ display: "flex", gap: 40, marginBottom: 28 }}>
                   <div>
-                    <div style={{ fontSize: 32, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>49K+</div>
-                    <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 5 }}>Impressions</div>
+                    <div style={{ fontSize: 40, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>49K+</div>
+                    <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Impressions</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: 32, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>3,596</div>
-                    <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 5 }}>Followers</div>
+                    <div style={{ fontSize: 40, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>3,596</div>
+                    <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginTop: 6 }}>Followers</div>
                   </div>
                 </div>
                 <a href="/case-studies/loc-dang" className="cs-case-link">Read the case study &rarr;</a>
