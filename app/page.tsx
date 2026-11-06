@@ -391,16 +391,36 @@ export default function Home() {
       </section>
 
       {/* CLOSING CTA */}
-      <section className="cta-close" id="apply">
-        <div className="cta-close-bg" />
-        <div className="cta-logo reveal">
-          <div className="cta-m">M</div>
-          <div className="cta-rule" />
-        </div>
-        <h2 className="cta-headline reveal">Become the best-known name<br /><em>in your industry.</em></h2>
-        <p className="cta-sub reveal">Limited spots. Application only.</p>
-        <a href="mailto:start@100bold.co?subject=The Mark - Application" className="cta-btn reveal">Apply to Work With Us</a>
-        <p className="cta-email reveal">Or reach us directly at{" "}<a href="mailto:start@100bold.co">start@100bold.co</a></p>
+      <section id="apply" style={{ background: "var(--navy)", padding: "140px 64px", textAlign: "center", borderTop: "1px solid rgba(91,155,213,0.1)" }}>
+        <h2
+          className="reveal"
+          style={{
+            fontFamily: "var(--font-display), 'Sora', sans-serif",
+            fontSize: "clamp(36px, 5vw, 56px)",
+            fontWeight: 700,
+            color: "var(--white)",
+            lineHeight: 1.15,
+            marginBottom: 20,
+            letterSpacing: -0.5,
+          }}
+        >
+          Become the best-known name<br />
+          <span style={{ color: "var(--gold)" }}>in your industry.</span>
+        </h2>
+        <p className="reveal" style={{ fontSize: 18, fontWeight: 400, color: "var(--muted)", marginBottom: 48 }}>
+          Limited spots. Application only.
+        </p>
+        <a
+          href="mailto:start@100bold.co?subject=The Mark - Application"
+          className="btn-primary reveal"
+          style={{ padding: "18px 48px", fontSize: 14 }}
+        >
+          Apply to Work With Us
+        </a>
+        <p className="reveal" style={{ fontSize: 15, fontWeight: 400, color: "var(--muted)", marginTop: 24 }}>
+          Or reach us directly at{" "}
+          <a href="mailto:start@100bold.co" style={{ color: "var(--gold)", textDecoration: "none" }}>start@100bold.co</a>
+        </p>
       </section>
 
       {/* FOOTER */}
