@@ -40,9 +40,9 @@ export default function Home() {
         <div
           style={{
             display: "flex",
-            gap: 48,
+            gap: 64,
             justifyContent: "center",
-            marginTop: 56,
+            marginTop: 64,
             opacity: 0,
             animation: "fadeUp 0.8s 0.9s forwards",
           }}
@@ -56,27 +56,27 @@ export default function Home() {
               key={label}
               style={{
                 textAlign: "center",
-                padding: "0 24px",
-                borderRight: label !== "Out-of-Network" ? "1px solid rgba(214,206,188,0.15)" : "none",
-                paddingRight: label !== "Out-of-Network" ? 48 : 24,
+                padding: "0 32px",
+                borderRight: label !== "Out-of-Network" ? "1px solid rgba(91,155,213,0.2)" : "none",
+                paddingRight: label !== "Out-of-Network" ? 64 : 32,
               }}
             >
               <div
                 style={{
-                  fontSize: 32,
+                  fontSize: 48,
                   fontWeight: 700,
                   color: "var(--gold)",
                   lineHeight: 1,
-                  marginBottom: 6,
+                  marginBottom: 10,
                 }}
               >
                 {num}
               </div>
               <div
                 style={{
-                  fontSize: 11,
+                  fontSize: 13,
                   fontWeight: 600,
-                  letterSpacing: 1.5,
+                  letterSpacing: 2,
                   color: "var(--muted)",
                   textTransform: "uppercase",
                 }}
@@ -93,8 +93,8 @@ export default function Home() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: 12,
-            marginTop: 40,
+            gap: 16,
+            marginTop: 48,
             opacity: 0,
             animation: "fadeUp 0.8s 1.1s forwards",
           }}
@@ -105,11 +105,11 @@ export default function Home() {
               src="/images/tung-cao/Tung Cao Photo.png"
               alt=""
               style={{
-                width: 32,
-                height: 32,
+                width: 44,
+                height: 44,
                 borderRadius: "50%",
                 objectFit: "cover",
-                border: "2px solid var(--navy)",
+                border: "3px solid var(--navy)",
               }}
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -117,21 +117,21 @@ export default function Home() {
               src="/images/loc-dang/loc-dang-headshot.webp"
               alt=""
               style={{
-                width: 32,
-                height: 32,
+                width: 44,
+                height: 44,
                 borderRadius: "50%",
                 objectFit: "cover",
                 objectPosition: "center 20%",
-                border: "2px solid var(--navy)",
-                marginLeft: -8,
+                border: "3px solid var(--navy)",
+                marginLeft: -10,
               }}
             />
           </div>
           <span
             style={{
-              fontSize: 13,
+              fontSize: 15,
               fontWeight: 400,
-              color: "var(--muted)",
+              color: "var(--muted-lt)",
             }}
           >
             Trusted by founders across industries
