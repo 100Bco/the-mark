@@ -310,22 +310,33 @@ export default function Home() {
       </section>
 
       {/* WHO THIS IS FOR */}
-      <section className="problem" style={{ background: "var(--navy)" }}>
+      <section style={{ background: "var(--navy)", padding: "100px 64px" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <div className="section-label reveal" style={{ color: "var(--gold)" }}>Who This Is For</div>
-          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32, marginTop: 40 }}>
-            <div>
-              <h3 style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif", fontSize: 24, fontWeight: 300, color: "var(--white)", marginBottom: 12, lineHeight: 1.3 }}>Founders<br />&amp; <em style={{ color: "var(--gold)" }}>CEOs.</em></h3>
-              <p style={{ fontSize: 15, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.85 }}>You run the business. You don&apos;t have time to run LinkedIn. But you know you should be there.</p>
-            </div>
-            <div>
-              <h3 style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif", fontSize: 24, fontWeight: 300, color: "var(--white)", marginBottom: 12, lineHeight: 1.3 }}>Leaders with no<br /><em style={{ color: "var(--gold)" }}>online presence.</em></h3>
-              <p style={{ fontSize: 15, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.85 }}>Your reputation is real but invisible online. The right people can&apos;t find you.</p>
-            </div>
-            <div>
-              <h3 style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif", fontSize: 24, fontWeight: 300, color: "var(--white)", marginBottom: 12, lineHeight: 1.3 }}>Businesses that<br /><em style={{ color: "var(--gold)" }}>rely on referrals.</em></h3>
-              <p style={{ fontSize: 15, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.85 }}>Referrals work, but they don&apos;t scale. LinkedIn puts you in front of new people every day.</p>
-            </div>
+          <div className="section-label reveal" style={{ color: "var(--gold)", textAlign: "center" }}>Who This Is For</div>
+          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20, marginTop: 48 }}>
+            {[
+              { num: "01", title: "Founders", highlight: "& CEOs.", desc: "You run the business. You don't have time to run LinkedIn. But you know you should be there." },
+              { num: "02", title: "Leaders with no", highlight: "online presence.", desc: "Your reputation is real but invisible online. The right people can't find you." },
+              { num: "03", title: "Businesses that", highlight: "rely on referrals.", desc: "Referrals work, but they don't scale. LinkedIn puts you in front of new people every day." },
+            ].map((item) => (
+              <div
+                key={item.num}
+                className="who-card"
+                style={{
+                  background: "rgba(91,155,213,0.04)",
+                  borderRadius: 8,
+                  padding: "36px 28px 36px 32px",
+                  borderLeft: "3px solid var(--gold)",
+                  transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                }}
+              >
+                <div style={{ fontSize: 36, fontWeight: 700, color: "var(--gold)", marginBottom: 20, opacity: 0.4 }}>{item.num}</div>
+                <h3 style={{ fontSize: 22, fontWeight: 600, color: "var(--white)", marginBottom: 16, lineHeight: 1.35 }}>
+                  {item.title}<br /><span style={{ color: "var(--gold)" }}>{item.highlight}</span>
+                </h3>
+                <p style={{ fontSize: 15, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.85 }}>{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
