@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 const steps = [
   { label: "Strategy\n& Voice", week: "Week 1-2", icon: "M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" },
@@ -9,34 +9,54 @@ const steps = [
   { label: "Convert\n& Scale", week: "Month 5+", icon: "M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" },
 ];
 
+// Phases: 0=glow0, 1=dot0, 2=glow1, 3=dot1, 4=glow2, 5=dot2, 6=glow3, 7=pause
+const PHASE_DURATIONS = [1200, 1400, 1200, 1400, 1200, 1400, 1200, 3500];
+
 export default function JourneyTimeline() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [started, setStarted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  const [phase, setPhase] = useState(-1);
 
   useEffect(() => {
-    const el = ref.current;
+    const el = containerRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !started) {
-          setStarted(true);
+        if (entry.isIntersecting) {
+          setVisible(true);
           obs.disconnect();
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.3 }
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [started]);
+  }, []);
+
+  useEffect(() => {
+    if (!visible) return;
+    setPhase(0);
+  }, [visible]);
+
+  useEffect(() => {
+    if (phase < 0) return;
+    const dur = PHASE_DURATIONS[phase];
+    const timer = setTimeout(() => {
+      setPhase((p) => (p >= 7 ? 0 : p + 1));
+    }, dur);
+    return () => clearTimeout(timer);
+  }, [phase]);
+
+  const activeCircle = phase === 0 ? 0 : phase === 2 ? 1 : phase === 4 ? 2 : phase === 6 ? 3 : -1;
+  const activeDot = phase === 1 ? 0 : phase === 3 ? 1 : phase === 5 ? 2 : -1;
 
   return (
     <div
-      ref={ref}
+      ref={containerRef}
       style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        gap: 0,
         flexWrap: "nowrap",
       }}
     >
@@ -44,56 +64,34 @@ export default function JourneyTimeline() {
         <div key={step.week} style={{ display: "flex", alignItems: "center" }}>
           <div style={{ textAlign: "center", width: 180 }}>
             <div
-              className={started ? `j-circle j-circle-${i + 1}` : ""}
               style={{
                 width: 110,
                 height: 110,
                 borderRadius: "50%",
-                border: "2px solid var(--gold)",
-                background:
-                  i === arr.length - 1
-                    ? "rgba(91,155,213,0.12)"
-                    : "transparent",
+                border: `2px solid ${activeCircle === i ? "var(--gold-lt)" : "var(--gold)"}`,
+                background: activeCircle === i ? "rgba(91,155,213,0.15)" : i === arr.length - 1 ? "rgba(91,155,213,0.06)" : "transparent",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 margin: "0 auto 20px",
+                transform: activeCircle === i ? "scale(1.12)" : "scale(1)",
+                boxShadow: activeCircle === i ? "0 0 32px 8px rgba(91,155,213,0.35)" : "none",
+                transition: "transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease, border-color 0.3s ease",
               }}
             >
               <svg
-                width="44"
-                height="44"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="var(--gold)"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                width="44" height="44" viewBox="0 0 24 24" fill="none"
+                stroke={activeCircle === i ? "var(--gold-lt)" : "var(--gold)"}
+                strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                style={{ transition: "stroke 0.3s ease" }}
               >
                 <path d={step.icon} />
               </svg>
             </div>
-            <div
-              style={{
-                fontSize: 20,
-                fontWeight: 600,
-                color: "var(--white)",
-                lineHeight: 1.3,
-                marginBottom: 8,
-                whiteSpace: "pre-line",
-              }}
-            >
+            <div style={{ fontSize: 20, fontWeight: 600, color: "var(--white)", lineHeight: 1.3, marginBottom: 8, whiteSpace: "pre-line" }}>
               {step.label}
             </div>
-            <div
-              style={{
-                fontSize: 13,
-                fontWeight: 600,
-                letterSpacing: 1.5,
-                color: "var(--gold)",
-                textTransform: "uppercase",
-              }}
-            >
+            <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: 1.5, color: "var(--gold)", textTransform: "uppercase" }}>
               {step.week}
             </div>
           </div>
@@ -105,27 +103,12 @@ export default function JourneyTimeline() {
                 padding: "0 4px",
                 marginBottom: 56,
                 position: "relative",
+                width: 66,
               }}
             >
+              <div style={{ width: 56, height: 2, background: "rgba(91,155,213,0.2)" }} />
+              <div style={{ width: 0, height: 0, borderTop: "6px solid transparent", borderBottom: "6px solid transparent", borderLeft: "10px solid var(--gold)", marginLeft: -1 }} />
               <div
-                style={{
-                  width: 56,
-                  height: 2,
-                  background: "rgba(91,155,213,0.2)",
-                }}
-              />
-              <div
-                style={{
-                  width: 0,
-                  height: 0,
-                  borderTop: "6px solid transparent",
-                  borderBottom: "6px solid transparent",
-                  borderLeft: "10px solid var(--gold)",
-                  marginLeft: -1,
-                }}
-              />
-              <div
-                className={started ? `j-dot j-dot-${i + 1}` : ""}
                 style={{
                   position: "absolute",
                   width: 8,
@@ -133,10 +116,11 @@ export default function JourneyTimeline() {
                   borderRadius: "50%",
                   background: "var(--gold)",
                   top: "50%",
+                  boxShadow: "0 0 16px rgba(91,155,213,0.8)",
+                  opacity: activeDot === i ? 1 : 0,
+                  left: activeDot === i ? "calc(100% - 18px)" : "0px",
                   transform: "translateY(-50%)",
-                  boxShadow: "0 0 14px rgba(91,155,213,0.7)",
-                  opacity: 0,
-                  left: 0,
+                  transition: activeDot === i ? "left 1.4s ease, opacity 0.2s ease" : "opacity 0.2s ease",
                 }}
               />
             </div>

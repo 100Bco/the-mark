@@ -1093,36 +1093,6 @@ footer {
   40% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); }
 }
 
-/* Journey — sequential energy transfer (12s cycle) */
-/* Timing: glow 1s → dot 1.5s → glow 1s → dot 1.5s → glow 1s → dot 1.5s → glow 1s → pause 2s */
-
-.j-circle {
-  animation: jGlow 12s ease infinite;
-}
-.j-circle-1 { animation-delay: 0s; }
-.j-circle-2 { animation-delay: 2.5s; }
-.j-circle-3 { animation-delay: 5s; }
-.j-circle-4 { animation-delay: 7.5s; }
-@keyframes jGlow {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); }
-  3% { transform: scale(1.12); box-shadow: 0 0 28px 8px rgba(91,155,213,0.4); border-color: var(--gold-lt); }
-  8% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); border-color: var(--gold); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); }
-}
-
-.j-dot {
-  animation: jTravel 12s ease infinite;
-}
-.j-dot-1 { animation-delay: 1s; }
-.j-dot-2 { animation-delay: 3.5s; }
-.j-dot-3 { animation-delay: 6s; }
-@keyframes jTravel {
-  0% { left: 0; opacity: 0; }
-  1% { opacity: 1; }
-  10% { left: calc(100% - 8px); opacity: 1; }
-  11% { opacity: 0; }
-  100% { opacity: 0; left: 0; }
-}
 
 /* Broadcast ripple — waves expanding outward */
 .ripple-wave {
