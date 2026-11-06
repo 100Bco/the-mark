@@ -256,12 +256,14 @@ export default function Home() {
             {/* Case 1: Tung Cao */}
             <div style={{ border: "1px solid rgba(91,155,213,0.15)", borderRadius: 10, overflow: "hidden" }}>
               {/* Top: large photo + name */}
-              <div style={{ position: "relative", height: 320, background: "linear-gradient(135deg, #102a4a, #1a4570, #102a4a)", display: "flex", alignItems: "flex-end", padding: "0 28px 0 0" }}>
+              <div style={{ position: "relative", height: 320, background: "linear-gradient(135deg, #102a4a, #1a4570, #102a4a)", display: "flex", alignItems: "stretch", padding: 0 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/tung-cao/Tung Cao Photo.png" alt="Tung Cao" style={{ width: "48%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
-                <div style={{ padding: "28px 0", flex: 1 }}>
-                  <div style={{ fontSize: 36, fontWeight: 700, color: "var(--white)", lineHeight: 1.15, marginBottom: 8 }}>Tung<br />Cao</div>
-                  <div style={{ fontSize: 14, fontWeight: 500, color: "var(--gold)" }}>Co-Founder, 100B Global</div>
+                <img src="/images/tung-cao/Tung Cao Photo.png" alt="Tung Cao" style={{ width: "50%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+                <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+                  <div style={{ background: "#fff", borderRadius: 8, padding: "28px 24px", width: "100%", textAlign: "left" }}>
+                    <div style={{ fontSize: 32, fontWeight: 700, color: "#0D1F3C", lineHeight: 1.15, marginBottom: 8 }}>Tung<br />Cao</div>
+                    <div style={{ fontSize: 13, fontWeight: 500, color: "var(--gold)" }}>Co-Founder, 100B Global</div>
+                  </div>
                 </div>
               </div>
               {/* Bottom: intro + stats + link */}
@@ -289,12 +291,14 @@ export default function Home() {
             {/* Case 2: Loc Dang */}
             <div style={{ border: "1px solid rgba(91,155,213,0.15)", borderRadius: 10, overflow: "hidden" }}>
               {/* Top: large photo + name */}
-              <div style={{ position: "relative", height: 320, background: "linear-gradient(135deg, #102a4a, #1a4570, #102a4a)", display: "flex", alignItems: "flex-end", padding: "0 28px 0 0" }}>
+              <div style={{ position: "relative", height: 320, background: "linear-gradient(135deg, #102a4a, #1a4570, #102a4a)", display: "flex", alignItems: "stretch", padding: 0 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/loc-dang/loc-dang-headshot.webp" alt="Loc Dang" style={{ width: "48%", height: "100%", objectFit: "cover", objectPosition: "center 15%", display: "block" }} />
-                <div style={{ padding: "28px 0", flex: 1 }}>
-                  <div style={{ fontSize: 36, fontWeight: 700, color: "var(--white)", lineHeight: 1.15, marginBottom: 8 }}>Loc<br />Dang</div>
-                  <div style={{ fontSize: 14, fontWeight: 500, color: "var(--gold)" }}>Founder, Dang Law Group</div>
+                <img src="/images/loc-dang/loc-dang-headshot.webp" alt="Loc Dang" style={{ width: "50%", height: "100%", objectFit: "cover", objectPosition: "center 15%", display: "block" }} />
+                <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+                  <div style={{ background: "#fff", borderRadius: 8, padding: "28px 24px", width: "100%", textAlign: "left" }}>
+                    <div style={{ fontSize: 32, fontWeight: 700, color: "#0D1F3C", lineHeight: 1.15, marginBottom: 8 }}>Loc<br />Dang</div>
+                    <div style={{ fontSize: 13, fontWeight: 500, color: "var(--gold)" }}>Founder, Dang Law Group</div>
+                  </div>
                 </div>
               </div>
               {/* Bottom: intro + stats + link */}
