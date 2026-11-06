@@ -137,72 +137,55 @@ export default function TungCaoPage() {
         </div>
       </section>
 
-      {/* THE PROOF */}
+      {/* THE PROOF — 3 designed cards */}
       <section style={{ background: "#0A1628", padding: "80px 64px" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 32, textAlign: "center" }}>The Proof</div>
-          <div style={{ border: "1px solid rgba(91,155,213,0.12)", borderRadius: 12, padding: 32 }}>
-            <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 16 }}>Analytics &amp; Events</div>
-            <div className="cs-proof-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 32 }}>
-              {[
-                { src: "/images/tung-cao/linkedin-analytics.png", alt: "LinkedIn analytics" },
-                { src: "/images/tung-cao/1789130366372.jpeg", alt: "IMC event" },
-                { src: "/images/tung-cao/1789130366853.jpeg", alt: "IMC stage" },
-                { src: "/images/tung-cao/tc-speaker-stage.webp", alt: "Speaker stage" },
-              ].map((img) => (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img key={img.src} src={img.src} alt={img.alt} style={{ width: "100%", height: 200, objectFit: "cover", borderRadius: 6, border: "1px solid rgba(91,155,213,0.08)" }} />
-              ))}
+        <div style={{ maxWidth: 1000, margin: "0 auto", textAlign: "center" }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 3, color: "var(--gold)", textTransform: "uppercase", marginBottom: 12 }}>Take a look at</div>
+          <h2 style={{ fontFamily: "var(--font-display), 'Sora', sans-serif", fontSize: 36, fontWeight: 700, color: "var(--white)", marginBottom: 48 }}>The <span style={{ color: "var(--gold)" }}>proof</span></h2>
+
+          <div className="proof-cards-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20 }}>
+            {/* Card 1: LinkedIn Profile */}
+            <div style={{ height: 480, borderRadius: 16, overflow: "hidden", padding: "36px 28px", background: "linear-gradient(180deg, #1a3a5c 0%, #0D1F3C 100%)", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/tung-cao/Tung Cao Photo.png" alt="" style={{ width: 80, height: 80, borderRadius: "50%", objectFit: "cover", border: "3px solid rgba(91,155,213,0.3)", marginBottom: 8 }} />
+              <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--gold)", marginBottom: 16 }} />
+              <div style={{ fontSize: 24, fontWeight: 700, color: "var(--white)", marginBottom: 6 }}>Tung Cao</div>
+              <div style={{ fontSize: 13, fontWeight: 400, color: "var(--muted-lt)", marginBottom: 4 }}>Co-Founder &amp; Head of International Trade</div>
+              <div style={{ fontSize: 13, fontWeight: 500, color: "var(--gold)", marginBottom: 24 }}>100B Global</div>
+              <div style={{ width: "100%", height: 1, background: "rgba(91,155,213,0.15)", marginBottom: 24 }} />
+              <div style={{ fontSize: 36, fontWeight: 700, color: "var(--gold)", lineHeight: 1, marginBottom: 6 }}>7,000+</div>
+              <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted)", textTransform: "uppercase", marginBottom: 24 }}>followers</div>
+              <div style={{ marginTop: "auto", fontSize: 10, fontWeight: 600, letterSpacing: 2, color: "var(--muted)", textTransform: "uppercase" }}>Import &amp; Export &bull; Manufacturing</div>
             </div>
-            <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 8 }}>Inbound &amp; Collaboration</div>
-            <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 16, fontStyle: "italic" }}>Names and profile photos redacted for privacy.</p>
-            <div className="cs-proof-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+
+            {/* Card 2: Achievement */}
+            <div style={{ height: 480, borderRadius: 16, overflow: "hidden", padding: "36px 28px", background: "linear-gradient(135deg, #102a4a 0%, #1a4570 50%, #0D1F3C 100%)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, color: "var(--gold)", textTransform: "uppercase", marginBottom: 24 }}>12 Months &bull; Zero Paid Ads</div>
+              <div style={{ fontSize: 72, fontWeight: 700, color: "var(--white)", lineHeight: 1, marginBottom: 12 }}>1M+</div>
+              <div style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", marginBottom: 32 }}>LinkedIn Impressions</div>
+              <div style={{ width: 48, height: 1, background: "rgba(91,155,213,0.2)", marginBottom: 32 }} />
+              <div style={{ fontSize: 18, fontWeight: 600, color: "var(--white)", marginBottom: 8 }}>296K Members Reached</div>
+              <div style={{ fontSize: 16, fontWeight: 500, color: "var(--gold)" }}>89% Out-of-Network</div>
+            </div>
+
+            {/* Card 3: Inbound */}
+            <div style={{ height: 480, borderRadius: 16, overflow: "hidden", padding: "36px 28px", background: "linear-gradient(180deg, #142847 0%, #0D1F3C 100%)", display: "flex", flexDirection: "column", textAlign: "left" }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, color: "var(--gold)", textTransform: "uppercase", marginBottom: 16 }}>Inbound Pipeline</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: "var(--white)", marginBottom: 28 }}>What LinkedIn delivered</div>
               {[
-                { src: "/images/tung-cao/dm-akanksha-imc.png", alt: "Speaker invitation" },
-                { src: "/images/tung-cao/dm-vscn-podcast.png", alt: "Podcast invitation" },
-                { src: "/images/tung-cao/dm-andhika.png", alt: "Partnership proposal" },
-                { src: "/images/tung-cao/dm-eduardo.png", alt: "Collaboration request" },
-                { src: "/images/tung-cao/dm-nus-singapore.png", alt: "University collaboration" },
-                { src: "/images/tung-cao/dm-ryan-sourcing.png", alt: "Sourcing inquiry" },
-              ].map((dm) => (
-                <div key={dm.src} style={{ position: "relative", overflow: "hidden", borderRadius: 6 }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={dm.src} alt={dm.alt} style={{ width: "100%", height: 240, objectFit: "cover", objectPosition: "top", border: "1px solid rgba(91,155,213,0.08)" }} />
-                  <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 64, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", background: "linear-gradient(rgba(13,27,42,0.4), transparent)" }} />
+                "Speaker invitation — IMC 2026",
+                "Podcast feature — VSCN",
+                "Partnership proposal — Indonesia",
+                "Sourcing inquiry — Brazil",
+                "University collab — NUS Singapore",
+              ].map((item) => (
+                <div key={item} style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 0", borderBottom: "1px solid rgba(91,155,213,0.08)" }}>
+                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--gold)", flexShrink: 0 }} />
+                  <span style={{ fontSize: 14, fontWeight: 400, color: "var(--muted-lt)" }}>{item}</span>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* FROM THE FEED */}
-      <section style={{ background: "var(--navy)", padding: "80px 64px" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
-          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 12 }}>Content</div>
-          <h2 style={{ fontFamily: "var(--font-display), 'Sora', sans-serif", fontSize: 36, fontWeight: 700, color: "var(--white)", marginBottom: 48 }}>From the <span style={{ color: "var(--gold)" }}>feed</span></h2>
-          <div className="cs-feed-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
-            {[1, 2, 3].map((i) => (
-              <div key={i} style={{ height: 360, border: "1px solid rgba(91,155,213,0.12)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", color: "var(--muted)", fontSize: 14 }}>
-                Content coming soon
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FOLLOW */}
-      <section style={{ background: "#0A1628", padding: "80px 64px" }}>
-        <div style={{ maxWidth: 600, margin: "0 auto", textAlign: "center" }}>
-          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 12 }}>Across Socials</div>
-          <h2 style={{ fontFamily: "var(--font-display), 'Sora', sans-serif", fontSize: 32, fontWeight: 700, color: "var(--white)", marginBottom: 32 }}>Follow <span style={{ color: "var(--gold)" }}>Tung</span></h2>
-          <a href="#" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 16, background: "rgba(91,155,213,0.06)", border: "1px solid rgba(91,155,213,0.15)", borderRadius: 10, padding: "20px 28px", textDecoration: "none", maxWidth: 320, margin: "0 auto" }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--muted-lt)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
-            <div style={{ textAlign: "left" }}>
-              <div style={{ fontSize: 15, fontWeight: 600, color: "var(--white)" }}>LinkedIn</div>
-              <div style={{ fontSize: 13, color: "var(--gold)" }}>Coming soon</div>
-            </div>
-          </a>
         </div>
       </section>
 

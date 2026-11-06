@@ -1468,6 +1468,8 @@ footer {
   .cs-milestones-grid { grid-template-columns: 1fr !important; }
   .cs-proof-grid { grid-template-columns: 1fr !important; }
   .cs-feed-grid { grid-template-columns: 1fr !important; }
+  .proof-cards-grid { grid-template-columns: 1fr !important; }
+  .proof-cards-grid > div { height: 400px !important; }
 }
 
 /* ── RESPONSIVE ── */
