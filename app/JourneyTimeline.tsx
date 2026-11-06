@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const steps = [
   { label: "Strategy\n& Voice", week: "Week 1-2", icon: "M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" },
@@ -9,13 +9,12 @@ const steps = [
   { label: "Convert\n& Scale", week: "Month 5+", icon: "M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" },
 ];
 
-// Phases: 0=glow0, 1=dot0, 2=glow1, 3=dot1, 4=glow2, 5=dot2, 6=glow3, 7=pause
-const PHASE_DURATIONS = [1200, 1400, 1200, 1400, 1200, 1400, 1200, 3500];
+const CYCLE_TIME = 1800;
 
 export default function JourneyTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [phase, setPhase] = useState(-1);
+  const [tick, setTick] = useState(0);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -35,20 +34,15 @@ export default function JourneyTimeline() {
 
   useEffect(() => {
     if (!visible) return;
-    setPhase(0);
+    const interval = setInterval(() => {
+      setTick((t) => (t + 1) % 4);
+    }, CYCLE_TIME);
+    return () => clearInterval(interval);
   }, [visible]);
 
-  useEffect(() => {
-    if (phase < 0) return;
-    const dur = PHASE_DURATIONS[phase];
-    const timer = setTimeout(() => {
-      setPhase((p) => (p >= 7 ? 0 : p + 1));
-    }, dur);
-    return () => clearTimeout(timer);
-  }, [phase]);
-
-  const activeCircle = phase === 0 ? 0 : phase === 2 ? 1 : phase === 4 ? 2 : phase === 6 ? 3 : -1;
-  const activeDot = phase === 1 ? 0 : phase === 3 ? 1 : phase === 5 ? 2 : -1;
+  const activeCircle = visible ? tick : -1;
+  const prevCircle = visible ? (tick + 3) % 4 : -1;
+  const activeDot = visible ? prevCircle : -1;
 
   return (
     <div
@@ -69,21 +63,21 @@ export default function JourneyTimeline() {
                 height: 110,
                 borderRadius: "50%",
                 border: `2px solid ${activeCircle === i ? "var(--gold-lt)" : "var(--gold)"}`,
-                background: activeCircle === i ? "rgba(91,155,213,0.15)" : i === arr.length - 1 ? "rgba(91,155,213,0.06)" : "transparent",
+                background: activeCircle === i ? "rgba(91,155,213,0.18)" : "transparent",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 margin: "0 auto 20px",
                 transform: activeCircle === i ? "scale(1.12)" : "scale(1)",
-                boxShadow: activeCircle === i ? "0 0 32px 8px rgba(91,155,213,0.35)" : "none",
-                transition: "transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease, border-color 0.3s ease",
+                boxShadow: activeCircle === i ? "0 0 32px 10px rgba(91,155,213,0.35)" : "0 0 0 0 rgba(91,155,213,0)",
+                transition: "transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease, border-color 0.4s ease",
               }}
             >
               <svg
                 width="44" height="44" viewBox="0 0 24 24" fill="none"
                 stroke={activeCircle === i ? "var(--gold-lt)" : "var(--gold)"}
                 strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-                style={{ transition: "stroke 0.3s ease" }}
+                style={{ transition: "stroke 0.4s ease" }}
               >
                 <path d={step.icon} />
               </svg>
@@ -120,7 +114,9 @@ export default function JourneyTimeline() {
                   opacity: activeDot === i ? 1 : 0,
                   left: activeDot === i ? "calc(100% - 18px)" : "0px",
                   transform: "translateY(-50%)",
-                  transition: activeDot === i ? "left 1.4s ease, opacity 0.2s ease" : "opacity 0.2s ease",
+                  transition: activeDot === i
+                    ? "left 1.2s ease-in-out, opacity 0.15s ease"
+                    : "opacity 0.15s ease, left 0s 0.15s",
                 }}
               />
             </div>
