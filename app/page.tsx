@@ -18,15 +18,13 @@ export default function Home() {
         <div className="hero-eyebrow">The Mark by 100Bold</div>
 
         <h1 className="hero-headline">
-          Done-for-you LinkedIn growth
-          <br />
-          for <span style={{ color: "var(--gold)" }}>founders and CEOs.</span>
+          Done-for-you LinkedIn growth for{" "}
+          <span style={{ color: "var(--gold)" }}>founders and CEOs.</span>
         </h1>
 
         <p className="hero-sub">
-          We build your LinkedIn presence, generate inbound leads, and turn
-          your profile into a pipeline of deals, partnerships, and speaking
-          invitations.
+          We build your LinkedIn, generate inbound leads, and turn your
+          profile into a pipeline of deals and partnerships.
         </p>
 
         <div className="hero-cta-group">
