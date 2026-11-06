@@ -153,51 +153,49 @@ export default function Home() {
           {/* Two cards */}
           <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             {/* Card 1: Authority — broadcast ripple */}
-            <div style={{ background: "var(--navy-mid)", border: "1px solid var(--rule)", borderRadius: 8, padding: "40px 36px", textAlign: "left", display: "flex", flexDirection: "column" }}>
+            <div style={{ background: "#0A1628", border: "1px solid rgba(91,155,213,0.12)", borderRadius: 8, padding: "40px 36px", textAlign: "left" }}>
               <h3 style={{ fontSize: 24, fontWeight: 600, color: "var(--white)", marginBottom: 32 }}>
                 Build your <span style={{ color: "var(--gold)" }}>authority and reach</span>
               </h3>
 
-              {/* Broadcast ripple — large post card with waves behind */}
-              <div style={{ position: "relative", height: 240, margin: "0 auto 32px", width: "100%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-                {/* Ripple waves behind the card */}
-                <div className="ripple-wave ripple-1" style={{ position: "absolute", width: 180, height: 180, borderRadius: "50%", border: "2px solid rgba(91,155,213,0.3)" }} />
-                <div className="ripple-wave ripple-2" style={{ position: "absolute", width: 280, height: 280, borderRadius: "50%", border: "2px solid rgba(91,155,213,0.18)" }} />
-                <div className="ripple-wave ripple-3" style={{ position: "absolute", width: 400, height: 400, borderRadius: "50%", border: "1.5px solid rgba(91,155,213,0.08)" }} />
-                {/* Center: large post card */}
-                <div style={{ position: "relative", zIndex: 1, background: "rgba(91,155,213,0.1)", border: "1.5px solid rgba(91,155,213,0.35)", borderRadius: 10, padding: "24px 28px", width: 200, textAlign: "left" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                    <div style={{ width: 28, height: 28, borderRadius: "50%", background: "var(--gold)", opacity: 0.7 }} />
+              {/* Large post card with ripple behind */}
+              <div style={{ position: "relative", height: 260, margin: "0 auto 32px", width: "100%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+                <div className="ripple-wave ripple-1" style={{ position: "absolute", width: 200, height: 200, borderRadius: "50%", border: "2px solid rgba(91,155,213,0.3)" }} />
+                <div className="ripple-wave ripple-2" style={{ position: "absolute", width: 320, height: 320, borderRadius: "50%", border: "2px solid rgba(91,155,213,0.18)" }} />
+                <div className="ripple-wave ripple-3" style={{ position: "absolute", width: 460, height: 460, borderRadius: "50%", border: "1.5px solid rgba(91,155,213,0.08)" }} />
+                <div style={{ position: "relative", zIndex: 1, background: "rgba(91,155,213,0.08)", border: "1.5px solid rgba(91,155,213,0.3)", borderRadius: 12, padding: "28px 32px", width: 260, textAlign: "left" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 18 }}>
+                    <div style={{ width: 36, height: 36, borderRadius: "50%", background: "var(--gold)", opacity: 0.7 }} />
                     <div>
-                      <div style={{ width: 64, height: 4, background: "var(--gold)", borderRadius: 2, marginBottom: 4 }} />
-                      <div style={{ width: 40, height: 3, background: "rgba(91,155,213,0.3)", borderRadius: 2 }} />
+                      <div style={{ width: 80, height: 5, background: "var(--gold)", borderRadius: 2, marginBottom: 5 }} />
+                      <div style={{ width: 52, height: 3, background: "rgba(91,155,213,0.3)", borderRadius: 2 }} />
                     </div>
                   </div>
-                  <div style={{ width: "100%", height: 3, background: "rgba(91,155,213,0.25)", borderRadius: 2, marginBottom: 7 }} />
-                  <div style={{ width: "85%", height: 3, background: "rgba(91,155,213,0.18)", borderRadius: 2, marginBottom: 7 }} />
-                  <div style={{ width: "65%", height: 3, background: "rgba(91,155,213,0.12)", borderRadius: 2, marginBottom: 12 }} />
-                  <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-                    <div style={{ width: 16, height: 16, borderRadius: 3, border: "1.5px solid rgba(91,155,213,0.3)" }} />
-                    <div style={{ width: 16, height: 16, borderRadius: 3, border: "1.5px solid rgba(91,155,213,0.2)" }} />
-                    <div style={{ width: 16, height: 16, borderRadius: 3, border: "1.5px solid rgba(91,155,213,0.15)" }} />
+                  <div style={{ width: "100%", height: 4, background: "rgba(91,155,213,0.22)", borderRadius: 2, marginBottom: 8 }} />
+                  <div style={{ width: "85%", height: 4, background: "rgba(91,155,213,0.16)", borderRadius: 2, marginBottom: 8 }} />
+                  <div style={{ width: "65%", height: 4, background: "rgba(91,155,213,0.1)", borderRadius: 2, marginBottom: 14 }} />
+                  <div style={{ display: "flex", gap: 16 }}>
+                    <div style={{ width: 20, height: 20, borderRadius: 4, border: "1.5px solid rgba(91,155,213,0.25)" }} />
+                    <div style={{ width: 20, height: 20, borderRadius: 4, border: "1.5px solid rgba(91,155,213,0.18)" }} />
+                    <div style={{ width: 20, height: 20, borderRadius: 4, border: "1.5px solid rgba(91,155,213,0.12)" }} />
                   </div>
                 </div>
               </div>
 
-              <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8, marginTop: "auto" }}>
+              <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8 }}>
                 We capture your voice, create the content, and manage your entire LinkedIn so the right people find you before you ever walk into the room.
               </p>
             </div>
 
-            {/* Card 2: Revenue — incoming notifications */}
-            <div style={{ background: "var(--navy-mid)", border: "1px solid var(--rule)", borderRadius: 8, padding: "40px 36px", textAlign: "left", display: "flex", flexDirection: "column" }}>
+            {/* Card 2: Revenue — swap notification feed */}
+            <div style={{ background: "#0A1628", border: "1px solid rgba(91,155,213,0.12)", borderRadius: 8, padding: "40px 36px", textAlign: "left" }}>
               <h3 style={{ fontSize: 24, fontWeight: 600, color: "var(--white)", marginBottom: 32 }}>
                 Turn that reach into <span style={{ color: "var(--gold)" }}>revenue</span>
               </h3>
 
-              {/* Scrolling notification ticker */}
-              <div style={{ position: "relative", height: 240, margin: "0 auto 32px", width: "100%", overflow: "hidden" }}>
-                <div className="notif-ticker">
+              {/* 4 notification items — top one exits, rest shift up, new one enters bottom */}
+              <div style={{ height: 260, margin: "0 auto 32px", width: "100%", overflow: "hidden", position: "relative" }}>
+                <div className="notif-feed">
                   {[
                     "Speaker invitation received",
                     "New partnership request",
@@ -205,20 +203,21 @@ export default function Home() {
                     "Podcast guest request",
                     "Collaboration proposal",
                     "Meeting request from CEO",
-                    "Speaker invitation received",
-                    "New partnership request",
+                    "Event speaker opportunity",
+                    "Joint venture inquiry",
                   ].map((text, i) => (
                     <div
                       key={`${text}-${i}`}
+                      className="notif-feed-item"
                       style={{
                         display: "flex",
                         alignItems: "center",
                         gap: 12,
-                        background: "rgba(91,155,213,0.08)",
-                        border: "1px solid rgba(91,155,213,0.2)",
+                        background: "rgba(91,155,213,0.06)",
+                        border: "1px solid rgba(91,155,213,0.15)",
                         borderRadius: 6,
                         padding: "16px 20px",
-                        marginBottom: 10,
+                        height: 54,
                         flexShrink: 0,
                       }}
                     >
@@ -227,12 +226,9 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-                {/* Fade edges */}
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 20, background: "linear-gradient(var(--navy-mid), transparent)", zIndex: 1 }} />
-                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 40, background: "linear-gradient(transparent, var(--navy-mid))", zIndex: 1 }} />
               </div>
 
-              <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8, marginTop: "auto" }}>
+              <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8 }}>
                 Speaker invitations. Partnership proposals. Inbound from decision-makers who found you through your content. We build the system that delivers results consistently.
               </p>
             </div>

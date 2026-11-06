@@ -1098,15 +1098,28 @@ footer {
   100% { transform: scale(1.1); opacity: 0; }
 }
 
-/* Notification ticker — scrolls up continuously */
-.notif-ticker {
+/* Notification feed — steps up one item at a time */
+.notif-feed {
   display: flex;
   flex-direction: column;
-  animation: tickerScroll 12s linear infinite;
+  gap: 8px;
+  animation: feedStep 16s steps(4) infinite;
 }
-@keyframes tickerScroll {
+@keyframes feedStep {
   0% { transform: translateY(0); }
-  100% { transform: translateY(-50%); }
+  100% { transform: translateY(calc(-4 * (54px + 8px))); }
+}
+.notif-feed-item {
+  animation: feedItemFade 4s ease infinite;
+}
+.notif-feed-item:nth-child(1) { animation-delay: 0s; }
+.notif-feed-item:nth-child(2) { animation-delay: 4s; }
+.notif-feed-item:nth-child(3) { animation-delay: 8s; }
+.notif-feed-item:nth-child(4) { animation-delay: 12s; }
+@keyframes feedItemFade {
+  0%, 20% { opacity: 1; }
+  25% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .reveal {
