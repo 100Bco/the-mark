@@ -1094,11 +1094,11 @@ footer {
 
 /* Footer brand glow — gradient sweep */
 .footer-brand-glow {
-  animation: brandGlowSweep 4s ease-in-out infinite;
+  animation: brandGlowSweep 8s ease-in-out infinite;
 }
 @keyframes brandGlowSweep {
-  0% { background-position: 200% center; }
-  100% { background-position: -200% center; }
+  0% { background-position: 300% center; }
+  100% { background-position: -300% center; }
 }
 
 /* Notification pop — staggered pulse glow */
