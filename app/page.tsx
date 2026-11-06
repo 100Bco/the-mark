@@ -141,33 +141,33 @@ export default function Home() {
 
       {/* WE DO TWO THINGS */}
       <section className="problem">
-        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <div className="section-label reveal">What We Do</div>
 
           {/* Item 01 */}
-          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "80px 1fr", gap: 24, alignItems: "start", paddingBlock: "40px 36px", borderBottom: "1px solid var(--rule)" }}>
-            <div style={{ fontSize: 48, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>01</div>
+          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "100px 1fr", gap: 32, alignItems: "start", paddingBlock: "48px 44px", borderBottom: "1px solid var(--rule)" }}>
+            <div style={{ fontSize: 56, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>01</div>
             <div>
-              <h3 style={{ fontSize: 22, fontWeight: 600, color: "var(--white)", marginBottom: 12 }}>Build your authority and reach.</h3>
-              <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8 }}>
+              <h3 style={{ fontSize: 28, fontWeight: 600, color: "var(--white)", marginBottom: 16 }}>Build your authority and reach.</h3>
+              <p style={{ fontSize: 18, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8 }}>
                 We capture your voice, create the content, and manage your entire LinkedIn so the right people find you before you ever walk into the room.
               </p>
             </div>
           </div>
 
           {/* Item 02 */}
-          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "80px 1fr", gap: 24, alignItems: "start", paddingBlock: "40px 36px", borderBottom: "1px solid var(--rule)" }}>
-            <div style={{ fontSize: 48, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>02</div>
+          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "100px 1fr", gap: 32, alignItems: "start", paddingBlock: "48px 44px", borderBottom: "1px solid var(--rule)" }}>
+            <div style={{ fontSize: 56, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>02</div>
             <div>
-              <h3 style={{ fontSize: 22, fontWeight: 600, color: "var(--white)", marginBottom: 12 }}>Turn that reach into revenue.</h3>
-              <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8 }}>
+              <h3 style={{ fontSize: 28, fontWeight: 600, color: "var(--white)", marginBottom: 16 }}>Turn that reach into revenue.</h3>
+              <p style={{ fontSize: 18, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8 }}>
                 Speaker invitations. Partnership proposals. Inbound from decision-makers who found you through your content. We build the system that delivers results consistently.
               </p>
             </div>
           </div>
 
           {/* Tagline */}
-          <p className="reveal" style={{ fontSize: 15, fontWeight: 400, color: "var(--muted)", marginTop: 36, lineHeight: 1.8 }}>
+          <p className="reveal" style={{ fontSize: 17, fontWeight: 400, color: "var(--muted)", marginTop: 40, lineHeight: 1.8 }}>
             The Mark is a fully managed LinkedIn growth service. We are the team behind founders and CEOs who want measurable results from their online presence.
           </p>
         </div>
