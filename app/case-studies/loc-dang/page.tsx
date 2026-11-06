@@ -12,15 +12,13 @@ export default function LocDangPage() {
       {/* NAV */}
       <nav>
         <a href="/" className="nav-logo">
-          <div>
-            <div className="nav-m">M</div>
-            <div className="nav-mark-rule" />
-          </div>
           <div className="nav-wordmark">The Mark</div>
         </a>
-        <a href="/#apply" className="nav-cta">
-          Apply to Work With Us
-        </a>
+        <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
+          <a href="/case-studies" style={{ fontSize: 14, fontWeight: 500, color: "var(--muted-lt)", textDecoration: "none" }}>Case Studies</a>
+          <a href="/about" style={{ fontSize: 14, fontWeight: 500, color: "var(--muted-lt)", textDecoration: "none" }}>About</a>
+          <a href="/#apply" className="nav-cta">Apply to Work With Us</a>
+        </div>
       </nav>
 
       {/* HERO — Quote + Avatar + Intro */}
