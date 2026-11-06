@@ -1093,31 +1093,38 @@ footer {
   40% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); }
 }
 
-/* Journey circles — breathing animation */
+/* Journey — sequential energy transfer (8s total cycle) */
+/* Each circle glows for ~1s, dot travels ~1s between = 4 glows + 3 dots = ~8s */
+
+/* Circle glow: each fires at its slot in the 8s cycle */
 .journey-breathe {
-  animation: journeyBreathe 4s ease-in-out infinite;
+  animation: journeyGlow 8s ease infinite;
 }
 .journey-circle-1 { animation-delay: 0s; }
-.journey-circle-2 { animation-delay: 1s; }
-.journey-circle-3 { animation-delay: 2s; }
-.journey-circle-4 { animation-delay: 3s; }
-@keyframes journeyBreathe {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); border-color: var(--gold); }
-  50% { transform: scale(1.08); box-shadow: 0 0 20px 4px rgba(91,155,213,0.2); border-color: var(--gold-lt); }
+.journey-circle-2 { animation-delay: 2s; }
+.journey-circle-3 { animation-delay: 4s; }
+.journey-circle-4 { animation-delay: 6s; }
+@keyframes journeyGlow {
+  0%, 5% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); border-color: var(--gold); }
+  10% { transform: scale(1.1); box-shadow: 0 0 24px 6px rgba(91,155,213,0.35); border-color: var(--gold-lt); }
+  20% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); border-color: var(--gold); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); border-color: var(--gold); }
 }
 
-/* Journey pulse dot — travels along arrow */
+/* Pulse dot: travels after its circle glows */
 .journey-pulse {
-  animation: pulseTravelDot 3s ease-in-out infinite;
+  animation: pulseTravelDot 8s ease infinite;
+  opacity: 0;
 }
-.journey-pulse-1 { animation-delay: 0s; }
-.journey-pulse-2 { animation-delay: 1s; }
-.journey-pulse-3 { animation-delay: 2s; }
+.journey-pulse-1 { animation-delay: 1s; }
+.journey-pulse-2 { animation-delay: 3s; }
+.journey-pulse-3 { animation-delay: 5s; }
 @keyframes pulseTravelDot {
   0% { left: 0; opacity: 0; }
-  10% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { left: calc(100% - 8px); opacity: 0; }
+  2% { opacity: 1; }
+  10% { left: calc(100% - 8px); opacity: 1; }
+  12% { opacity: 0; }
+  100% { opacity: 0; left: 0; }
 }
 
 /* Broadcast ripple — waves expanding outward */
