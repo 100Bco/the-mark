@@ -348,6 +348,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ABOUT — centered stack */}
+      <section style={{ background: "#0A1628", padding: "100px 64px" }}>
+        <div style={{ maxWidth: 600, margin: "0 auto", textAlign: "center" }}>
+          <div className="section-label reveal" style={{ color: "var(--gold)" }}>Behind The Mark</div>
+
+          <div className="reveal" style={{ marginTop: 32 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/team/minh-mac.webp"
+              alt="Minh Mac, Founder of 100Bold"
+              style={{
+                width: 160,
+                height: 160,
+                borderRadius: "50%",
+                objectFit: "cover",
+                border: "3px solid rgba(91,155,213,0.2)",
+                margin: "0 auto 20px",
+                display: "block",
+              }}
+            />
+            <div style={{ fontSize: 28, fontWeight: 700, color: "var(--white)", marginBottom: 6 }}>Minh Mac</div>
+            <div style={{ fontSize: 14, fontWeight: 500, color: "var(--gold)", marginBottom: 28 }}>Founder, 100Bold</div>
+          </div>
+
+          <p className="reveal" style={{ fontSize: 17, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8, marginBottom: 16 }}>
+            15 years building businesses and scaling brands across Austin and Southeast Asia. The Mark is the system he built to turn a founder&apos;s LinkedIn into a real growth channel.
+          </p>
+
+          <a href="/about" className="reveal cs-case-link" style={{ display: "inline-block", marginTop: 12 }}>
+            Learn more &rarr;
+          </a>
+        </div>
+      </section>
+
       {/* CLOSING CTA */}
       <section className="cta-close" id="apply">
         <div className="cta-close-bg" />
