@@ -105,8 +105,8 @@ export default function Home() {
               src="/images/tung-cao/Tung Cao Photo.png"
               alt=""
               style={{
-                width: 44,
-                height: 44,
+                width: 60,
+                height: 60,
                 borderRadius: "50%",
                 objectFit: "cover",
                 border: "3px solid var(--navy)",
@@ -117,13 +117,13 @@ export default function Home() {
               src="/images/loc-dang/loc-dang-headshot.webp"
               alt=""
               style={{
-                width: 44,
-                height: 44,
+                width: 60,
+                height: 60,
                 borderRadius: "50%",
                 objectFit: "cover",
                 objectPosition: "center 20%",
                 border: "3px solid var(--navy)",
-                marginLeft: -10,
+                marginLeft: -14,
               }}
             />
           </div>
