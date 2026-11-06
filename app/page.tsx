@@ -1,4 +1,5 @@
 import RevealObserver from "./RevealObserver";
+import NotifFeed from "./NotifFeed";
 
 export default function Home() {
   return (
@@ -193,39 +194,9 @@ export default function Home() {
                 Turn that reach into <span style={{ color: "var(--gold)" }}>revenue</span>
               </h3>
 
-              {/* 4 notification items — top one exits, rest shift up, new one enters bottom */}
-              <div style={{ height: 260, margin: "0 auto 32px", width: "100%", overflow: "hidden", position: "relative" }}>
-                <div className="notif-feed">
-                  {[
-                    "Speaker invitation received",
-                    "New partnership request",
-                    "Investor wants to connect",
-                    "Podcast guest request",
-                    "Collaboration proposal",
-                    "Meeting request from CEO",
-                    "Event speaker opportunity",
-                    "Joint venture inquiry",
-                  ].map((text, i) => (
-                    <div
-                      key={`${text}-${i}`}
-                      className="notif-feed-item"
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 12,
-                        background: "rgba(91,155,213,0.06)",
-                        border: "1px solid rgba(91,155,213,0.15)",
-                        borderRadius: 6,
-                        padding: "16px 20px",
-                        height: 54,
-                        flexShrink: 0,
-                      }}
-                    >
-                      <div style={{ width: 10, height: 10, borderRadius: "50%", background: "var(--gold)", flexShrink: 0 }} />
-                      <span style={{ fontSize: 14, fontWeight: 500, color: "var(--muted-lt)" }}>{text}</span>
-                    </div>
-                  ))}
-                </div>
+              {/* Notification feed — items swap one at a time */}
+              <div style={{ margin: "0 auto 32px" }}>
+                <NotifFeed />
               </div>
 
               <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8 }}>
