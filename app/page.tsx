@@ -229,78 +229,72 @@ export default function Home() {
         </div>
       </section>
 
-      {/* YOUR JOURNEY — Horizontal Timeline */}
+      {/* YOUR JOURNEY — Card Stack with Progress Rings */}
       <section className="what" id="what" style={{ background: "var(--navy)" }}>
-        <div className="what-inner">
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <div className="section-label reveal">Your Journey With Us</div>
-          <h2 className="what-headline reveal">
+          <h2 className="what-headline reveal" style={{ marginBottom: 56 }}>
             From onboarding to <em>inbound pipeline.</em>
           </h2>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(7, auto)", gap: 0, alignItems: "start", justifyContent: "center", marginTop: 48 }}>
-            {[
-              { week: "Week 1-2", title: "Strategy & Voice", desc: "We study your market, capture your voice, and build a content system designed to attract the right people.", icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" },
-              { week: "Week 3-4", title: "Launch & Manage", desc: "Your LinkedIn goes live. 3-4 posts/week. Full account management. You don't touch a thing.", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
-              { week: "Month 2-4", title: "Grow & Engage", desc: "Your name shows up where it matters. Decision-makers start paying attention. Conversations begin.", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" },
-              { week: "Month 5+", title: "Convert & Scale", desc: "The pipeline builds. Inbound flows. You close deals while we keep the engine running.", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" },
-            ].flatMap((step, i, arr) => {
-              const stepEl = (
-                <div
-                  key={step.week}
-                  style={{
-                    textAlign: "center",
-                    maxWidth: 180,
-                    opacity: 0,
-                    animation: `fadeUp 0.6s ${0.2 * i}s forwards`,
-                  }}
-                >
-                  <div style={{
-                    width: 64,
-                    height: 64,
-                    borderRadius: "50%",
-                    border: "2px solid var(--gold)",
-                    background: i === arr.length - 1 ? "rgba(184,149,90,0.15)" : "var(--navy)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    margin: "0 auto 20px",
-                  }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d={step.icon} />
-                    </svg>
-                  </div>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 8 }}>
-                    {step.week}
-                  </div>
-                  <div style={{ fontSize: 17, fontWeight: 600, color: "var(--white)", marginBottom: 8, lineHeight: 1.3 }}>
-                    {step.title}
-                  </div>
-                  <p style={{ fontSize: 13, fontWeight: 300, color: "var(--muted-lt)", lineHeight: 1.7 }}>
-                    {step.desc}
-                  </p>
+          {[
+            { week: "Week 1-2", title: "Strategy & Voice", desc: "We study your market, capture your voice, and build a content system designed to attract the right people.", pct: 25 },
+            { week: "Week 3-4", title: "Launch & Manage", desc: "Your LinkedIn goes live. 3-4 posts/week. Full account management. You don't touch a thing.", pct: 50 },
+            { week: "Month 2-4", title: "Grow & Engage", desc: "Your name shows up where it matters. Decision-makers start paying attention. Conversations begin.", pct: 75 },
+            { week: "Month 5+", title: "Convert & Scale", desc: "The pipeline builds. Inbound flows. You close deals while we keep the engine running.", pct: 100 },
+          ].map((step, i) => (
+            <div
+              key={step.week}
+              className="reveal"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 120px",
+                gap: 40,
+                alignItems: "center",
+                padding: "40px 0",
+                borderBottom: i < 3 ? "1px solid rgba(91,155,213,0.1)" : "none",
+              }}
+            >
+              {/* Left: content */}
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 10 }}>
+                  {step.week}
                 </div>
-              );
-              if (i < arr.length - 1) {
-                const arrowEl = (
-                  <div
-                    key={`arrow-${i}`}
-                    style={{
-                      color: "var(--gold)",
-                      fontSize: 20,
-                      padding: "0 16px",
-                      paddingTop: 20,
-                      opacity: 0,
-                      animation: `fadeUp 0.4s ${0.2 * i + 0.12}s forwards`,
-                    }}
-                  >
-                    &rarr;
-                  </div>
-                );
-                return [stepEl, arrowEl];
-              }
-              return [stepEl];
-            })}
-          </div>
+                <h3 style={{ fontSize: 26, fontWeight: 600, color: "var(--white)", marginBottom: 12 }}>
+                  {step.title}
+                </h3>
+                <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8 }}>
+                  {step.desc}
+                </p>
+              </div>
+
+              {/* Right: circular progress ring */}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <svg width="100" height="100" viewBox="0 0 100 100">
+                  {/* Background ring */}
+                  <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(91,155,213,0.1)" strokeWidth="4" />
+                  {/* Progress ring */}
+                  <circle
+                    cx="50" cy="50" r="42"
+                    fill="none"
+                    stroke="var(--gold)"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeDasharray={`${2 * Math.PI * 42}`}
+                    strokeDashoffset={`${2 * Math.PI * 42 * (1 - step.pct / 100)}`}
+                    transform="rotate(-90 50 50)"
+                    className={`progress-ring-${i + 1}`}
+                    style={{ transition: "stroke-dashoffset 1.5s ease" }}
+                  />
+                  {/* Percentage text */}
+                  <text x="50" y="50" textAnchor="middle" dominantBaseline="central"
+                    style={{ fontSize: 22, fontWeight: 700, fill: step.pct === 100 ? "var(--gold)" : "var(--white)" }}>
+                    {step.pct}%
+                  </text>
+                </svg>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
