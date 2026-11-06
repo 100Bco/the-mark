@@ -139,13 +139,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WATERMARK between sections */}
-      <div style={{ background: "var(--navy)", padding: "80px 0", textAlign: "center", overflow: "hidden" }}>
-        <div style={{ fontFamily: "var(--font-display), 'Sora', sans-serif", fontSize: "clamp(80px, 12vw, 160px)", fontWeight: 700, color: "rgba(91,155,213,0.05)", letterSpacing: 12, textTransform: "uppercase", lineHeight: 1, userSelect: "none" }}>
-          THE MARK
-        </div>
-      </div>
-
       {/* WE DO TWO THINGS */}
       <section className="what" style={{ paddingBottom: 80, background: "#0A1628" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto", textAlign: "center" }}>
