@@ -41,6 +41,7 @@ export default function Home() {
 
         {/* Stats bar */}
         <div
+          className="stats-bar-wrap"
           style={{
             display: "flex",
             gap: 64,
@@ -154,7 +155,7 @@ export default function Home() {
           </p>
 
           {/* Two cards */}
-          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+          <div className="reveal cards-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             {/* Card 1: Authority — broadcast ripple */}
             <div style={{ background: "rgba(91,155,213,0.06)", border: "1px solid rgba(91,155,213,0.15)", borderRadius: 8, padding: "40px 36px", textAlign: "left" }}>
               <h3 style={{ fontSize: 24, fontWeight: 600, color: "var(--white)", marginBottom: 32 }}>
@@ -253,7 +254,7 @@ export default function Home() {
           </h2>
 
           {/* Case cards — side by side */}
-          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+          <div className="reveal cards-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
 
             {/* Case 1: Tung Cao */}
             <div style={{ border: "1px solid rgba(91,155,213,0.15)", borderRadius: 10, overflow: "hidden" }}>
@@ -320,7 +321,7 @@ export default function Home() {
       <section style={{ background: "var(--navy)", padding: "100px 64px" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <div className="section-label reveal" style={{ color: "var(--gold)", textAlign: "center" }}>Who This Is For</div>
-          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20, marginTop: 48 }}>
+          <div className="reveal cards-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20, marginTop: 48 }}>
             {[
               { num: "01", title: "Founders", highlight: "& CEOs.", desc: "You run the business. You don't have time to run LinkedIn. But you know you should be there." },
               { num: "02", title: "Leaders with no", highlight: "online presence.", desc: "Your reputation is real but invisible online. The right people can't find you." },
@@ -353,7 +354,7 @@ export default function Home() {
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <div className="section-label reveal" style={{ color: "var(--gold)", textAlign: "center", marginBottom: 32 }}>Behind The Mark</div>
           <div
-            className="reveal"
+            className="reveal about-card-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "280px 1fr",
@@ -427,7 +428,7 @@ export default function Home() {
       <footer style={{ background: "#080E1A", padding: "80px 64px 0", borderTop: "1px solid rgba(91,155,213,0.08)" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           {/* Top: contact + nav links */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 48, marginBottom: 64 }}>
+          <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 48, marginBottom: 64 }}>
             {/* Contact */}
             <div>
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: "var(--gold)", textTransform: "uppercase", marginBottom: 20 }}>Contact</div>
@@ -478,7 +479,7 @@ export default function Home() {
               userSelect: "none",
               color: "rgba(91,155,213,0.06)",
               backgroundImage: "linear-gradient(90deg, rgba(91,155,213,0.06) 0%, rgba(91,155,213,0.06) 48%, rgba(91,155,213,1) 50%, rgba(91,155,213,0.06) 52%, rgba(91,155,213,0.06) 100%)",
-              backgroundSize: "200% 100%",
+              backgroundSize: "300% 100%",
               backgroundClip: "text",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
