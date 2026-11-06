@@ -1098,13 +1098,15 @@ footer {
   100% { transform: scale(1.1); opacity: 0; }
 }
 
-/* Notification loop — slide in, hold, fade out, repeat */
-@keyframes notifLoop {
-  0% { opacity: 0; transform: translateX(30px); }
-  10% { opacity: 1; transform: translateX(0); }
-  70% { opacity: 1; transform: translateX(0); }
-  85% { opacity: 0; transform: translateX(-10px); }
-  100% { opacity: 0; transform: translateX(30px); }
+/* Notification ticker — scrolls up continuously */
+.notif-ticker {
+  display: flex;
+  flex-direction: column;
+  animation: tickerScroll 12s linear infinite;
+}
+@keyframes tickerScroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
 }
 
 .reveal {
