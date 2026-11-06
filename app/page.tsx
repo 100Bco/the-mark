@@ -331,16 +331,16 @@ export default function Home() {
           <div className="section-label reveal" style={{ color: "var(--gold)" }}>Who This Is For</div>
           <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32, marginTop: 40 }}>
             <div>
-              <h3 style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif", fontSize: 24, fontWeight: 300, color: "var(--navy)", marginBottom: 12, lineHeight: 1.3 }}>Founders<br />&amp; <em style={{ color: "var(--gold)" }}>CEOs.</em></h3>
-              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>You run the business. You don&apos;t have time to run LinkedIn. But you know you should be there.</p>
+              <h3 style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif", fontSize: 24, fontWeight: 300, color: "var(--white)", marginBottom: 12, lineHeight: 1.3 }}>Founders<br />&amp; <em style={{ color: "var(--gold)" }}>CEOs.</em></h3>
+              <p style={{ fontSize: 15, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.85 }}>You run the business. You don&apos;t have time to run LinkedIn. But you know you should be there.</p>
             </div>
             <div>
-              <h3 style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif", fontSize: 24, fontWeight: 300, color: "var(--navy)", marginBottom: 12, lineHeight: 1.3 }}>Leaders with no<br /><em style={{ color: "var(--gold)" }}>online presence.</em></h3>
-              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>Your reputation is real but invisible online. The right people can&apos;t find you.</p>
+              <h3 style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif", fontSize: 24, fontWeight: 300, color: "var(--white)", marginBottom: 12, lineHeight: 1.3 }}>Leaders with no<br /><em style={{ color: "var(--gold)" }}>online presence.</em></h3>
+              <p style={{ fontSize: 15, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.85 }}>Your reputation is real but invisible online. The right people can&apos;t find you.</p>
             </div>
             <div>
-              <h3 style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif", fontSize: 24, fontWeight: 300, color: "var(--navy)", marginBottom: 12, lineHeight: 1.3 }}>Businesses that<br /><em style={{ color: "var(--gold)" }}>rely on referrals.</em></h3>
-              <p style={{ fontSize: 15, fontWeight: 300, color: "var(--soft)", lineHeight: 1.85 }}>Referrals work, but they don&apos;t scale. LinkedIn puts you in front of new people every day.</p>
+              <h3 style={{ fontFamily: "var(--font-inter), 'Inter', sans-serif", fontSize: 24, fontWeight: 300, color: "var(--white)", marginBottom: 12, lineHeight: 1.3 }}>Businesses that<br /><em style={{ color: "var(--gold)" }}>rely on referrals.</em></h3>
+              <p style={{ fontSize: 15, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.85 }}>Referrals work, but they don&apos;t scale. LinkedIn puts you in front of new people every day.</p>
             </div>
           </div>
         </div>
