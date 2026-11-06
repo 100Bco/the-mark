@@ -1098,14 +1098,13 @@ footer {
   100% { transform: scale(1.1); opacity: 0; }
 }
 
-/* Notification slide-in */
-@keyframes slideInNotif {
-  from { opacity: 0; transform: translateX(40px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes fadeOutNotif {
-  from { opacity: 1; }
-  to   { opacity: 0.3; }
+/* Notification loop — slide in, hold, fade out, repeat */
+@keyframes notifLoop {
+  0% { opacity: 0; transform: translateX(30px); }
+  10% { opacity: 1; transform: translateX(0); }
+  70% { opacity: 1; transform: translateX(0); }
+  85% { opacity: 0; transform: translateX(-10px); }
+  100% { opacity: 0; transform: translateX(30px); }
 }
 
 .reveal {

@@ -140,7 +140,7 @@ export default function Home() {
       </section>
 
       {/* WE DO TWO THINGS */}
-      <section className="what" style={{ paddingBottom: 80 }}>
+      <section className="what" style={{ paddingBottom: 80, background: "var(--navy-mid)" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto", textAlign: "center" }}>
           <div className="section-label reveal">What We Do</div>
           <h2 className="reveal" style={{ fontFamily: "var(--font-display), 'Sora', sans-serif", fontSize: "clamp(32px, 4vw, 46px)", fontWeight: 700, color: "var(--white)", lineHeight: 1.15, marginBottom: 16 }}>
@@ -159,17 +159,23 @@ export default function Home() {
               </h3>
 
               {/* Broadcast ripple — LinkedIn post sending out waves */}
-              <div style={{ position: "relative", height: 200, margin: "0 auto 32px", width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                {/* Ripple waves */}
-                <div className="ripple-wave ripple-1" style={{ position: "absolute", width: 160, height: 160, borderRadius: "50%", border: "1px solid rgba(91,155,213,0.15)" }} />
-                <div className="ripple-wave ripple-2" style={{ position: "absolute", width: 240, height: 240, borderRadius: "50%", border: "1px solid rgba(91,155,213,0.08)" }} />
-                <div className="ripple-wave ripple-3" style={{ position: "absolute", width: 320, height: 320, borderRadius: "50%", border: "1px solid rgba(91,155,213,0.04)" }} />
-                {/* Center: post card */}
-                <div style={{ position: "relative", zIndex: 1, background: "rgba(91,155,213,0.1)", border: "1px solid rgba(91,155,213,0.3)", borderRadius: 6, padding: "14px 18px", width: 100, textAlign: "center" }}>
-                  <div style={{ width: 24, height: 3, background: "var(--gold)", borderRadius: 2, marginBottom: 6 }} />
-                  <div style={{ width: 48, height: 2, background: "rgba(91,155,213,0.3)", borderRadius: 2, marginBottom: 4 }} />
-                  <div style={{ width: 36, height: 2, background: "rgba(91,155,213,0.2)", borderRadius: 2 }} />
-                  <div style={{ fontSize: 8, fontWeight: 700, color: "var(--gold)", letterSpacing: 1.5, marginTop: 8, textTransform: "uppercase" }}>Your post</div>
+              <div style={{ position: "relative", height: 220, margin: "0 auto 32px", width: "100%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+                {/* Ripple waves — bigger, more visible */}
+                <div className="ripple-wave ripple-1" style={{ position: "absolute", width: 140, height: 140, borderRadius: "50%", border: "2px solid rgba(91,155,213,0.25)" }} />
+                <div className="ripple-wave ripple-2" style={{ position: "absolute", width: 220, height: 220, borderRadius: "50%", border: "2px solid rgba(91,155,213,0.15)" }} />
+                <div className="ripple-wave ripple-3" style={{ position: "absolute", width: 320, height: 320, borderRadius: "50%", border: "1px solid rgba(91,155,213,0.08)" }} />
+                {/* Center: post card — bigger */}
+                <div style={{ position: "relative", zIndex: 1, background: "rgba(91,155,213,0.12)", border: "1.5px solid rgba(91,155,213,0.4)", borderRadius: 8, padding: "20px 24px", width: 140, textAlign: "left" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                    <div style={{ width: 20, height: 20, borderRadius: "50%", background: "var(--gold)", opacity: 0.6 }} />
+                    <div>
+                      <div style={{ width: 48, height: 3, background: "var(--gold)", borderRadius: 2, marginBottom: 3 }} />
+                      <div style={{ width: 32, height: 2, background: "rgba(91,155,213,0.3)", borderRadius: 2 }} />
+                    </div>
+                  </div>
+                  <div style={{ width: "100%", height: 2, background: "rgba(91,155,213,0.25)", borderRadius: 2, marginBottom: 5 }} />
+                  <div style={{ width: "80%", height: 2, background: "rgba(91,155,213,0.15)", borderRadius: 2, marginBottom: 5 }} />
+                  <div style={{ width: "60%", height: 2, background: "rgba(91,155,213,0.1)", borderRadius: 2 }} />
                 </div>
               </div>
 
@@ -184,32 +190,30 @@ export default function Home() {
                 Turn that reach into <span style={{ color: "var(--gold)" }}>revenue</span>
               </h3>
 
-              {/* Incoming notification cards */}
-              <div style={{ position: "relative", height: 200, margin: "0 auto 32px", width: "100%", overflow: "hidden" }}>
+              {/* Incoming notification cards — looping */}
+              <div style={{ position: "relative", height: 220, margin: "0 auto 32px", width: "100%", overflow: "hidden" }}>
                 {[
                   { text: "Speaker invitation received", delay: 0 },
-                  { text: "New partnership request", delay: 1.2 },
-                  { text: "Investor wants to connect", delay: 2.4 },
-                ].map((notif, i) => (
+                  { text: "New partnership request", delay: 1 },
+                  { text: "Investor wants to connect", delay: 2 },
+                  { text: "Podcast guest request", delay: 3 },
+                ].map((notif) => (
                   <div
                     key={notif.text}
-                    className="notif-card"
                     style={{
                       display: "flex",
                       alignItems: "center",
                       gap: 12,
                       background: "rgba(91,155,213,0.08)",
-                      border: "1px solid rgba(91,155,213,0.15)",
+                      border: "1px solid rgba(91,155,213,0.2)",
                       borderRadius: 6,
-                      padding: "14px 18px",
+                      padding: "16px 20px",
                       marginBottom: 10,
-                      opacity: 0,
-                      transform: "translateX(40px)",
-                      animation: `slideInNotif 0.6s ${notif.delay}s forwards, fadeOutNotif 0.4s ${notif.delay + 3}s forwards`,
+                      animation: `notifLoop 6s ${notif.delay}s infinite`,
                     }}
                   >
-                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--gold)", flexShrink: 0 }} />
-                    <span style={{ fontSize: 13, fontWeight: 500, color: "var(--muted-lt)" }}>{notif.text}</span>
+                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "var(--gold)", flexShrink: 0 }} />
+                    <span style={{ fontSize: 14, fontWeight: 500, color: "var(--muted-lt)" }}>{notif.text}</span>
                   </div>
                 ))}
               </div>
