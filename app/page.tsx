@@ -139,8 +139,15 @@ export default function Home() {
         </div>
       </section>
 
+      {/* WATERMARK between sections */}
+      <div style={{ background: "var(--navy)", padding: "80px 0", textAlign: "center", overflow: "hidden" }}>
+        <div style={{ fontFamily: "var(--font-display), 'Sora', sans-serif", fontSize: "clamp(80px, 12vw, 160px)", fontWeight: 700, color: "rgba(91,155,213,0.05)", letterSpacing: 12, textTransform: "uppercase", lineHeight: 1, userSelect: "none" }}>
+          THE MARK
+        </div>
+      </div>
+
       {/* WE DO TWO THINGS */}
-      <section className="what" style={{ paddingBottom: 80, background: "var(--navy-mid)" }}>
+      <section className="what" style={{ paddingBottom: 80, background: "#0A1628" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto", textAlign: "center" }}>
           <div className="section-label reveal">What We Do</div>
           <h2 className="reveal" style={{ fontFamily: "var(--font-display), 'Sora', sans-serif", fontSize: "clamp(32px, 4vw, 46px)", fontWeight: 700, color: "var(--white)", lineHeight: 1.15, marginBottom: 16 }}>
@@ -230,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* YOUR JOURNEY — Horizontal Timeline */}
-      <section className="what" id="what">
+      <section className="what" id="what" style={{ background: "var(--navy)" }}>
         <div className="what-inner">
           <div className="section-label reveal">Your Journey With Us</div>
           <h2 className="what-headline reveal">
@@ -305,7 +312,7 @@ export default function Home() {
       </section>
 
       {/* RESULTS */}
-      <section className="casestudy" id="results">
+      <section className="casestudy" id="results" style={{ background: "#0A1628" }}>
         <div className="casestudy-inner">
           <div className="section-label reveal">The Results</div>
           <h2 className="what-headline reveal" style={{ marginBottom: 64 }}>
@@ -385,7 +392,7 @@ export default function Home() {
       </section>
 
       {/* WHO THIS IS FOR */}
-      <section className="problem">
+      <section className="problem" style={{ background: "var(--navy)" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <div className="section-label reveal" style={{ color: "var(--gold)" }}>Who This Is For</div>
           <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32, marginTop: 40 }}>
@@ -406,7 +413,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="what">
+      <section className="what" style={{ background: "#0A1628" }}>
         <div style={{ maxWidth: 700, margin: "0 auto" }}>
           <div className="section-label reveal">Questions</div>
           <h2 className="what-headline reveal" style={{ marginBottom: 48 }}>Frequently asked.</h2>
