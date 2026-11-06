@@ -1,18 +1,18 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy:     #0D1B2A;
-  --navy-mid: #152233;
-  --gold:     #B8955A;
-  --gold-lt:  #D4B07A;
-  --gold-dk:  #8A6A35;
-  --cream:    #F7F4EE;
-  --cream-dk: #EDE9E0;
-  --rule:     #D6CEBC;
-  --soft:     #3A3630;
-  --muted:    #8A8278;
-  --muted-lt: #DAD5CE;
-  --white:    #FFFFFF;
+  --navy:     #0D1F3C;
+  --navy-mid: #142847;
+  --gold:     #5B9BD5;
+  --gold-lt:  #7BB3E0;
+  --gold-dk:  #4080B8;
+  --cream:    #F5F1EB;
+  --cream-dk: #E8E3DB;
+  --rule:     rgba(91,155,213,0.15);
+  --soft:     #4A5568;
+  --muted:    #7A8EA6;
+  --muted-lt: #B8C4D4;
+  --white:    #F5F1EB;
 }
 
 html { scroll-behavior: smooth; }
@@ -49,7 +49,7 @@ nav {
 }
 
 .nav-m {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 36px;
   font-weight: 300;
   color: var(--cream);
@@ -65,7 +65,7 @@ nav {
 }
 
 .nav-wordmark {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 15px;
   font-weight: 300;
   color: var(--cream);
@@ -120,7 +120,7 @@ nav {
 }
 
 .hero-m {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 140px;
   font-weight: 300;
   color: var(--cream);
@@ -136,9 +136,9 @@ nav {
 }
 
 .hero-headline {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: clamp(42px, 5.5vw, 62px);
-  font-weight: 300;
+  font-weight: 700;
   color: var(--cream);
   line-height: 1.15;
   max-width: 760px;
@@ -227,9 +227,9 @@ nav {
 }
 
 .problem-headline {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: clamp(32px, 4vw, 46px);
-  font-weight: 300;
+  font-weight: 700;
   color: var(--navy);
   line-height: 1.2;
   margin-bottom: 0;
@@ -242,7 +242,7 @@ nav {
 
 .problem-copy {
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--soft);
   line-height: 2;
   margin-bottom: 20px;
@@ -261,7 +261,7 @@ nav {
 }
 
 .problem-stat {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 16px;
   font-style: italic;
   color: var(--muted);
@@ -292,9 +292,9 @@ nav {
 }
 
 .what-headline {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: clamp(32px, 4vw, 50px);
-  font-weight: 300;
+  font-weight: 700;
   color: var(--cream);
   line-height: 1.2;
   text-align: center;
@@ -321,7 +321,7 @@ nav {
 .layer:hover { background: rgba(255,255,255,0.06); }
 
 .layer-num {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 56px;
   font-weight: 300;
   color: rgba(184,149,90,0.15);
@@ -339,9 +339,9 @@ nav {
 }
 
 .layer-name {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 26px;
-  font-weight: 300;
+  font-weight: 600;
   color: var(--cream);
   margin-bottom: 16px;
   line-height: 1.2;
@@ -349,7 +349,7 @@ nav {
 
 .layer-copy {
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--muted-lt);
   line-height: 1.85;
 }
@@ -366,9 +366,9 @@ nav {
 }
 
 .proof-headline {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: clamp(30px, 4vw, 46px);
-  font-weight: 300;
+  font-weight: 700;
   color: var(--navy);
   line-height: 1.25;
   margin-bottom: 64px;
@@ -415,7 +415,7 @@ nav {
 }
 
 .proof-quote-mark {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 80px;
   font-weight: 300;
   color: var(--gold);
@@ -427,7 +427,7 @@ nav {
 }
 
 .proof-quote-text {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 22px;
   font-weight: 400;
   font-style: italic;
@@ -460,9 +460,9 @@ nav {
 }
 
 .delivers-headline {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: clamp(30px, 4vw, 46px);
-  font-weight: 300;
+  font-weight: 700;
   color: var(--cream);
   line-height: 1.2;
   margin-bottom: 72px;
@@ -489,7 +489,7 @@ nav {
 .deliver-item:hover { background: rgba(255,255,255,0.06); }
 
 .deliver-num {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 32px;
   font-weight: 300;
   color: rgba(184,149,90,0.3);
@@ -508,7 +508,7 @@ nav {
 }
 
 .deliver-outcome {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 20px;
   font-weight: 400;
   color: var(--cream);
@@ -518,7 +518,7 @@ nav {
 
 .deliver-detail {
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--muted-lt);
   line-height: 1.8;
 }
@@ -539,9 +539,9 @@ nav {
 }
 
 .events-headline {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: clamp(30px, 4vw, 44px);
-  font-weight: 300;
+  font-weight: 700;
   color: var(--navy);
   line-height: 1.2;
   margin-bottom: 24px;
@@ -571,7 +571,7 @@ nav {
 }
 
 .event-type-name {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 22px;
   font-weight: 400;
   color: var(--navy);
@@ -613,7 +613,7 @@ nav {
 }
 
 .events-visual-title {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 32px;
   font-weight: 300;
   color: var(--cream);
@@ -664,9 +664,9 @@ nav {
 }
 
 .forwho-display {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 52px;
-  font-weight: 300;
+  font-weight: 700;
   color: var(--cream);
   line-height: 1.1;
 }
@@ -742,9 +742,9 @@ nav {
 }
 
 .membership-headline {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: clamp(30px, 4vw, 44px);
-  font-weight: 300;
+  font-weight: 700;
   color: var(--navy);
   line-height: 1.2;
   text-align: center;
@@ -795,7 +795,7 @@ nav {
 }
 
 .tier-price {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 44px;
   font-weight: 300;
   color: var(--navy);
@@ -853,7 +853,7 @@ nav {
   font-size: 13px;
   font-style: italic;
   color: var(--muted);
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
 }
 
 /* ── ABOUT ── */
@@ -881,9 +881,9 @@ nav {
 }
 
 .about-headline {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: clamp(28px, 3.5vw, 40px);
-  font-weight: 300;
+  font-weight: 700;
   color: var(--cream);
   line-height: 1.3;
   margin-bottom: 24px;
@@ -891,7 +891,7 @@ nav {
 
 .about-copy {
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--muted-lt);
   line-height: 2;
   margin-bottom: 16px;
@@ -922,9 +922,9 @@ nav {
 }
 
 .about-card-name {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 28px;
-  font-weight: 300;
+  font-weight: 600;
   color: var(--cream);
   margin-bottom: 4px;
 }
@@ -947,7 +947,7 @@ nav {
 
 .about-card-copy {
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--muted-lt);
   line-height: 1.9;
 }
@@ -978,7 +978,7 @@ nav {
 }
 
 .cta-m {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 72px;
   font-weight: 300;
   color: var(--cream);
@@ -994,9 +994,9 @@ nav {
 }
 
 .cta-headline {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: clamp(28px, 4vw, 46px);
-  font-weight: 300;
+  font-weight: 700;
   color: var(--cream);
   line-height: 1.3;
   max-width: 600px;
@@ -1015,7 +1015,7 @@ nav {
   position: relative;
   z-index: 1;
   font-style: italic;
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
 }
 
 .cta-btn {
@@ -1060,7 +1060,7 @@ footer {
 }
 
 .footer-left {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 14px;
   font-style: italic;
   color: rgba(138,130,120,0.6);
@@ -1227,7 +1227,7 @@ footer {
   margin-bottom: 40px;
 }
 .cs-detail-quote-text {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 24px;
   font-weight: 400;
   font-style: italic;
@@ -1244,7 +1244,7 @@ footer {
 }
 
 .cs-detail-headline-stat {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: clamp(40px, 6vw, 72px);
   font-weight: 300;
   color: var(--gold);
@@ -1268,7 +1268,7 @@ footer {
   margin: 0 auto;
 }
 .cs-detail-narrative h2 {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: clamp(24px, 3vw, 34px);
   font-weight: 300;
   color: var(--navy);

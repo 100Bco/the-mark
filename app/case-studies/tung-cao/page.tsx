@@ -63,7 +63,7 @@ export default function TungCaoPage() {
               <div style={{ marginTop: 20 }}>
                 <h2
                   style={{
-                    fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+                    fontFamily: "var(--font-inter), 'Inter', sans-serif",
                     fontSize: 32,
                     fontWeight: 300,
                     color: "var(--cream)",
@@ -299,7 +299,7 @@ export default function TungCaoPage() {
       <section className="cs-detail-cta">
         <h2
           style={{
-            fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+            fontFamily: "var(--font-inter), 'Inter', sans-serif",
             fontSize: "clamp(28px, 4vw, 42px)",
             fontWeight: 300,
             color: "var(--cream)",
