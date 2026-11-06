@@ -1094,11 +1094,10 @@ footer {
 
 /* Footer brand glow — gradient sweep */
 .footer-brand-glow {
-  animation: brandGlowSweep 13s linear infinite;
+  animation: brandGlowSweep 12s linear infinite;
 }
 @keyframes brandGlowSweep {
   0% { background-position: 200% center; }
-  95% { background-position: -100% center; }
   100% { background-position: -100% center; }
 }
 
