@@ -9,12 +9,16 @@ const steps = [
   { label: "Convert\n& Scale", week: "Month 5+", icon: "M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" },
 ];
 
-const CYCLE_TIME = 1800;
+const DOT_TRAVEL = 1200;
+const DOT_LEAD = 900;
+const GLOW_HOLD = 800;
 
 export default function JourneyTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [tick, setTick] = useState(0);
+  const [glowIdx, setGlowIdx] = useState(-1);
+  const [dotIdx, setDotIdx] = useState(-1);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -34,15 +38,32 @@ export default function JourneyTimeline() {
 
   useEffect(() => {
     if (!visible) return;
-    const interval = setInterval(() => {
-      setTick((t) => (t + 1) % 4);
-    }, CYCLE_TIME);
-    return () => clearInterval(interval);
-  }, [visible]);
 
-  const activeCircle = visible ? tick : -1;
-  const prevCircle = visible ? (tick + 3) % 4 : -1;
-  const activeDot = visible ? prevCircle : -1;
+    let current = 0;
+
+    function runCycle() {
+      setGlowIdx(current);
+      setDotIdx(-1);
+
+      timerRef.current = setTimeout(() => {
+        const nextDot = current;
+        if (nextDot < 3) {
+          setDotIdx(nextDot);
+        }
+
+        timerRef.current = setTimeout(() => {
+          current = (current + 1) % 4;
+          runCycle();
+        }, DOT_LEAD);
+      }, GLOW_HOLD);
+    }
+
+    runCycle();
+
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [visible]);
 
   return (
     <div
@@ -62,20 +83,20 @@ export default function JourneyTimeline() {
                 width: 110,
                 height: 110,
                 borderRadius: "50%",
-                border: `2px solid ${activeCircle === i ? "var(--gold-lt)" : "var(--gold)"}`,
-                background: activeCircle === i ? "rgba(91,155,213,0.18)" : "transparent",
+                border: `2px solid ${glowIdx === i ? "var(--gold-lt)" : "var(--gold)"}`,
+                background: glowIdx === i ? "rgba(91,155,213,0.18)" : "transparent",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 margin: "0 auto 20px",
-                transform: activeCircle === i ? "scale(1.12)" : "scale(1)",
-                boxShadow: activeCircle === i ? "0 0 32px 10px rgba(91,155,213,0.35)" : "0 0 0 0 rgba(91,155,213,0)",
+                transform: glowIdx === i ? "scale(1.12)" : "scale(1)",
+                boxShadow: glowIdx === i ? "0 0 32px 10px rgba(91,155,213,0.35)" : "0 0 0 0 rgba(91,155,213,0)",
                 transition: "transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease, border-color 0.4s ease",
               }}
             >
               <svg
                 width="44" height="44" viewBox="0 0 24 24" fill="none"
-                stroke={activeCircle === i ? "var(--gold-lt)" : "var(--gold)"}
+                stroke={glowIdx === i ? "var(--gold-lt)" : "var(--gold)"}
                 strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
                 style={{ transition: "stroke 0.4s ease" }}
               >
@@ -111,11 +132,11 @@ export default function JourneyTimeline() {
                   background: "var(--gold)",
                   top: "50%",
                   boxShadow: "0 0 16px rgba(91,155,213,0.8)",
-                  opacity: activeDot === i ? 1 : 0,
-                  left: activeDot === i ? "calc(100% - 18px)" : "0px",
+                  opacity: dotIdx === i ? 1 : 0,
+                  left: dotIdx === i ? "calc(100% - 18px)" : "0px",
                   transform: "translateY(-50%)",
-                  transition: activeDot === i
-                    ? "left 1.2s ease-in-out, opacity 0.15s ease"
+                  transition: dotIdx === i
+                    ? `left ${DOT_TRAVEL}ms ease-in-out, opacity 0.15s ease`
                     : "opacity 0.15s ease, left 0s 0.15s",
                 }}
               />
