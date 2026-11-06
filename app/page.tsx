@@ -19,9 +19,6 @@ export default function Home() {
 
       {/* HERO */}
       <section className="hero">
-        <div className="hero-bg" />
-        <div className="hero-lines" />
-
         <div className="hero-eyebrow">The Mark by 100Bold</div>
 
         <div className="hero-logo-mark">
@@ -50,9 +47,106 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="hero-scroll">
-          <div className="scroll-line" />
-          <span>Scroll</span>
+        {/* Stats bar */}
+        <div
+          style={{
+            display: "flex",
+            gap: 48,
+            justifyContent: "center",
+            marginTop: 56,
+            opacity: 0,
+            animation: "fadeUp 0.8s 0.9s forwards",
+          }}
+        >
+          {[
+            ["1M+", "Impressions"],
+            ["10K+", "Followers"],
+            ["89%", "Out-of-Network"],
+          ].map(([num, label]) => (
+            <div
+              key={label}
+              style={{
+                textAlign: "center",
+                padding: "0 24px",
+                borderRight: label !== "Out-of-Network" ? "1px solid rgba(214,206,188,0.15)" : "none",
+                paddingRight: label !== "Out-of-Network" ? 48 : 24,
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 32,
+                  fontWeight: 700,
+                  color: "var(--gold)",
+                  lineHeight: 1,
+                  marginBottom: 6,
+                }}
+              >
+                {num}
+              </div>
+              <div
+                style={{
+                  fontSize: 11,
+                  fontWeight: 600,
+                  letterSpacing: 1.5,
+                  color: "var(--muted)",
+                  textTransform: "uppercase",
+                }}
+              >
+                {label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Trust line */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 12,
+            marginTop: 40,
+            opacity: 0,
+            animation: "fadeUp 0.8s 1.1s forwards",
+          }}
+        >
+          <div style={{ display: "flex", marginRight: 4 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/tung-cao/Tung Cao Photo.png"
+              alt=""
+              style={{
+                width: 32,
+                height: 32,
+                borderRadius: "50%",
+                objectFit: "cover",
+                border: "2px solid var(--navy)",
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/loc-dang/loc-dang-headshot.webp"
+              alt=""
+              style={{
+                width: 32,
+                height: 32,
+                borderRadius: "50%",
+                objectFit: "cover",
+                objectPosition: "center 20%",
+                border: "2px solid var(--navy)",
+                marginLeft: -8,
+              }}
+            />
+          </div>
+          <span
+            style={{
+              fontSize: 13,
+              fontWeight: 400,
+              color: "var(--muted)",
+            }}
+          >
+            Trusted by founders across industries
+          </span>
         </div>
       </section>
 
