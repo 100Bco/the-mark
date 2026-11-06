@@ -141,32 +141,35 @@ export default function Home() {
 
       {/* WE DO TWO THINGS */}
       <section className="problem">
-        <div className="problem-inner">
-          <div className="problem-left reveal">
-            <div className="problem-label">What We Do</div>
-            <h2 className="problem-headline">
-              We do <em>two things.</em>
-            </h2>
+        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+          <div className="section-label reveal">What We Do</div>
+
+          {/* Item 01 */}
+          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "80px 1fr", gap: 24, alignItems: "start", paddingBlock: "40px 36px", borderBottom: "1px solid var(--rule)" }}>
+            <div style={{ fontSize: 48, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>01</div>
+            <div>
+              <h3 style={{ fontSize: 22, fontWeight: 600, color: "var(--white)", marginBottom: 12 }}>Build your authority and reach.</h3>
+              <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8 }}>
+                We capture your voice, create the content, and manage your entire LinkedIn so the right people find you before you ever walk into the room.
+              </p>
+            </div>
           </div>
-          <div className="problem-right reveal">
-            <p className="problem-copy">
-              <strong>Build your authority and reach.</strong> We capture
-              your voice, create the content, and manage your entire LinkedIn
-              so the right people find you before you ever walk into the room.
-            </p>
-            <p className="problem-copy">
-              <strong>Turn that reach into revenue.</strong> Speaker
-              invitations. Partnership proposals. Inbound from decision-makers
-              who found you through your content. We build the system that
-              delivers results consistently.
-            </p>
-            <div className="problem-rule" />
-            <p className="problem-stat">
-              The Mark is a fully managed LinkedIn growth service. We are the
-              team behind founders and CEOs who want measurable results from
-              their online presence.
-            </p>
+
+          {/* Item 02 */}
+          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "80px 1fr", gap: 24, alignItems: "start", paddingBlock: "40px 36px", borderBottom: "1px solid var(--rule)" }}>
+            <div style={{ fontSize: 48, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>02</div>
+            <div>
+              <h3 style={{ fontSize: 22, fontWeight: 600, color: "var(--white)", marginBottom: 12 }}>Turn that reach into revenue.</h3>
+              <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8 }}>
+                Speaker invitations. Partnership proposals. Inbound from decision-makers who found you through your content. We build the system that delivers results consistently.
+              </p>
+            </div>
           </div>
+
+          {/* Tagline */}
+          <p className="reveal" style={{ fontSize: 15, fontWeight: 400, color: "var(--muted)", marginTop: 36, lineHeight: 1.8 }}>
+            The Mark is a fully managed LinkedIn growth service. We are the team behind founders and CEOs who want measurable results from their online presence.
+          </p>
         </div>
       </section>
 
