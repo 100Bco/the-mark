@@ -257,7 +257,7 @@ export default function Home() {
             <div style={{ border: "1px solid rgba(91,155,213,0.15)", borderRadius: 10, overflow: "hidden" }}>
               <div style={{ height: 280, overflow: "hidden" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/tung-cao/tc-speaker-stage.webp" alt="Tung Cao speaking at International Manufacturing Congress" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", display: "block" }} />
+                <img src="/images/tung-cao/tc-imc-group.webp" alt="Tung Cao at International Manufacturing Congress" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 60%", display: "block" }} />
               </div>
               <div style={{ padding: "32px 28px" }}>
                 <div style={{ fontSize: 28, fontWeight: 700, color: "var(--white)", marginBottom: 4 }}>Tung Cao</div>
