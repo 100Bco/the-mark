@@ -1093,37 +1093,34 @@ footer {
   40% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); }
 }
 
-/* Journey — sequential energy transfer (8s total cycle) */
-/* Each circle glows for ~1s, dot travels ~1s between = 4 glows + 3 dots = ~8s */
+/* Journey — sequential energy transfer (12s cycle) */
+/* Timing: glow 1s → dot 1.5s → glow 1s → dot 1.5s → glow 1s → dot 1.5s → glow 1s → pause 2s */
 
-/* Circle glow: each fires at its slot in the 8s cycle */
-.journey-breathe {
-  animation: journeyGlow 8s ease infinite;
+.j-circle {
+  animation: jGlow 12s ease infinite;
 }
-.journey-circle-1 { animation-delay: 0s; }
-.journey-circle-2 { animation-delay: 2s; }
-.journey-circle-3 { animation-delay: 4s; }
-.journey-circle-4 { animation-delay: 6s; }
-@keyframes journeyGlow {
-  0%, 5% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); border-color: var(--gold); }
-  10% { transform: scale(1.1); box-shadow: 0 0 24px 6px rgba(91,155,213,0.35); border-color: var(--gold-lt); }
-  20% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); border-color: var(--gold); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); border-color: var(--gold); }
+.j-circle-1 { animation-delay: 0s; }
+.j-circle-2 { animation-delay: 2.5s; }
+.j-circle-3 { animation-delay: 5s; }
+.j-circle-4 { animation-delay: 7.5s; }
+@keyframes jGlow {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); }
+  3% { transform: scale(1.12); box-shadow: 0 0 28px 8px rgba(91,155,213,0.4); border-color: var(--gold-lt); }
+  8% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); border-color: var(--gold); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(91,155,213,0); }
 }
 
-/* Pulse dot: travels after its circle glows */
-.journey-pulse {
-  animation: pulseTravelDot 8s ease infinite;
-  opacity: 0;
+.j-dot {
+  animation: jTravel 12s ease infinite;
 }
-.journey-pulse-1 { animation-delay: 1s; }
-.journey-pulse-2 { animation-delay: 3s; }
-.journey-pulse-3 { animation-delay: 5s; }
-@keyframes pulseTravelDot {
+.j-dot-1 { animation-delay: 1s; }
+.j-dot-2 { animation-delay: 3.5s; }
+.j-dot-3 { animation-delay: 6s; }
+@keyframes jTravel {
   0% { left: 0; opacity: 0; }
-  2% { opacity: 1; }
+  1% { opacity: 1; }
   10% { left: calc(100% - 8px); opacity: 1; }
-  12% { opacity: 0; }
+  11% { opacity: 0; }
   100% { opacity: 0; left: 0; }
 }
 
