@@ -1,5 +1,4 @@
 import RevealObserver from "./RevealObserver";
-import NotifFeed from "./NotifFeed";
 
 export default function Home() {
   return (
@@ -154,7 +153,7 @@ export default function Home() {
           {/* Two cards */}
           <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             {/* Card 1: Authority — broadcast ripple */}
-            <div style={{ background: "#0A1628", border: "1px solid rgba(91,155,213,0.12)", borderRadius: 8, padding: "40px 36px", textAlign: "left" }}>
+            <div style={{ background: "rgba(91,155,213,0.06)", border: "1px solid rgba(91,155,213,0.15)", borderRadius: 8, padding: "40px 36px", textAlign: "left" }}>
               <h3 style={{ fontSize: 24, fontWeight: 600, color: "var(--white)", marginBottom: 32 }}>
                 Build your <span style={{ color: "var(--gold)" }}>authority and reach</span>
               </h3>
@@ -189,14 +188,37 @@ export default function Home() {
             </div>
 
             {/* Card 2: Revenue — swap notification feed */}
-            <div style={{ background: "#0A1628", border: "1px solid rgba(91,155,213,0.12)", borderRadius: 8, padding: "40px 36px", textAlign: "left" }}>
+            <div style={{ background: "rgba(91,155,213,0.06)", border: "1px solid rgba(91,155,213,0.15)", borderRadius: 8, padding: "40px 36px", textAlign: "left" }}>
               <h3 style={{ fontSize: 24, fontWeight: 600, color: "var(--white)", marginBottom: 32 }}>
                 Turn that reach into <span style={{ color: "var(--gold)" }}>revenue</span>
               </h3>
 
-              {/* Notification feed — items swap one at a time */}
-              <div style={{ margin: "0 auto 32px" }}>
-                <NotifFeed />
+              {/* Notification feed — staggered fade in loop */}
+              <div style={{ height: 260, width: "100%", display: "flex", flexDirection: "column", gap: 8, margin: "0 auto 32px" }}>
+                {[
+                  { text: "Speaker invitation received", delay: 0 },
+                  { text: "New partnership request", delay: 0.8 },
+                  { text: "Investor wants to connect", delay: 1.6 },
+                  { text: "Podcast guest request", delay: 2.4 },
+                ].map((notif) => (
+                  <div
+                    key={notif.text}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 12,
+                      background: "rgba(91,155,213,0.06)",
+                      border: "1px solid rgba(91,155,213,0.15)",
+                      borderRadius: 6,
+                      padding: "16px 20px",
+                      height: 54,
+                      animation: `notifPop 4s ${notif.delay}s ease infinite`,
+                    }}
+                  >
+                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "var(--gold)", flexShrink: 0 }} />
+                    <span style={{ fontSize: 14, fontWeight: 500, color: "var(--muted-lt)" }}>{notif.text}</span>
+                  </div>
+                ))}
               </div>
 
               <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8 }}>
