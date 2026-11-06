@@ -1086,34 +1086,26 @@ footer {
   50% { opacity: 1; transform: scaleY(1.1); }
 }
 
-/* Orbit rotation */
-.orbit-dots {
-  animation: orbitSpin 20s linear infinite;
+/* Broadcast ripple — waves expanding outward */
+.ripple-wave {
+  animation: rippleExpand 3s ease-out infinite;
 }
-@keyframes orbitSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-.orbit-dot {
-  animation: orbitDotPulse 3s ease-in-out infinite;
-}
-.orbit-dot:nth-child(2) { animation-delay: 0.5s; }
-.orbit-dot:nth-child(3) { animation-delay: 1s; }
-.orbit-dot:nth-child(4) { animation-delay: 1.5s; }
-.orbit-dot:nth-child(5) { animation-delay: 2s; }
-.orbit-dot:nth-child(6) { animation-delay: 2.5s; }
-@keyframes orbitDotPulse {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.3); }
+.ripple-2 { animation-delay: 0.8s; }
+.ripple-3 { animation-delay: 1.6s; }
+@keyframes rippleExpand {
+  0% { transform: scale(0.6); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: scale(1.1); opacity: 0; }
 }
 
-/* Funnel pulse */
-.funnel-circle-1 { animation: funnelPulse 2.5s ease-in-out infinite; }
-.funnel-circle-2 { animation: funnelPulse 2.5s ease-in-out 0.6s infinite; }
-.funnel-circle-3 { animation: funnelPulse 2.5s ease-in-out 1.2s infinite; }
-@keyframes funnelPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(91,155,213,0); }
-  50% { box-shadow: 0 0 0 12px rgba(91,155,213,0.15); }
+/* Notification slide-in */
+@keyframes slideInNotif {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeOutNotif {
+  from { opacity: 1; }
+  to   { opacity: 0.3; }
 }
 
 .reveal {

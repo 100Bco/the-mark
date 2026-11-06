@@ -152,88 +152,69 @@ export default function Home() {
 
           {/* Two cards */}
           <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-            {/* Card 1: Authority */}
-            <div style={{ background: "var(--navy-mid)", border: "1px solid var(--rule)", borderRadius: 8, padding: "40px 36px", textAlign: "left" }}>
+            {/* Card 1: Authority — broadcast ripple */}
+            <div style={{ background: "var(--navy-mid)", border: "1px solid var(--rule)", borderRadius: 8, padding: "40px 36px", textAlign: "left", display: "flex", flexDirection: "column" }}>
               <h3 style={{ fontSize: 24, fontWeight: 600, color: "var(--white)", marginBottom: 32 }}>
                 Build your <span style={{ color: "var(--gold)" }}>authority and reach</span>
               </h3>
 
-              {/* Orbit animation */}
-              <div style={{ position: "relative", width: 240, height: 240, margin: "0 auto 32px" }}>
-                {/* Outer orbit ring */}
-                <div className="orbit-ring" style={{ position: "absolute", inset: 0, border: "1px dashed rgba(91,155,213,0.25)", borderRadius: "50%" }} />
-                {/* Inner orbit ring */}
-                <div style={{ position: "absolute", inset: 40, border: "1px dashed rgba(91,155,213,0.15)", borderRadius: "50%" }} />
-                {/* Center: YOU */}
-                <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: 56, height: 56, borderRadius: "50%", background: "rgba(91,155,213,0.15)", border: "2px solid var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "var(--gold)" }}>YOU</div>
-                {/* Orbiting dots */}
-                <div className="orbit-dots" style={{ position: "absolute", inset: 0 }}>
-                  <div className="orbit-dot" style={{ position: "absolute", width: 10, height: 10, borderRadius: "50%", background: "var(--gold)", top: 0, left: "50%", transform: "translateX(-50%)" }} />
-                  <div className="orbit-dot" style={{ position: "absolute", width: 8, height: 8, borderRadius: "50%", background: "var(--gold)", opacity: 0.7, bottom: 20, right: 10 }} />
-                  <div className="orbit-dot" style={{ position: "absolute", width: 6, height: 6, borderRadius: "50%", background: "var(--gold)", opacity: 0.5, bottom: 20, left: 10 }} />
-                  <div className="orbit-dot" style={{ position: "absolute", width: 7, height: 7, borderRadius: "50%", background: "var(--muted)", top: 30, right: 15 }} />
-                  <div className="orbit-dot" style={{ position: "absolute", width: 5, height: 5, borderRadius: "50%", background: "var(--muted)", top: 30, left: 20 }} />
-                  <div className="orbit-dot" style={{ position: "absolute", width: 6, height: 6, borderRadius: "50%", background: "var(--muted)", opacity: 0.5, right: 0, top: "50%", transform: "translateY(-50%)" }} />
-                </div>
-                {/* Legend */}
-                <div style={{ position: "absolute", bottom: -28, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 24 }}>
-                  <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 10, fontWeight: 600, letterSpacing: 1, color: "var(--gold)", textTransform: "uppercase" }}>
-                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--gold)" }} /> Your buyers
-                  </span>
-                  <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 10, fontWeight: 600, letterSpacing: 1, color: "var(--muted)", textTransform: "uppercase" }}>
-                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--muted)" }} /> Everyone else
-                  </span>
+              {/* Broadcast ripple — LinkedIn post sending out waves */}
+              <div style={{ position: "relative", height: 200, margin: "0 auto 32px", width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                {/* Ripple waves */}
+                <div className="ripple-wave ripple-1" style={{ position: "absolute", width: 160, height: 160, borderRadius: "50%", border: "1px solid rgba(91,155,213,0.15)" }} />
+                <div className="ripple-wave ripple-2" style={{ position: "absolute", width: 240, height: 240, borderRadius: "50%", border: "1px solid rgba(91,155,213,0.08)" }} />
+                <div className="ripple-wave ripple-3" style={{ position: "absolute", width: 320, height: 320, borderRadius: "50%", border: "1px solid rgba(91,155,213,0.04)" }} />
+                {/* Center: post card */}
+                <div style={{ position: "relative", zIndex: 1, background: "rgba(91,155,213,0.1)", border: "1px solid rgba(91,155,213,0.3)", borderRadius: 6, padding: "14px 18px", width: 100, textAlign: "center" }}>
+                  <div style={{ width: 24, height: 3, background: "var(--gold)", borderRadius: 2, marginBottom: 6 }} />
+                  <div style={{ width: 48, height: 2, background: "rgba(91,155,213,0.3)", borderRadius: 2, marginBottom: 4 }} />
+                  <div style={{ width: 36, height: 2, background: "rgba(91,155,213,0.2)", borderRadius: 2 }} />
+                  <div style={{ fontSize: 8, fontWeight: 700, color: "var(--gold)", letterSpacing: 1.5, marginTop: 8, textTransform: "uppercase" }}>Your post</div>
                 </div>
               </div>
 
-              <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8, marginTop: 16 }}>
+              <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8, marginTop: "auto" }}>
                 We capture your voice, create the content, and manage your entire LinkedIn so the right people find you before you ever walk into the room.
               </p>
             </div>
 
-            {/* Card 2: Revenue */}
-            <div style={{ background: "var(--navy-mid)", border: "1px solid var(--rule)", borderRadius: 8, padding: "40px 36px", textAlign: "left" }}>
+            {/* Card 2: Revenue — incoming notifications */}
+            <div style={{ background: "var(--navy-mid)", border: "1px solid var(--rule)", borderRadius: 8, padding: "40px 36px", textAlign: "left", display: "flex", flexDirection: "column" }}>
               <h3 style={{ fontSize: 24, fontWeight: 600, color: "var(--white)", marginBottom: 32 }}>
                 Turn that reach into <span style={{ color: "var(--gold)" }}>revenue</span>
               </h3>
 
-              {/* Funnel animation */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 0, margin: "0 auto 32px", maxWidth: 300 }}>
+              {/* Incoming notification cards */}
+              <div style={{ position: "relative", height: 200, margin: "0 auto 32px", width: "100%", overflow: "hidden" }}>
                 {[
-                  { label: "REACH", active: true },
-                  { label: "ENGAGE", active: true },
-                  { label: "CONVERT", active: false },
-                ].map((step, i) => (
-                  <div key={step.label} style={{ display: "flex", alignItems: "center" }}>
-                    <div style={{ textAlign: "center" }}>
-                      <div
-                        className={`funnel-circle funnel-circle-${i + 1}`}
-                        style={{
-                          width: 56,
-                          height: 56,
-                          borderRadius: "50%",
-                          border: "2px solid var(--gold)",
-                          background: step.active ? "rgba(91,155,213,0.12)" : "rgba(91,155,213,0.04)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          margin: "0 auto 10px",
-                        }}
-                      >
-                        <div style={{ width: 10, height: 10, borderRadius: "50%", background: step.active ? "var(--gold)" : "var(--muted)" }} />
-                      </div>
-                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, color: step.active ? "var(--gold)" : "var(--muted)", textTransform: "uppercase" }}>
-                        {step.label}
-                      </div>
-                    </div>
-                    {i < 2 && (
-                      <div style={{ width: 32, height: 1, borderTop: "2px dashed rgba(91,155,213,0.3)", marginBottom: 24 }} />
-                    )}
+                  { text: "Speaker invitation received", delay: 0 },
+                  { text: "New partnership request", delay: 1.2 },
+                  { text: "Investor wants to connect", delay: 2.4 },
+                ].map((notif, i) => (
+                  <div
+                    key={notif.text}
+                    className="notif-card"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 12,
+                      background: "rgba(91,155,213,0.08)",
+                      border: "1px solid rgba(91,155,213,0.15)",
+                      borderRadius: 6,
+                      padding: "14px 18px",
+                      marginBottom: 10,
+                      opacity: 0,
+                      transform: "translateX(40px)",
+                      animation: `slideInNotif 0.6s ${notif.delay}s forwards, fadeOutNotif 0.4s ${notif.delay + 3}s forwards`,
+                    }}
+                  >
+                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--gold)", flexShrink: 0 }} />
+                    <span style={{ fontSize: 13, fontWeight: 500, color: "var(--muted-lt)" }}>{notif.text}</span>
                   </div>
                 ))}
               </div>
 
-              <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8 }}>
+              <p style={{ fontSize: 16, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8, marginTop: "auto" }}>
                 Speaker invitations. Partnership proposals. Inbound from decision-makers who found you through your content. We build the system that delivers results consistently.
               </p>
             </div>
