@@ -1460,12 +1460,14 @@ footer {
 .cs-case-link:hover { opacity: 0.7; }
 
 @media (max-width: 900px) {
-  .cs-detail-hero, .cs-detail-narrative, .cs-detail-results,
-  .cs-detail-milestones, .cs-detail-images, .cs-detail-cta { padding: 80px 32px; }
-  .cs-detail-stats-grid { grid-template-columns: 1fr 1fr; }
-  .cs-detail-big-stats { grid-template-columns: 1fr; }
-  .cs-detail-milestones-inner { grid-template-columns: 1fr; }
-  .cs-detail-images-grid, .cs-detail-images-grid--3col { grid-template-columns: 1fr; }
+  /* Case study detail pages */
+  .cs-hero-img { height: 280px !important; border-radius: 8px !important; }
+  .cs-hero-card { position: relative !important; bottom: auto !important; left: auto !important; right: auto !important; margin-top: -20px; flex-direction: column !important; text-align: center; gap: 12px !important; padding: 20px 24px !important; }
+  .cs-results-grid { grid-template-columns: 1fr 1fr !important; }
+  .cs-bignums { grid-template-columns: 1fr !important; }
+  .cs-milestones-grid { grid-template-columns: 1fr !important; }
+  .cs-proof-grid { grid-template-columns: 1fr !important; }
+  .cs-feed-grid { grid-template-columns: 1fr !important; }
 }
 
 /* ── RESPONSIVE ── */
