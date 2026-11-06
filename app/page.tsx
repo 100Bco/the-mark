@@ -246,7 +246,7 @@ export default function Home() {
       <section className="casestudy" id="results" style={{ background: "#0A1628" }}>
         <div className="casestudy-inner">
           <div className="section-label reveal">The Results</div>
-          <h2 className="what-headline reveal" style={{ marginBottom: 64 }}>
+          <h2 className="what-headline reveal" style={{ marginBottom: 64, whiteSpace: "nowrap" }}>
             Real founders. <em>Real outcomes.</em>
           </h2>
 
