@@ -20,7 +20,7 @@ export default function SiteFooter() {
             <div className="footer-label">Contact</div>
             <a href="mailto:start@100bold.co" className="footer-link">start@100bold.co</a>
             <a
-              href="https://linkedin.com/in/minhbmac"
+              href="https://www.linkedin.com/in/minhlaunch/"
               target="_blank"
               rel="noopener noreferrer"
               className="footer-social"
