@@ -34,14 +34,14 @@ function Circle({ icon, lit, size, iconSize }: { icon: string; lit: boolean; siz
         minWidth: size,
         borderRadius: "50%",
         border: `2px solid ${lit ? "var(--gold-lt)" : "var(--gold)"}`,
-        background: lit ? "rgba(201,163,106,0.18)" : "var(--navy)",
+        background: lit ? "rgba(209,172,114,0.18)" : "var(--navy)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         position: "relative",
         zIndex: 1,
         transform: lit ? "scale(1.12)" : "scale(1)",
-        boxShadow: lit ? "0 0 32px 10px rgba(201,163,106,0.35)" : "0 0 0 0 rgba(201,163,106,0)",
+        boxShadow: lit ? "0 0 32px 10px rgba(209,172,114,0.35)" : "0 0 0 0 rgba(209,172,114,0)",
         transition: "transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease, border-color 0.4s ease",
       }}
     >
@@ -67,7 +67,7 @@ function TravelDot({ active, vertical }: { active: boolean; vertical: boolean })
         height: 8,
         borderRadius: "50%",
         background: "var(--gold)",
-        boxShadow: "0 0 16px rgba(201,163,106,0.8)",
+        boxShadow: "0 0 16px rgba(209,172,114,0.8)",
         opacity: active ? 1 : 0,
         ...(vertical
           ? { left: "50%", transform: "translateX(-50%)", top: active ? "calc(100% - 8px)" : "0px" }
@@ -136,7 +136,7 @@ export default function JourneyTimeline() {
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 64 }}>
               <Circle icon={step.icon} lit={glowIdx === i} size={64} iconSize={28} />
               {i < steps.length - 1 && (
-                <div style={{ position: "relative", width: 2, height: 56, background: "rgba(201,163,106,0.25)", margin: "8px 0" }}>
+                <div style={{ position: "relative", width: 2, height: 56, background: "rgba(209,172,114,0.25)", margin: "8px 0" }}>
                   <TravelDot active={dotIdx === i} vertical />
                 </div>
               )}
@@ -174,7 +174,7 @@ export default function JourneyTimeline() {
           </div>
           {i < arr.length - 1 && (
             <div style={{ display: "flex", alignItems: "center", padding: "0 4px", marginBottom: 56, position: "relative", width: 66 }}>
-              <div style={{ width: 56, height: 2, background: "rgba(201,163,106,0.2)" }} />
+              <div style={{ width: 56, height: 2, background: "rgba(209,172,114,0.2)" }} />
               <div style={{ width: 0, height: 0, borderTop: "6px solid transparent", borderBottom: "6px solid transparent", borderLeft: "10px solid var(--gold)", marginLeft: -1 }} />
               <TravelDot active={dotIdx === i} vertical={false} />
             </div>

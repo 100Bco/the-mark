@@ -218,7 +218,7 @@ export default function WhatWeDoCards() {
           <svg viewBox="0 0 400 260" className="net-svg" aria-hidden>
             <defs>
               <radialGradient id="netCore" cx="50%" cy="40%" r="60%">
-                <stop offset="0%" stopColor="#E0C08E" />
+                <stop offset="0%" stopColor="#E6C994" />
                 <stop offset="100%" stopColor="#A88449" />
               </radialGradient>
             </defs>
@@ -262,8 +262,8 @@ export default function WhatWeDoCards() {
             {/* founder at the centre */}
             <circle cx={CX} cy={CY} r={30} className="net-core-halo" />
             <circle cx={CX} cy={CY} r={22} fill="url(#netCore)" />
-            <circle cx={CX} cy={CY - 5} r={7} fill="#111B2E" opacity={0.85} />
-            <path d={`M${CX - 12} ${CY + 14} q12 -14 24 0`} fill="#111B2E" opacity={0.85} />
+            <circle cx={CX} cy={CY - 5} r={7} fill="#0E1726" opacity={0.85} />
+            <path d={`M${CX - 12} ${CY + 14} q12 -14 24 0`} fill="#0E1726" opacity={0.85} />
           </svg>
 
           <div className="net-foot">
