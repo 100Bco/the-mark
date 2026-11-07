@@ -58,7 +58,7 @@ export default function AboutPage() {
                   <li key={c}><span className="ab-check-icon" aria-hidden>&#10003;</span>{c}</li>
                 ))}
               </ul>
-              <a href="https://linkedin.com/in/minhbmac" className="founder-btn" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/minhlaunch/" className="founder-btn" target="_blank" rel="noopener noreferrer">
                 Connect on LinkedIn <span aria-hidden>&rarr;</span>
               </a>
             </div>
