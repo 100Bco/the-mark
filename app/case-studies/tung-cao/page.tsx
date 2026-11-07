@@ -41,6 +41,7 @@ const data: CaseStudyData = {
   proofImages: [
     { src: "/images/tung-cao/tc-proof-analytics.webp", alt: "LinkedIn analytics: 1,000,521 impressions, 89% out-of-network, 296,123 members reached", fit: "contain" },
     { src: "/images/tung-cao/tc-proof-2.webp", alt: "Tung Cao: 1M+ LinkedIn impressions in 12 months" },
+    { src: "/images/tung-cao/tc-proof-inbox.webp", alt: "Real inbound LinkedIn messages to Tung Cao, sender names blurred", href: "/images/tung-cao/tc-proof-inbox-all.webp", cta: "View all messages \u2197" },
   ],
   feedImages: [
     { src: "/images/tung-cao/tc-feed-1.webp", alt: "LinkedIn post: IKEA has sourced from Vietnam for 33 years", href: "https://lnkd.in/p/gmaU2XbA" },

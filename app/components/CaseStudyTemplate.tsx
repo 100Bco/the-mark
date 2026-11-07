@@ -5,7 +5,7 @@ import CtaSection from "./CtaSection";
 import MobileApplyBar from "./MobileApplyBar";
 import RevealObserver from "../RevealObserver";
 
-export type GalleryImage = { src: string; alt: string; href?: string; fit?: "cover" | "contain" };
+export type GalleryImage = { src: string; alt: string; href?: string; fit?: "cover" | "contain"; cta?: string };
 
 export type CaseStudyData = {
   firstName: string;
@@ -47,9 +47,9 @@ function ImageRow({ images = [], kind }: { images?: GalleryImage[]; kind: "proof
           );
           const cls = `csx-frame has-img${img.fit === "contain" ? " is-contain" : ""}${img.href ? " is-link" : ""}`;
           return img.href ? (
-            <a key={i} href={img.href} target="_blank" rel="noopener noreferrer" className={cls} aria-label={`${img.alt} (opens LinkedIn)`}>
+            <a key={i} href={img.href} target="_blank" rel="noopener noreferrer" className={cls} aria-label={`${img.alt} (opens in a new tab)`}>
               {inner}
-              <span className="csx-frame-cta" aria-hidden>View on LinkedIn &#8599;</span>
+              <span className="csx-frame-cta" aria-hidden>{img.cta ?? "View on LinkedIn \u2197"}</span>
             </a>
           ) : (
             <div key={i} className={cls}>{inner}</div>

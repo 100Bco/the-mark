@@ -41,6 +41,7 @@ const data: CaseStudyData = {
   proofImages: [
     { src: "/images/loc-dang/ld-proof-analytics.webp", alt: "LinkedIn analytics: 49,055 impressions, 13,238 members reached", fit: "contain" },
     { src: "/images/loc-dang/ld-proof-2.webp", alt: "Loc Dang: +4,632% follower growth in 4 months" },
+    { src: "/images/loc-dang/ld-proof-inbox.webp", alt: "Real inbound LinkedIn messages to Loc Dang, sender names blurred", href: "/images/loc-dang/ld-proof-inbox-all.webp", cta: "View all messages \u2197" },
   ],
   feedImages: [
     { src: "/images/loc-dang/ld-feed-1.webp", alt: "LinkedIn post: Hit by a drunk driver? Call Dang Law Group", href: "https://lnkd.in/p/g_M7-kNS" },
