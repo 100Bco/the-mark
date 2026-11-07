@@ -78,8 +78,8 @@ export default function JourneyTimeline() {
       id = setInterval(() => {
         i = (i + 1) % 5; // 4 steps + 1 beat of rest
         setActive(i < 4 ? i : -1);
-      }, 1100);
-    }, 2400);
+      }, 1800);
+    }, 5000);
     return () => {
       clearTimeout(start);
       clearInterval(id);
@@ -91,7 +91,7 @@ export default function JourneyTimeline() {
     return (
       <div ref={ref} className={`stair-m${built ? " is-built" : ""}`}>
         {steps.map((s, i) => (
-          <div key={s.week} className={`stair-m-row${active === i ? " is-active" : ""}`} style={{ transitionDelay: `${i * 180}ms` }}>
+          <div key={s.week} className={`stair-m-row${active === i ? " is-active" : ""}`} style={{ transitionDelay: `${i * 450}ms` }}>
             <div className="stair-m-head">
               <span className="stair-icon stair-icon--m"><Icon d={s.icon} size={24} /></span>
               <span className="stair-m-text">
@@ -100,7 +100,7 @@ export default function JourneyTimeline() {
               </span>
             </div>
             <div className="stair-m-track">
-              <div className="stair-m-bar" style={{ width: built ? `${BAR_W[i]}%` : "0%", transitionDelay: `${200 + i * 220}ms` }} />
+              <div className="stair-m-bar" style={{ width: built ? `${BAR_W[i]}%` : "0%", transitionDelay: `${200 + i * 450}ms` }} />
             </div>
           </div>
         ))}
@@ -114,12 +114,12 @@ export default function JourneyTimeline() {
       <div className="stair-cols">
         {steps.map((s, i) => (
           <div key={s.week} className={`stair-col${active === i ? " is-active" : ""}`}>
-            <div className="stair-content" style={{ bottom: BAR_H[i] + 22, transitionDelay: `${300 + i * 220}ms` }}>
+            <div className="stair-content" style={{ bottom: BAR_H[i] + 22, transitionDelay: `${300 + i * 500}ms` }}>
               <span className="stair-icon"><Icon d={s.icon} size={30} /></span>
               <span className="stair-label">{s.label}</span>
               <span className="stair-week">{s.week}</span>
             </div>
-            <div className="stair-bar" style={{ height: BAR_H[i], transitionDelay: `${i * 220}ms` }} />
+            <div className="stair-bar" style={{ height: BAR_H[i], transitionDelay: `${i * 500}ms` }} />
           </div>
         ))}
       </div>
@@ -132,7 +132,7 @@ export default function JourneyTimeline() {
         <span
           key={i}
           className={`stair-dot${active === i ? " is-active" : ""}`}
-          style={{ left: `${x / 10}%`, top: `calc(100% - ${AREA_H}px + ${y}px)`, transitionDelay: `${1000 + i * 250}ms` }}
+          style={{ left: `${x / 10}%`, top: `calc(100% - ${AREA_H}px + ${y}px)`, transition: `opacity 0.6s ease ${1600 + Math.round((i / 3) * 2800)}ms, transform 0.6s ease ${1600 + Math.round((i / 3) * 2800)}ms, background 0.8s ease, box-shadow 0.8s ease` }}
         />
       ))}
       <span className="stair-arrow" style={{ top: `calc(100% - ${AREA_H}px + ${PTS[3][1] - 22}px)` }}>
