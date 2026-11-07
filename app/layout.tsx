@@ -17,7 +17,7 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "The Mark — Done-for-you LinkedIn Growth for Founders & CEOs",
+  title: "The Mark | Done-for-you LinkedIn Growth for Founders & CEOs",
   description:
     "Fully managed LinkedIn service that builds your authority and turns attention into deals, partnerships, and speaking invitations. By 100Bold.",
 };
