@@ -2384,3 +2384,74 @@ a.footer-link:hover { color: var(--white); }
 .csx-gallery--feed .csx-frame.has-img img { height: auto; }
 /* Proof row matches the 928x1152 designed cards (no cropping) */
 .csx-gallery--proof .csx-frame { aspect-ratio: 928 / 1152; }
+
+/* ══════════════════════════════════════════════
+   ABOUT PAGE v2 (statement hero, founder split, FAQ cards)
+   ══════════════════════════════════════════════ */
+.ab { background: #091020; }
+.ab-wrap { max-width: 1100px; margin: 0 auto; }
+.ab-hero {
+  padding: 180px 64px 110px;
+  background: radial-gradient(ellipse 60% 70% at 85% 10%, rgba(209,172,114,0.10), rgba(209,172,114,0) 70%), #0E1726;
+}
+.ab-title {
+  font-family: var(--font-display), 'Sora', sans-serif;
+  font-size: clamp(44px, 6vw, 80px); font-weight: 700; line-height: 1.05; letter-spacing: -1.5px;
+  color: var(--white); max-width: 1000px; margin-bottom: 32px;
+}
+.ab-title .accent { display: block; }
+.ab-lead { font-size: 21px; color: var(--muted-lt); line-height: 1.7; max-width: 760px; }
+
+.ab-story { padding: 120px 64px; }
+.ab-split { display: grid; grid-template-columns: 1fr 480px; gap: 80px; align-items: center; }
+.ab-text .csx-label { margin-bottom: 16px; }
+.ab-h2 { font-family: var(--font-display), 'Sora', sans-serif; font-size: clamp(36px, 4vw, 50px); font-weight: 700; color: var(--white); line-height: 1.12; margin-bottom: 26px; }
+.ab-body { font-size: 19px; color: var(--muted-lt); line-height: 1.8; margin-bottom: 28px; }
+.ab-body strong { color: var(--white); font-weight: 600; }
+.ab-checks { list-style: none; padding: 0; margin: 0 0 36px; display: flex; flex-direction: column; gap: 14px; }
+.ab-checks li { display: flex; align-items: flex-start; gap: 14px; font-size: 18px; font-weight: 500; color: var(--white); line-height: 1.5; }
+.ab-check-icon {
+  width: 26px; height: 26px; min-width: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  border: 1.5px solid var(--gold); color: var(--gold); font-size: 13px; font-weight: 700; margin-top: 1px;
+}
+.ab-photo { position: relative; border-radius: 22px; overflow: hidden; border: 1px solid rgba(209,172,114,0.22); box-shadow: 0 40px 90px -30px rgba(0,0,0,0.85), 0 0 50px -16px rgba(209,172,114,0.3); }
+.ab-photo img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+.ab-photo-tag {
+  position: absolute; left: 18px; bottom: 18px; display: flex; flex-direction: column; gap: 2px;
+  padding: 12px 18px; border-radius: 12px; background: rgba(9,16,32,0.85); backdrop-filter: blur(10px); border: 1px solid rgba(209,172,114,0.3);
+}
+.ab-photo-name { font-size: 17px; font-weight: 700; color: var(--white); }
+.ab-photo-role { font-size: 14px; color: var(--gold); }
+
+.ab-faq { padding: 110px 64px 120px; background: #0E1726; }
+.ab-underline { display: block; width: 64px; height: 3px; border-radius: 2px; background: var(--gold); margin: 22px auto 0; }
+.ab-faq-list { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+.ab-faq-card {
+  display: flex; gap: 22px; align-items: flex-start; padding: 30px 32px; border-radius: 16px;
+  background: linear-gradient(160deg, #142036 0%, #0F192C 100%); border: 1px solid rgba(209,172,114,0.14);
+  box-shadow: 0 24px 50px -28px rgba(0,0,0,0.7);
+}
+.ab-faq-num {
+  width: 40px; height: 40px; min-width: 40px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(209,172,114,0.12); color: var(--gold); font-family: var(--font-display), 'Sora', sans-serif; font-size: 18px; font-weight: 700;
+}
+.ab-faq-q { font-size: 21px; font-weight: 600; color: var(--white); line-height: 1.4; margin-bottom: 10px; }
+.ab-faq-a { font-size: 18px; color: var(--muted-lt); line-height: 1.75; }
+
+@media (max-width: 900px) {
+  .ab-hero { padding: 120px 20px 72px; }
+  .ab-title { font-size: 38px; letter-spacing: -0.5px; margin-bottom: 22px; }
+  .ab-lead { font-size: 18px; }
+  .ab-story { padding: 72px 20px; }
+  .ab-split { grid-template-columns: 1fr; gap: 40px; }
+  .ab-photo { order: -1; max-width: 420px; width: 100%; margin: 0 auto; }
+  .ab-h2 { font-size: 32px; }
+  .ab-body { font-size: 17px; }
+  .ab-checks li { font-size: 17px; }
+  .ab-text .founder-btn { display: flex; justify-content: center; width: 100%; padding: 18px 24px; }
+  .ab-faq { padding: 72px 20px 80px; }
+  .ab-faq-card { padding: 22px 18px; gap: 14px; }
+  .ab-faq-num { width: 34px; height: 34px; min-width: 34px; font-size: 16px; }
+  .ab-faq-q { font-size: 19px; }
+  .ab-faq-a { font-size: 17px; }
+}
