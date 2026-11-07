@@ -38,6 +38,14 @@ const data: CaseStudyData = {
     { kicker: "Podcast", title: "Vietnam Supply Chain Network", desc: "VSCN (9K+ members) invited Tung for a podcast on sourcing and export, sourced from his LinkedIn posts." },
     { title: "Global Inbound Pipeline", desc: "Partnership proposals from Indonesia, sourcing inquiries from Brazil, collaboration from NUS Singapore. All inbound through LinkedIn." },
   ],
+  proofImages: [
+    { src: "/images/tung-cao/tc-linkedin-profile.webp", alt: "Tung Cao LinkedIn profile, 7,072 followers", href: "https://www.linkedin.com/in/tungcao-thomas/", fit: "contain" },
+  ],
+  feedImages: [
+    { src: "/images/tung-cao/tc-feed-1.webp", alt: "LinkedIn post: IKEA has sourced from Vietnam for 33 years", href: "https://lnkd.in/p/gmaU2XbA" },
+    { src: "/images/tung-cao/tc-feed-2.webp", alt: "LinkedIn post: The world's #2 shipping giant eyes $3.5 billion in Vietnam", href: "https://lnkd.in/p/gM3MNyrY" },
+    { src: "/images/tung-cao/tc-feed-3.webp", alt: "LinkedIn post: Vietnam's most powerful women in Asia", href: "https://lnkd.in/p/gw-JGzTf" },
+  ],
   linkedin: { url: "https://www.linkedin.com/in/tungcao-thomas/", handle: "tungcao-thomas" },
 };
 

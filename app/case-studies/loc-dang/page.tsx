@@ -38,6 +38,9 @@ const data: CaseStudyData = {
     { kicker: "VIP Event", title: "Moody Center", desc: "Invited to exclusive Moody Center events for strategic partnerships within the legal industry." },
     { title: "Peer & Partner Inbound", desc: "Attorneys, firm owners, and sales directors reaching out for lunch meetings, calls, and collaboration. All inbound." },
   ],
+  proofImages: [
+    { src: "/images/loc-dang/ld-linkedin-profile.webp", alt: "Loc Dang LinkedIn profile", href: "https://www.linkedin.com/in/loc-dang-dlg/", fit: "contain" },
+  ],
   linkedin: { url: "https://www.linkedin.com/in/loc-dang-dlg/", handle: "loc-dang-dlg" },
 };
 

@@ -2359,3 +2359,23 @@ a.footer-link:hover { color: var(--white); }
   .csx-frame { flex: 0 0 78%; scroll-snap-align: center; }
   .csx-social { padding: 18px 20px; }
 }
+
+/* Gallery images: equal frames, contain mode, clickable */
+.csx-gallery .csx-frame { aspect-ratio: 500 / 680; }
+.csx-frame { position: relative; display: block; }
+.csx-frame.is-contain { background: #ffffff; display: flex; align-items: center; }
+.csx-frame.is-contain img { object-fit: contain; height: auto; }
+.csx-frame.is-link { text-decoration: none; transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s ease, border-color 0.4s ease; }
+.csx-frame-cta {
+  position: absolute; left: 50%; bottom: 16px; transform: translate(-50%, 8px); opacity: 0;
+  padding: 10px 16px; border-radius: 999px; white-space: nowrap;
+  background: rgba(9,16,32,0.9); color: var(--gold-lt); border: 1px solid rgba(209,172,114,0.45);
+  font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+@media (hover: hover) {
+  .csx-frame.is-link:hover { transform: translateY(-6px); border-color: rgba(209,172,114,0.5); box-shadow: 0 40px 70px -28px rgba(0,0,0,0.85), 0 0 40px -12px rgba(209,172,114,0.35); }
+  .csx-frame.is-link:hover .csx-frame-cta { opacity: 1; transform: translate(-50%, 0); }
+}
+.csx-frame.is-contain { background: radial-gradient(ellipse at 50% 45%, #1B2842 0%, #0F192C 70%); padding: 18px; justify-content: center; }
+.csx-frame.is-contain img { width: 100%; border-radius: 10px; box-shadow: 0 24px 50px -16px rgba(0,0,0,0.8), 0 0 0 1px rgba(209,172,114,0.25); }

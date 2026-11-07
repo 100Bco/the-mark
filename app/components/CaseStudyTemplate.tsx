@@ -5,6 +5,8 @@ import CtaSection from "./CtaSection";
 import MobileApplyBar from "./MobileApplyBar";
 import RevealObserver from "../RevealObserver";
 
+export type GalleryImage = { src: string; alt: string; href?: string; fit?: "cover" | "contain" };
+
 export type CaseStudyData = {
   firstName: string;
   name: string;
@@ -17,9 +19,9 @@ export type CaseStudyData = {
   bigNumbers: { value: string; label: string }[];
   milestones: { kicker?: string; title: string; desc: string }[];
   /** Portrait images for "The proof" (up to 3). Empty slots show a frame. */
-  proofImages?: { src: string; alt: string }[];
+  proofImages?: GalleryImage[];
   /** Portrait images of LinkedIn posts for "From the feed" (up to 3). */
-  feedImages?: { src: string; alt: string }[];
+  feedImages?: GalleryImage[];
   linkedin: { url: string; handle: string };
 };
 
@@ -33,17 +35,27 @@ function Heading({ label, children }: { label: string; children: ReactNode }) {
 }
 
 /* 3 portrait slots: real image when provided, an empty frame otherwise */
-function ImageRow({ images = [], kind }: { images?: { src: string; alt: string }[]; kind: "proof" | "feed" }) {
+function ImageRow({ images = [], kind }: { images?: GalleryImage[]; kind: "proof" | "feed" }) {
   return (
     <div className={`csx-gallery csx-gallery--${kind}`}>
       {[0, 1, 2].map((i) => {
         const img = images[i];
-        return img ? (
-          <div key={i} className="csx-frame has-img">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
+        if (img) {
+          const inner = (
+            // eslint-disable-next-line @next/next/no-img-element
             <img src={img.src} alt={img.alt} />
-          </div>
-        ) : (
+          );
+          const cls = `csx-frame has-img${img.fit === "contain" ? " is-contain" : ""}${img.href ? " is-link" : ""}`;
+          return img.href ? (
+            <a key={i} href={img.href} target="_blank" rel="noopener noreferrer" className={cls} aria-label={`${img.alt} (opens LinkedIn)`}>
+              {inner}
+              <span className="csx-frame-cta" aria-hidden>View on LinkedIn &#8599;</span>
+            </a>
+          ) : (
+            <div key={i} className={cls}>{inner}</div>
+          );
+        }
+        return (
           <div key={i} className="csx-frame is-empty" aria-hidden>
             <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" /><circle cx="9" cy="10" r="2" /><path d="M21 17l-5-5-9 8" /></svg>
           </div>
