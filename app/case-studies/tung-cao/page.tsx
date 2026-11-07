@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const data: CaseStudyData = {
   firstName: "Tung",
   name: "Tung Cao",
-  hero: { src: "/images/tung-cao/tc-imc-group.webp", alt: "Tung Cao at International Manufacturing Congress 2026", position: "center 78%" },
+  hero: { src: "/images/tung-cao/tc-imc-group.webp", alt: "Tung Cao at International Manufacturing Congress 2026", position: "center 72%" },
   avatar: { src: "/images/tung-cao/Tung Cao Photo.png" },
   quote:
     "Within 12 months, investors and partners I had never met started reaching out. I was invited to speak at the International Manufacturing Congress in Hanoi. The content opened doors that moved my business forward.",
@@ -20,6 +20,7 @@ const data: CaseStudyData = {
     <><strong>3 to 4 posts per week.</strong> Strategic commentary on trade regulations, factory selection, quality control, and cross-border logistics. Full account management. An amplification network that triggered the algorithm from day one.</>,
     <>The content wasn&apos;t generic industry news. It was Tung&apos;s real experience, published consistently and distributed to the right audience.</>,
   ],
+  numbersTitle: "In 12 months",
   bigNumbers: [
     { value: "1M+", label: "Impressions in 12 months" },
     { value: "89%", label: "Reach outside existing network" },
@@ -37,24 +38,7 @@ const data: CaseStudyData = {
     { kicker: "Podcast", title: "Vietnam Supply Chain Network", desc: "VSCN (9K+ members) invited Tung for a podcast on sourcing and export, sourced from his LinkedIn posts." },
     { title: "Global Inbound Pipeline", desc: "Partnership proposals from Indonesia, sourcing inquiries from Brazil, collaboration from NUS Singapore. All inbound through LinkedIn." },
   ],
-  proof: {
-    role: "Co-Founder & Head of International Trade",
-    company: "100B Global",
-    followers: "7,000+",
-    tags: "Import & Export • Manufacturing",
-    period: "12 Months • Zero Paid Ads",
-    headline: "1M+",
-    headlineLabel: "LinkedIn Impressions",
-    line1: "296K Members Reached",
-    line2: "89% Out-of-Network",
-    inbound: [
-      { main: "Speaker invitation", sub: "IMC 2026" },
-      { main: "Podcast feature", sub: "VSCN" },
-      { main: "Partnership proposal", sub: "Indonesia" },
-      { main: "Sourcing inquiry", sub: "Brazil" },
-      { main: "University collab", sub: "NUS Singapore" },
-    ],
-  },
+  linkedin: { url: "https://www.linkedin.com/in/tungcao-thomas/", handle: "tungcao-thomas" },
 };
 
 export default function TungCaoPage() {

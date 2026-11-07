@@ -20,6 +20,7 @@ const data: CaseStudyData = {
     <><strong>3 to 4 posts per week</strong> covering accident case insights, legal rights education, community involvement, and the story of building Dang Law Group. Full account management handled.</>,
     <>In 4 months, Loc went from invisible online to a recognized voice in Austin&apos;s legal and business community.</>,
   ],
+  numbersTitle: "In 4 months",
   bigNumbers: [
     { value: "4,632%", label: "Follower growth" },
     { value: "0 → 3,596", label: "Followers in 4 months" },
@@ -37,24 +38,7 @@ const data: CaseStudyData = {
     { kicker: "VIP Event", title: "Moody Center", desc: "Invited to exclusive Moody Center events for strategic partnerships within the legal industry." },
     { title: "Peer & Partner Inbound", desc: "Attorneys, firm owners, and sales directors reaching out for lunch meetings, calls, and collaboration. All inbound." },
   ],
-  proof: {
-    role: "Founder",
-    company: "Dang Law Group",
-    followers: "3,596",
-    followersExtra: "+4,632% growth",
-    tags: "Legal • Personal Injury • Austin TX",
-    period: "4 Months • From Zero",
-    headline: "49K+",
-    headlineLabel: "LinkedIn Impressions",
-    line1: "3,596 Followers Grown",
-    line2: "12% Attorney Audience",
-    inbound: [
-      { main: "Podcast invitation", sub: "Austin Business Spotlight" },
-      { main: "VIP event invite", sub: "Moody Center" },
-      { main: "Peer attorney meetings" },
-      { main: "Sales director call requests" },
-    ],
-  },
+  linkedin: { url: "https://www.linkedin.com/in/loc-dang-dlg/", handle: "loc-dang-dlg" },
 };
 
 export default function LocDangPage() {
