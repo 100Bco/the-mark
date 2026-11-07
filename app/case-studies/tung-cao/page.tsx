@@ -40,6 +40,7 @@ const data: CaseStudyData = {
   ],
   proofImages: [
     { src: "/images/tung-cao/tc-linkedin-profile.webp", alt: "Tung Cao LinkedIn profile, 7,072 followers", href: "https://www.linkedin.com/in/tungcao-thomas/", fit: "contain" },
+    { src: "/images/tung-cao/tc-proof-2.webp", alt: "Tung Cao: 1M+ LinkedIn impressions in 12 months" },
   ],
   feedImages: [
     { src: "/images/tung-cao/tc-feed-1.webp", alt: "LinkedIn post: IKEA has sourced from Vietnam for 33 years", href: "https://lnkd.in/p/gmaU2XbA" },

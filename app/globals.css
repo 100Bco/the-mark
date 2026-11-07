@@ -2382,3 +2382,5 @@ a.footer-link:hover { color: var(--white); }
 /* Feed posts: frame follows the image's own ratio (no side cropping) */
 .csx-gallery--feed .csx-frame.has-img { aspect-ratio: auto; }
 .csx-gallery--feed .csx-frame.has-img img { height: auto; }
+/* Proof row matches the 928x1152 designed cards (no cropping) */
+.csx-gallery--proof .csx-frame { aspect-ratio: 928 / 1152; }

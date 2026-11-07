@@ -40,6 +40,7 @@ const data: CaseStudyData = {
   ],
   proofImages: [
     { src: "/images/loc-dang/ld-linkedin-profile.webp", alt: "Loc Dang LinkedIn profile", href: "https://www.linkedin.com/in/loc-dang-dlg/", fit: "contain" },
+    { src: "/images/loc-dang/ld-proof-2.webp", alt: "Loc Dang: +4,632% follower growth in 4 months" },
   ],
   feedImages: [
     { src: "/images/loc-dang/ld-feed-1.webp", alt: "LinkedIn post: Hit by a drunk driver? Call Dang Law Group", href: "https://lnkd.in/p/g_M7-kNS" },
