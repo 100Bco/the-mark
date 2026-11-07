@@ -59,7 +59,7 @@ export default function Home() {
               style={{
                 textAlign: "center",
                 padding: "0 32px",
-                borderRight: label !== "Out-of-Network" ? "1px solid rgba(91,155,213,0.2)" : "none",
+                borderRight: label !== "Out-of-Network" ? "1px solid rgba(201,163,106,0.2)" : "none",
                 paddingRight: label !== "Out-of-Network" ? 64 : 32,
               }}
             >
@@ -144,7 +144,7 @@ export default function Home() {
       </section>
 
       {/* WE DO TWO THINGS */}
-      <section className="what" style={{ paddingBottom: 80, background: "#0A1628" }}>
+      <section className="what" style={{ paddingBottom: 80, background: "#0B1322" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
           <div className="section-label reveal">What We Do</div>
           <h2 className="reveal" style={{ fontFamily: "var(--font-display), 'Sora', sans-serif", fontSize: "clamp(32px, 4vw, 46px)", fontWeight: 700, color: "var(--white)", lineHeight: 1.15, marginBottom: 16 }}>
@@ -171,7 +171,7 @@ export default function Home() {
       </section>
 
       {/* RESULTS */}
-      <section className="casestudy" id="results" style={{ background: "#0A1628" }}>
+      <section className="casestudy" id="results" style={{ background: "#0B1322" }}>
         <div className="casestudy-inner">
           <div className="section-label reveal">The Results</div>
           <h2 className="what-headline reveal" style={{ marginBottom: 64, maxWidth: "none" }}>
@@ -182,7 +182,7 @@ export default function Home() {
           <div className="reveal cards-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
 
             {/* Case 1: Tung Cao */}
-            <div style={{ border: "1px solid rgba(91,155,213,0.15)", borderRadius: 10, overflow: "hidden" }}>
+            <div style={{ border: "1px solid rgba(201,163,106,0.15)", borderRadius: 10, overflow: "hidden" }}>
               <div style={{ height: 280, overflow: "hidden" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/images/tung-cao/tc-imc-group.webp" alt="Tung Cao at International Manufacturing Congress" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 60%", display: "block" }} />
@@ -208,7 +208,7 @@ export default function Home() {
             </div>
 
             {/* Case 2: Loc Dang */}
-            <div style={{ border: "1px solid rgba(91,155,213,0.15)", borderRadius: 10, overflow: "hidden" }}>
+            <div style={{ border: "1px solid rgba(201,163,106,0.15)", borderRadius: 10, overflow: "hidden" }}>
               <div style={{ height: 280, overflow: "hidden" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/images/loc-dang/ld-office-portrait.webp" alt="Loc Dang at his office in Austin" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 25%", display: "block" }} />
@@ -256,7 +256,7 @@ export default function Home() {
                 key={item.num}
                 className="who-card"
                 style={{
-                  background: "rgba(91,155,213,0.04)",
+                  background: "rgba(201,163,106,0.04)",
                   borderRadius: 8,
                   padding: "36px 28px 36px 32px",
                   borderLeft: "3px solid var(--gold)",
@@ -275,7 +275,7 @@ export default function Home() {
       </section>
 
       {/* ABOUT — wide card */}
-      <section style={{ background: "#0A1628", padding: "100px 64px" }}>
+      <section style={{ background: "#0B1322", padding: "100px 64px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div className="section-label reveal" style={{ color: "var(--gold)", textAlign: "center", marginBottom: 32 }}>Behind The Mark</div>
           <div
@@ -285,8 +285,8 @@ export default function Home() {
               gridTemplateColumns: "280px 1fr",
               gap: 48,
               alignItems: "center",
-              background: "rgba(91,155,213,0.06)",
-              border: "1px solid rgba(91,155,213,0.15)",
+              background: "rgba(201,163,106,0.06)",
+              border: "1px solid rgba(201,163,106,0.15)",
               borderRadius: 10,
               padding: "56px 56px",
             }}
@@ -301,7 +301,7 @@ export default function Home() {
                 borderRadius: 8,
                 objectFit: "cover",
                 display: "block",
-                border: "2px solid rgba(91,155,213,0.15)",
+                border: "2px solid rgba(201,163,106,0.15)",
               }}
             />
             <div>

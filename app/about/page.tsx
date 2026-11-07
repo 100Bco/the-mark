@@ -44,7 +44,7 @@ export default function AboutPage() {
       </section>
 
       {/* FAQ */}
-      <section style={{ background: "#0A1628", padding: "100px 64px" }}>
+      <section style={{ background: "#0B1322", padding: "100px 64px" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <div className="section-label reveal">Questions</div>
           <h2 className="what-headline reveal" style={{ marginBottom: 48 }}>Frequently asked.</h2>
@@ -55,7 +55,7 @@ export default function AboutPage() {
             ["Who writes the content?", "Our team writes every post, but it sounds like you. The voice capture process ensures your thinking, your stories, and your expertise come through in every piece."],
             ["What industries do you work with?", "We work across multiple industries with proven results in legal, real estate, investment, import/export, and manufacturing. The strategy adapts to your market and your target audience."],
           ].map(([q, a]) => (
-            <div key={q} className="reveal" style={{ borderBottom: "1px solid rgba(91,155,213,0.1)", padding: "28px 0" }}>
+            <div key={q} className="reveal" style={{ borderBottom: "1px solid rgba(201,163,106,0.1)", padding: "28px 0" }}>
               <h3 style={{ fontSize: 20, fontWeight: 600, color: "var(--white)", marginBottom: 12, lineHeight: 1.45 }}>{q}</h3>
               <p style={{ fontSize: 18, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8 }}>{a}</p>
             </div>
