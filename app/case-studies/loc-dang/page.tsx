@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const data: CaseStudyData = {
   firstName: "Loc",
   name: "Loc Dang",
-  hero: { src: "/images/loc-dang/ld-office-portrait.webp", alt: "Loc Dang at his office in Austin", position: "center 25%" },
+  hero: { src: "/images/loc-dang/ld-billboard.webp", alt: "Dang Law Group billboard in Austin, Texas", position: "center 38%" },
   avatar: { src: "/images/loc-dang/Loc Dang.png", position: "center 20%" },
   quote:
     "I never used social media before. Within 4 months, attorneys and business owners were reaching out to connect, podcast hosts were inviting me on their shows, and my name was being recognized in the Austin legal community, all from LinkedIn.",
