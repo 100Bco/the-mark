@@ -132,6 +132,20 @@ export default function Home() {
                 marginLeft: -14,
               }}
             />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/lezlie-avatar.webp"
+              alt=""
+              style={{
+                width: 60,
+                height: 60,
+                borderRadius: "50%",
+                objectFit: "cover",
+                objectPosition: "center 30%",
+                border: "3px solid var(--navy)",
+                marginLeft: -14,
+              }}
+            />
           </div>
           <span
             style={{
