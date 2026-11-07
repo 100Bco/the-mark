@@ -39,7 +39,7 @@ const data: CaseStudyData = {
     { title: "Global Inbound Pipeline", desc: "Partnership proposals from Indonesia, sourcing inquiries from Brazil, collaboration from NUS Singapore. All inbound through LinkedIn." },
   ],
   proofImages: [
-    { src: "/images/tung-cao/tc-linkedin-profile.webp", alt: "Tung Cao LinkedIn profile, 7,072 followers", href: "https://www.linkedin.com/in/tungcao-thomas/", fit: "contain" },
+    { src: "/images/tung-cao/tc-proof-analytics.webp", alt: "LinkedIn analytics: 1,000,521 impressions, 89% out-of-network, 296,123 members reached", fit: "contain" },
     { src: "/images/tung-cao/tc-proof-2.webp", alt: "Tung Cao: 1M+ LinkedIn impressions in 12 months" },
   ],
   feedImages: [

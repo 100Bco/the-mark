@@ -39,7 +39,7 @@ const data: CaseStudyData = {
     { title: "Peer & Partner Inbound", desc: "Attorneys, firm owners, and sales directors reaching out for lunch meetings, calls, and collaboration. All inbound." },
   ],
   proofImages: [
-    { src: "/images/loc-dang/ld-linkedin-profile.webp", alt: "Loc Dang LinkedIn profile", href: "https://www.linkedin.com/in/loc-dang-dlg/", fit: "contain" },
+    { src: "/images/loc-dang/ld-proof-analytics.webp", alt: "LinkedIn analytics: 49,055 impressions, 13,238 members reached", fit: "contain" },
     { src: "/images/loc-dang/ld-proof-2.webp", alt: "Loc Dang: +4,632% follower growth in 4 months" },
   ],
   feedImages: [
