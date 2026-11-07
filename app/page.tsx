@@ -5,6 +5,8 @@ import SiteFooter from "./components/SiteFooter";
 import CtaSection from "./components/CtaSection";
 import MobileApplyBar from "./components/MobileApplyBar";
 import WhatWeDoCards from "./components/WhatWeDoCards";
+import CaseCard from "./components/CaseCard";
+import { CASES } from "./components/cases";
 
 export default function Home() {
   return (
@@ -178,61 +180,8 @@ export default function Home() {
             Real founders. <em>Real outcomes.</em>
           </h2>
 
-          {/* Case cards — side by side */}
-          <div className="reveal cards-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
-
-            {/* Case 1: Tung Cao */}
-            <div style={{ border: "1px solid rgba(209,172,114,0.15)", borderRadius: 10, overflow: "hidden" }}>
-              <div style={{ height: 280, overflow: "hidden" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/tung-cao/tc-imc-group.webp" alt="Tung Cao at International Manufacturing Congress" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 60%", display: "block" }} />
-              </div>
-              <div style={{ padding: "32px 28px" }}>
-                <div style={{ fontSize: 28, fontWeight: 700, color: "var(--white)", marginBottom: 4 }}>Tung Cao</div>
-                <div style={{ fontSize: 16, fontWeight: 500, color: "var(--gold)", marginBottom: 20 }}>Co-Founder, 100B Global</div>
-                <p style={{ fontSize: 17, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.65, marginBottom: 28 }}>
-                  From zero to 1M+ impressions in 12 months. 2 speaker invitations, daily inbound from decision-makers worldwide.
-                </p>
-                <div style={{ display: "flex", gap: 40, marginBottom: 28 }}>
-                  <div>
-                    <div style={{ fontSize: 40, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>1M+</div>
-                    <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted-lt)", textTransform: "uppercase", marginTop: 8 }}>Impressions</div>
-                  </div>
-                  <div>
-                    <div style={{ fontSize: 40, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>7K</div>
-                    <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted-lt)", textTransform: "uppercase", marginTop: 8 }}>Followers</div>
-                  </div>
-                </div>
-                <a href="/case-studies/tung-cao" className="cs-case-link">Read the case study &rarr;</a>
-              </div>
-            </div>
-
-            {/* Case 2: Loc Dang */}
-            <div style={{ border: "1px solid rgba(209,172,114,0.15)", borderRadius: 10, overflow: "hidden" }}>
-              <div style={{ height: 280, overflow: "hidden" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/loc-dang/ld-office-portrait.webp" alt="Loc Dang at his office in Austin" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 25%", display: "block" }} />
-              </div>
-              <div style={{ padding: "32px 28px" }}>
-                <div style={{ fontSize: 28, fontWeight: 700, color: "var(--white)", marginBottom: 4 }}>Loc Dang</div>
-                <div style={{ fontSize: 16, fontWeight: 500, color: "var(--gold)", marginBottom: 20 }}>Founder, Dang Law Group</div>
-                <p style={{ fontSize: 17, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.65, marginBottom: 28 }}>
-                  Never used social media. 49K+ impressions and 3,596 followers in 4 months, reaching attorneys, founders, and CEOs.
-                </p>
-                <div style={{ display: "flex", gap: 40, marginBottom: 28 }}>
-                  <div>
-                    <div style={{ fontSize: 40, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>49K+</div>
-                    <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted-lt)", textTransform: "uppercase", marginTop: 8 }}>Impressions</div>
-                  </div>
-                  <div>
-                    <div style={{ fontSize: 40, fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>3,596</div>
-                    <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: 1.5, color: "var(--muted-lt)", textTransform: "uppercase", marginTop: 8 }}>Followers</div>
-                  </div>
-                </div>
-                <a href="/case-studies/loc-dang" className="cs-case-link">Read the case study &rarr;</a>
-              </div>
-            </div>
-
+          <div className="reveal cards-2col case-grid">
+            {CASES.map((c) => <CaseCard key={c.href} d={c} />)}
           </div>
 
           {/* View all link */}
