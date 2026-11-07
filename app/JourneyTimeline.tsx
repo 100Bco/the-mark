@@ -9,9 +9,21 @@ const steps = [
   { label: "Convert\n& Scale", week: "Month 5+", icon: "M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.940 2.28l-2.28 5.941" },
 ];
 
-const DOT_TRAVEL = 1200;
-const DOT_LEAD = 900;
-const GLOW_HOLD = 800;
+/* Bar heights rise step by step: the section reads as a growth staircase */
+const BAR_H = [84, 144, 204, 264]; // desktop px
+const BAR_W = [46, 64, 82, 100]; // mobile % width
+const AREA_H = 280; // desktop bar area height
+
+/* Points on top of each bar (viewBox 1000 x AREA_H) */
+const PTS = BAR_H.map((h, i) => [125 + i * 250, AREA_H - h] as const);
+const LINE =
+  `M${PTS[0][0]} ${PTS[0][1]} ` +
+  PTS.slice(1).map(([x, y], i) => {
+    const [px, py] = PTS[i];
+    const cx = (px + x) / 2;
+    return `C${cx} ${py} ${cx} ${y} ${x} ${y}`;
+  }).join(" ") +
+  ` L985 ${PTS[3][1] - 22}`;
 
 function useIsMobile() {
   const [mobile, setMobile] = useState(false);
@@ -25,76 +37,28 @@ function useIsMobile() {
   return mobile;
 }
 
-function Circle({ icon, lit, size, iconSize }: { icon: string; lit: boolean; size: number; iconSize: number }) {
+function Icon({ d, size }: { d: string; size: number }) {
   return (
-    <div
-      style={{
-        width: size,
-        height: size,
-        minWidth: size,
-        borderRadius: "50%",
-        border: `2px solid ${lit ? "var(--gold-lt)" : "var(--gold)"}`,
-        background: lit ? "rgba(209,172,114,0.18)" : "var(--navy)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        position: "relative",
-        zIndex: 1,
-        transform: lit ? "scale(1.12)" : "scale(1)",
-        boxShadow: lit ? "0 0 32px 10px rgba(209,172,114,0.35)" : "0 0 0 0 rgba(209,172,114,0)",
-        transition: "transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease, border-color 0.4s ease",
-      }}
-    >
-      <svg
-        width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none"
-        stroke={lit ? "var(--gold-lt)" : "var(--gold)"}
-        strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-        style={{ transition: "stroke 0.4s ease" }}
-      >
-        <path d={icon} />
-      </svg>
-    </div>
-  );
-}
-
-function TravelDot({ active, vertical }: { active: boolean; vertical: boolean }) {
-  const pos = vertical ? "top" : "left";
-  return (
-    <div
-      style={{
-        position: "absolute",
-        width: 8,
-        height: 8,
-        borderRadius: "50%",
-        background: "var(--gold)",
-        boxShadow: "0 0 16px rgba(209,172,114,0.8)",
-        opacity: active ? 1 : 0,
-        ...(vertical
-          ? { left: "50%", transform: "translateX(-50%)", top: active ? "calc(100% - 8px)" : "0px" }
-          : { top: "50%", transform: "translateY(-50%)", left: active ? "calc(100% - 18px)" : "0px" }),
-        transition: active
-          ? `${pos} ${DOT_TRAVEL}ms ease-in-out, opacity 0.15s ease`
-          : `opacity 0.15s ease, ${pos} 0s 0.15s`,
-      }}
-    />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d={d} />
+    </svg>
   );
 }
 
 export default function JourneyTimeline() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  const [glowIdx, setGlowIdx] = useState(-1);
-  const [dotIdx, setDotIdx] = useState(-1);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const [built, setBuilt] = useState(false);
+  const [active, setActive] = useState(-1);
   const isMobile = useIsMobile();
 
+  // Build once when the section scrolls into view
   useEffect(() => {
-    const el = containerRef.current;
+    const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
+      ([e]) => {
+        if (e.isIntersecting) {
+          setBuilt(true);
           obs.disconnect();
         }
       },
@@ -104,51 +68,39 @@ export default function JourneyTimeline() {
     return () => obs.disconnect();
   }, []);
 
+  // After the staircase is built, a light walks up the steps and loops
   useEffect(() => {
-    if (!visible) return;
-    let current = 0;
-
-    function runCycle() {
-      setGlowIdx(current);
-      setDotIdx(-1);
-      timerRef.current = setTimeout(() => {
-        if (current < 3) setDotIdx(current);
-        timerRef.current = setTimeout(() => {
-          current = (current + 1) % 4;
-          runCycle();
-        }, DOT_LEAD);
-      }, GLOW_HOLD);
-    }
-
-    runCycle();
+    if (!built) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let i = -1;
+    let id: ReturnType<typeof setInterval>;
+    const start = setTimeout(() => {
+      id = setInterval(() => {
+        i = (i + 1) % 5; // 4 steps + 1 beat of rest
+        setActive(i < 4 ? i : -1);
+      }, 1100);
+    }, 2400);
     return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
+      clearTimeout(start);
+      clearInterval(id);
     };
-  }, [visible]);
+  }, [built]);
 
-  /* ── MOBILE: vertical timeline, circle left + text right ── */
+  /* ── MOBILE: horizontal bars that grow longer step by step ── */
   if (isMobile) {
     return (
-      <div ref={containerRef} style={{ maxWidth: 340, margin: "0 auto" }}>
-        {steps.map((step, i) => (
-          <div key={step.week} style={{ display: "flex", gap: 20 }}>
-            {/* Left rail: circle + connector line */}
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 64 }}>
-              <Circle icon={step.icon} lit={glowIdx === i} size={64} iconSize={28} />
-              {i < steps.length - 1 && (
-                <div style={{ position: "relative", width: 2, height: 56, background: "rgba(209,172,114,0.25)", margin: "8px 0" }}>
-                  <TravelDot active={dotIdx === i} vertical />
-                </div>
-              )}
+      <div ref={ref} className={`stair-m${built ? " is-built" : ""}`}>
+        {steps.map((s, i) => (
+          <div key={s.week} className={`stair-m-row${active === i ? " is-active" : ""}`} style={{ transitionDelay: `${i * 180}ms` }}>
+            <div className="stair-m-head">
+              <span className="stair-icon stair-icon--m"><Icon d={s.icon} size={24} /></span>
+              <span className="stair-m-text">
+                <span className="stair-label">{s.label.replace("\n", " ")}</span>
+                <span className="stair-week">{s.week}</span>
+              </span>
             </div>
-            {/* Right: label */}
-            <div style={{ paddingTop: 8 }}>
-              <div style={{ fontSize: 20, fontWeight: 600, color: "var(--white)", lineHeight: 1.3, marginBottom: 6 }}>
-                {step.label.replace("\n", " ")}
-              </div>
-              <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: 1.5, color: "var(--gold)", textTransform: "uppercase" }}>
-                {step.week}
-              </div>
+            <div className="stair-m-track">
+              <div className="stair-m-bar" style={{ width: built ? `${BAR_W[i]}%` : "0%", transitionDelay: `${200 + i * 220}ms` }} />
             </div>
           </div>
         ))}
@@ -156,31 +108,37 @@ export default function JourneyTimeline() {
     );
   }
 
-  /* ── DESKTOP: horizontal flow ── */
+  /* ── DESKTOP: rising staircase with a growth line on top ── */
   return (
-    <div ref={containerRef} style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "nowrap" }}>
-      {steps.map((step, i, arr) => (
-        <div key={step.week} style={{ display: "flex", alignItems: "center" }}>
-          <div style={{ textAlign: "center", width: 180 }}>
-            <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
-              <Circle icon={step.icon} lit={glowIdx === i} size={110} iconSize={44} />
+    <div ref={ref} className={`stair${built ? " is-built" : ""}`}>
+      <div className="stair-cols">
+        {steps.map((s, i) => (
+          <div key={s.week} className={`stair-col${active === i ? " is-active" : ""}`}>
+            <div className="stair-content" style={{ bottom: BAR_H[i] + 22, transitionDelay: `${300 + i * 220}ms` }}>
+              <span className="stair-icon"><Icon d={s.icon} size={30} /></span>
+              <span className="stair-label">{s.label}</span>
+              <span className="stair-week">{s.week}</span>
             </div>
-            <div style={{ fontSize: 20, fontWeight: 600, color: "var(--white)", lineHeight: 1.3, marginBottom: 8, whiteSpace: "pre-line" }}>
-              {step.label}
-            </div>
-            <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: 1.5, color: "var(--gold)", textTransform: "uppercase" }}>
-              {step.week}
-            </div>
+            <div className="stair-bar" style={{ height: BAR_H[i], transitionDelay: `${i * 220}ms` }} />
           </div>
-          {i < arr.length - 1 && (
-            <div style={{ display: "flex", alignItems: "center", padding: "0 4px", marginBottom: 56, position: "relative", width: 66 }}>
-              <div style={{ width: 56, height: 2, background: "rgba(209,172,114,0.2)" }} />
-              <div style={{ width: 0, height: 0, borderTop: "6px solid transparent", borderBottom: "6px solid transparent", borderLeft: "10px solid var(--gold)", marginLeft: -1 }} />
-              <TravelDot active={dotIdx === i} vertical={false} />
-            </div>
-          )}
-        </div>
+        ))}
+      </div>
+
+      {/* Growth line across the bar tops */}
+      <svg className="stair-line" viewBox={`0 0 1000 ${AREA_H}`} preserveAspectRatio="none" aria-hidden>
+        <path d={LINE} pathLength={1} className="stair-line-path" />
+      </svg>
+      {PTS.map(([x, y], i) => (
+        <span
+          key={i}
+          className={`stair-dot${active === i ? " is-active" : ""}`}
+          style={{ left: `${x / 10}%`, top: `calc(100% - ${AREA_H}px + ${y}px)`, transitionDelay: `${1000 + i * 250}ms` }}
+        />
       ))}
+      <span className="stair-arrow" style={{ top: `calc(100% - ${AREA_H}px + ${PTS[3][1] - 22}px)` }}>
+        <svg viewBox="0 0 24 24" aria-hidden><path d="M7 17L17 7M17 7H9M17 7v8" /></svg>
+      </span>
+      <div className="stair-base" />
     </div>
   );
 }
