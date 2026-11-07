@@ -2379,3 +2379,6 @@ a.footer-link:hover { color: var(--white); }
 }
 .csx-frame.is-contain { background: radial-gradient(ellipse at 50% 45%, #1B2842 0%, #0F192C 70%); padding: 18px; justify-content: center; }
 .csx-frame.is-contain img { width: 100%; border-radius: 10px; box-shadow: 0 24px 50px -16px rgba(0,0,0,0.8), 0 0 0 1px rgba(209,172,114,0.25); }
+/* Feed posts: frame follows the image's own ratio (no side cropping) */
+.csx-gallery--feed .csx-frame.has-img { aspect-ratio: auto; }
+.csx-gallery--feed .csx-frame.has-img img { height: auto; }

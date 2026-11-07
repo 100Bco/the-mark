@@ -41,6 +41,11 @@ const data: CaseStudyData = {
   proofImages: [
     { src: "/images/loc-dang/ld-linkedin-profile.webp", alt: "Loc Dang LinkedIn profile", href: "https://www.linkedin.com/in/loc-dang-dlg/", fit: "contain" },
   ],
+  feedImages: [
+    { src: "/images/loc-dang/ld-feed-1.webp", alt: "LinkedIn post: Hit by a drunk driver? Call Dang Law Group", href: "https://lnkd.in/p/g_M7-kNS" },
+    { src: "/images/loc-dang/ld-feed-2.webp", alt: "LinkedIn post: Tennessee says no to private equity owning law firms", href: "https://lnkd.in/p/g7Avgk6u" },
+    { src: "/images/loc-dang/ld-feed-3.webp", alt: "LinkedIn post: Dang Law Group, accidents and injuries", href: "https://lnkd.in/p/gUNfc6Ds" },
+  ],
   linkedin: { url: "https://www.linkedin.com/in/loc-dang-dlg/", handle: "loc-dang-dlg" },
 };
 
