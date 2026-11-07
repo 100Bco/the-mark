@@ -9,12 +9,19 @@ const steps = [
   { label: "Convert\n& Scale", week: "Month 5+", icon: "M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.940 2.28l-2.28 5.941" },
 ];
 
-/* Bar heights rise step by step: the section reads as a growth staircase */
-const BAR_H = [84, 144, 204, 264]; // desktop px
-const BAR_W = [46, 64, 82, 100]; // mobile % width
-const AREA_H = 280; // desktop bar area height
+const BAR_H = [84, 144, 204, 264]; // desktop bar heights (px)
+const BAR_W = [46, 64, 82, 100]; // mobile bar widths (%)
+const AREA_H = 280; // desktop bar area height (px), = SVG viewBox height
 
-/* Points on top of each bar (viewBox 1000 x AREA_H) */
+/* Build + loop timing (ms) */
+const RISE_MS = 1400;
+const RISE_GAP = 350;
+const DRAW_START = 500;
+const DRAW_MS = 2800;
+const TRAVEL_MS = 6000;
+const REST_MS = 1500;
+
+/* Points on top of each bar, viewBox 1000 x AREA_H */
 const PTS = BAR_H.map((h, i) => [125 + i * 250, AREA_H - h] as const);
 const LINE =
   `M${PTS[0][0]} ${PTS[0][1]} ` +
@@ -24,6 +31,10 @@ const LINE =
     return `C${cx} ${py} ${cx} ${y} ${x} ${y}`;
   }).join(" ") +
   ` L985 ${PTS[3][1] - 22}`;
+
+const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const smooth = (v: number) => v * v * (3 - 2 * v); // smoothstep
+const easeInOutSine = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
 
 function useIsMobile() {
   const [mobile, setMobile] = useState(false);
@@ -47,11 +58,16 @@ function Icon({ d, size }: { d: string; size: number }) {
 
 export default function JourneyTimeline() {
   const ref = useRef<HTMLDivElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
+  const headRef = useRef<HTMLSpanElement>(null);
+  const barGlow = useRef<(HTMLDivElement | null)[]>([]);
+  const iconGlow = useRef<(HTMLSpanElement | null)[]>([]);
+  const iconWrap = useRef<(HTMLSpanElement | null)[]>([]);
+  const dots = useRef<(HTMLSpanElement | null)[]>([]);
   const [built, setBuilt] = useState(false);
-  const [active, setActive] = useState(-1);
+  const [arrow, setArrow] = useState(false);
   const isMobile = useIsMobile();
 
-  // Build once when the section scrolls into view
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -66,41 +82,110 @@ export default function JourneyTimeline() {
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [isMobile]);
 
-  // After the staircase is built, a light walks up the steps and loops
+  /* One rAF loop drives the line draw (desktop) and the travelling light (both) */
   useEffect(() => {
     if (!built) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let i = -1;
-    let id: ReturnType<typeof setInterval>;
-    const start = setTimeout(() => {
-      id = setInterval(() => {
-        i = (i + 1) % 5; // 4 steps + 1 beat of rest
-        setActive(i < 4 ? i : -1);
-      }, 1800);
-    }, 5000);
-    return () => {
-      clearTimeout(start);
-      clearInterval(id);
-    };
-  }, [built]);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const path = pathRef.current;
+    const L = path ? path.getTotalLength() : 0;
+    // length along the path at each bar top, so dots light exactly when the line reaches them
+    const dotLen: number[] = [];
+    if (path) {
+      let j = 0;
+      for (let s = 0; s <= L && j < PTS.length; s += 2) {
+        if (path.getPointAtLength(s).x >= PTS[j][0] - 0.5) { dotLen.push(s); j++; }
+      }
+      while (dotLen.length < PTS.length) dotLen.push(L);
+    }
+    const lastLen = dotLen[3] ?? L;
 
-  /* ── MOBILE: horizontal bars that grow longer step by step ── */
+    const setIntensity = (k: number[]) => {
+      k.forEach((v, i) => {
+        const g = barGlow.current[i]; if (g) g.style.opacity = String(v);
+        const ig = iconGlow.current[i]; if (ig) ig.style.opacity = String(v);
+        const iw = iconWrap.current[i]; if (iw) iw.style.transform = `scale(${1 + 0.08 * v})`;
+        const d = dots.current[i]; if (d) d.style.setProperty("--lit", String(v));
+      });
+    };
+
+    if (reduce) {
+      if (path) { path.style.strokeDasharray = `${L}`; path.style.strokeDashoffset = "0"; }
+      dots.current.forEach((d) => d && (d.style.opacity = "1"));
+      setArrow(true);
+      return;
+    }
+
+    if (path) { path.style.strokeDasharray = `${L}`; path.style.strokeDashoffset = `${L}`; }
+    const head = headRef.current;
+    const start = performance.now();
+    const loopStart = isMobile ? RISE_GAP * 3 + RISE_MS + 400 : DRAW_START + DRAW_MS + 900;
+    let raf = 0;
+    let arrowShown = false;
+
+    const placeHead = (len: number, alpha: number) => {
+      if (!head || !path) return;
+      const pt = path.getPointAtLength(len);
+      head.style.left = `${pt.x / 10}%`;
+      head.style.top = `calc(100% - ${AREA_H}px + ${pt.y}px)`;
+      head.style.opacity = String(alpha);
+    };
+
+    const tick = (now: number) => {
+      const t = now - start;
+
+      /* ── Desktop build: draw the line with a light at its tip ── */
+      if (!isMobile && path && t < loopStart) {
+        const p = easeInOutSine(clamp((t - DRAW_START) / DRAW_MS));
+        const len = p * L;
+        path.style.strokeDashoffset = `${L - len}`;
+        dotLen.forEach((dl, i) => { const d = dots.current[i]; if (d) d.style.opacity = len >= dl - 1 ? "1" : "0"; });
+        const fadeOut = clamp((t - (DRAW_START + DRAW_MS)) / 600);
+        placeHead(len, p > 0 ? 1 - fadeOut : 0);
+        if (!arrowShown && p >= 0.98) { arrowShown = true; setArrow(true); }
+      }
+
+      /* ── Loop: a light travels step 1 -> 4, each step brightens as it passes ── */
+      if (t >= loopStart) {
+        const cycle = TRAVEL_MS + REST_MS;
+        const c = (t - loopStart) % cycle;
+        const travel = clamp(c / TRAVEL_MS);
+        const pos = easeInOutSine(travel) * 3; // 0..3 across the 4 steps
+        const fade = c < TRAVEL_MS ? smooth(clamp(c / 500)) * (1 - smooth(clamp((c - (TRAVEL_MS - 700)) / 700))) : 0;
+        const k = [0, 1, 2, 3].map((i) => smooth(clamp(1 - Math.abs(pos - i) / 0.9)) * fade);
+        setIntensity(k);
+        if (!isMobile && path) {
+          const len = dotLen[0] + (lastLen - dotLen[0]) * (pos / 3);
+          placeHead(len, fade);
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [built, isMobile]);
+
+  /* ── MOBILE: horizontal bars, a light flows down through the rows ── */
   if (isMobile) {
     return (
       <div ref={ref} className={`stair-m${built ? " is-built" : ""}`}>
         {steps.map((s, i) => (
-          <div key={s.week} className={`stair-m-row${active === i ? " is-active" : ""}`} style={{ transitionDelay: `${i * 450}ms` }}>
+          <div key={s.week} className="stair-m-row" style={{ transitionDelay: `${i * RISE_GAP}ms` }}>
             <div className="stair-m-head">
-              <span className="stair-icon stair-icon--m"><Icon d={s.icon} size={24} /></span>
+              <span className="stair-icon stair-icon--m" ref={(el) => { iconWrap.current[i] = el; }}>
+                <span className="stair-icon-glow" ref={(el) => { iconGlow.current[i] = el; }} />
+                <Icon d={s.icon} size={24} />
+              </span>
               <span className="stair-m-text">
                 <span className="stair-label">{s.label.replace("\n", " ")}</span>
                 <span className="stair-week">{s.week}</span>
               </span>
             </div>
             <div className="stair-m-track">
-              <div className="stair-m-bar" style={{ width: built ? `${BAR_W[i]}%` : "0%", transitionDelay: `${200 + i * 450}ms` }} />
+              <div className="stair-m-bar" style={{ width: built ? `${BAR_W[i]}%` : "0%", transitionDelay: `${150 + i * RISE_GAP}ms` }}>
+                <div className="stair-m-bar-glow" ref={(el) => { barGlow.current[i] = el; }} />
+              </div>
             </div>
           </div>
         ))}
@@ -108,34 +193,47 @@ export default function JourneyTimeline() {
     );
   }
 
-  /* ── DESKTOP: rising staircase with a growth line on top ── */
+  /* ── DESKTOP: rising staircase, growth line, travelling light ── */
   return (
     <div ref={ref} className={`stair${built ? " is-built" : ""}`}>
       <div className="stair-cols">
         {steps.map((s, i) => (
-          <div key={s.week} className={`stair-col${active === i ? " is-active" : ""}`}>
-            <div className="stair-content" style={{ bottom: BAR_H[i] + 22, transitionDelay: `${300 + i * 500}ms` }}>
-              <span className="stair-icon"><Icon d={s.icon} size={30} /></span>
+          <div key={s.week} className="stair-col">
+            <div
+              className="stair-content"
+              style={{
+                bottom: BAR_H[i] + 22,
+                transform: built ? "translateY(0)" : `translateY(${BAR_H[i]}px)`,
+                transitionDelay: `${i * RISE_GAP}ms`,
+              }}
+            >
+              <span className="stair-icon" ref={(el) => { iconWrap.current[i] = el; }}>
+                <span className="stair-icon-glow" ref={(el) => { iconGlow.current[i] = el; }} />
+                <Icon d={s.icon} size={30} />
+              </span>
               <span className="stair-label">{s.label}</span>
               <span className="stair-week">{s.week}</span>
             </div>
-            <div className="stair-bar" style={{ height: BAR_H[i], transitionDelay: `${i * 500}ms` }} />
+            <div className="stair-bar" style={{ height: BAR_H[i], transitionDelay: `${i * RISE_GAP}ms` }}>
+              <div className="stair-bar-glow" ref={(el) => { barGlow.current[i] = el; }} />
+            </div>
           </div>
         ))}
       </div>
 
-      {/* Growth line across the bar tops */}
       <svg className="stair-line" viewBox={`0 0 1000 ${AREA_H}`} preserveAspectRatio="none" aria-hidden>
-        <path d={LINE} pathLength={1} className="stair-line-path" />
+        <path ref={pathRef} d={LINE} className="stair-line-path" />
       </svg>
       {PTS.map(([x, y], i) => (
         <span
           key={i}
-          className={`stair-dot${active === i ? " is-active" : ""}`}
-          style={{ left: `${x / 10}%`, top: `calc(100% - ${AREA_H}px + ${y}px)`, transition: `opacity 0.6s ease ${1600 + Math.round((i / 3) * 2800)}ms, transform 0.6s ease ${1600 + Math.round((i / 3) * 2800)}ms, background 0.8s ease, box-shadow 0.8s ease` }}
+          ref={(el) => { dots.current[i] = el; }}
+          className="stair-dot"
+          style={{ left: `${x / 10}%`, top: `calc(100% - ${AREA_H}px + ${y}px)` }}
         />
       ))}
-      <span className="stair-arrow" style={{ top: `calc(100% - ${AREA_H}px + ${PTS[3][1] - 22}px)` }}>
+      <span ref={headRef} className="stair-head" />
+      <span className={`stair-arrow${arrow ? " is-on" : ""}`} style={{ top: `calc(100% - ${AREA_H}px + ${PTS[3][1] - 22}px)` }}>
         <svg viewBox="0 0 24 24" aria-hidden><path d="M7 17L17 7M17 7H9M17 7v8" /></svg>
       </span>
       <div className="stair-base" />
