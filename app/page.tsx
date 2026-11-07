@@ -223,44 +223,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT — wide card */}
-      <section style={{ background: "#091020", padding: "100px 64px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div className="section-label reveal" style={{ color: "var(--gold)", textAlign: "center", marginBottom: 32 }}>Behind The Mark</div>
-          <div
-            className="reveal about-card-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "280px 1fr",
-              gap: 48,
-              alignItems: "center",
-              background: "rgba(209,172,114,0.06)",
-              border: "1px solid rgba(209,172,114,0.15)",
-              borderRadius: 10,
-              padding: "56px 56px",
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/team/minh-mac.webp"
-              alt="Minh Mac, Founder of 100Bold"
-              style={{
-                width: 280,
-                height: 280,
-                borderRadius: 8,
-                objectFit: "cover",
-                display: "block",
-                border: "2px solid rgba(209,172,114,0.15)",
-              }}
-            />
-            <div>
-              <div style={{ fontSize: 32, fontWeight: 700, color: "var(--white)", marginBottom: 6 }}>Minh Mac</div>
-              <div style={{ fontSize: 16, fontWeight: 500, color: "var(--gold)", marginBottom: 24 }}>Founder, 100Bold</div>
-              <p style={{ fontSize: 18, fontWeight: 400, color: "var(--muted-lt)", lineHeight: 1.8, marginBottom: 28 }}>
-                15 years building businesses and scaling brands across Austin and Southeast Asia. The Mark is the system he built to turn a founder&apos;s LinkedIn into a real growth channel.
-              </p>
-              <a href="/about" className="cs-case-link">Learn more &rarr;</a>
+      {/* ABOUT: editorial portrait with offset brass frame */}
+      <section className="founder-section">
+        <div className="founder reveal">
+          <div className="founder-media">
+            <span className="founder-frame" aria-hidden />
+            <div className="founder-photo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/team/minh-mac.webp" alt="Minh Mac, Founder of 100Bold" />
+              <span className="founder-curtain" aria-hidden />
             </div>
+          </div>
+          <div className="founder-text">
+            <div className="founder-label f-line" style={{ transitionDelay: "0.55s" }}>Behind The Mark</div>
+            <h2 className="founder-name f-line" style={{ transitionDelay: "0.7s" }}>Minh Mac</h2>
+            <div className="founder-role f-line" style={{ transitionDelay: "0.85s" }}>Founder, 100Bold</div>
+            <span className="founder-rule f-line" style={{ transitionDelay: "1s" }} aria-hidden />
+            <p className="founder-bio f-line" style={{ transitionDelay: "1.1s" }}>
+              15 years building businesses and scaling brands across Austin and Southeast Asia. The Mark is the system he built to turn a founder&apos;s LinkedIn into a real growth channel.
+            </p>
+            <a href="/about" className="founder-btn f-line" style={{ transitionDelay: "1.3s" }}>
+              Learn more <span aria-hidden>&rarr;</span>
+            </a>
           </div>
         </div>
       </section>
