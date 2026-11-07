@@ -5,6 +5,7 @@ import SiteFooter from "./components/SiteFooter";
 import CtaSection from "./components/CtaSection";
 import MobileApplyBar from "./components/MobileApplyBar";
 import WhatWeDoCards from "./components/WhatWeDoCards";
+import HeroBeforeAfter from "./components/HeroBeforeAfter";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
       <SiteNav />
 
       {/* HERO */}
-      <section className="hero">
+      <section className="hero hero-ba">
         <div className="hero-eyebrow">The Mark by 100Bold</div>
 
         <h1 className="hero-headline">
@@ -35,6 +36,8 @@ export default function Home() {
             See Client Results
           </a>
         </div>
+
+        <HeroBeforeAfter />
 
         {/* Stats bar */}
         <div
