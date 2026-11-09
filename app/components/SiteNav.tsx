@@ -47,6 +47,10 @@ export default function SiteNav({ active }: Props) {
     <>
       <nav>
         <a href="/" className="nav-logo">
+          <svg className="nav-logo-mark" viewBox="0 0 100 100" aria-hidden>
+            <path d="M22 74 V28 L50 58 L78 28 V74" fill="none" stroke="currentColor" strokeWidth="9" strokeLinejoin="miter" />
+            <rect x="22" y="83" width="56" height="5" fill="currentColor" />
+          </svg>
           <div className="nav-wordmark">The Mark</div>
         </a>
 

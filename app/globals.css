@@ -2531,3 +2531,8 @@ a.footer-link:hover { color: var(--white); }
   .inbox-row { padding: 7px 8px; }
   .inbox-skel { height: 5px; }
 }
+
+/* Logo mark (M with underline) */
+.nav-logo { gap: 12px; }
+.nav-logo-mark { width: 30px; height: 30px; color: var(--gold); flex-shrink: 0; }
+@media (max-width: 900px) { .nav-logo-mark { width: 26px; height: 26px; } }
