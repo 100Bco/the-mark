@@ -2465,3 +2465,69 @@ a.footer-link:hover { color: var(--white); }
   .csx-dot { width: 10px; height: 10px; border-radius: 999px; border: 0; padding: 0; cursor: pointer; background: rgba(209,172,114,0.3); transition: width 0.35s cubic-bezier(.22,1,.36,1), background 0.3s; }
   .csx-dot.is-active { width: 34px; background: var(--gold); }
 }
+
+/* ── Footer: 100Bold link ── */
+.footer-100bold { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(209,172,114,0.5); transition: color .2s, border-color .2s; }
+.footer-100bold:hover { color: var(--gold-lt); border-color: var(--gold-lt); }
+
+/* ── "Read the case study" as a real button ── */
+.case-card-link {
+  margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 14px;
+  padding: 10px 10px 10px 22px; border-radius: 999px; border: 1.5px solid rgba(209,172,114,0.7);
+  background: rgba(209,172,114,0.08); color: var(--gold-lt);
+  font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  transition: background .3s, color .3s, border-color .3s;
+}
+.case-card-arrow {
+  width: 34px; height: 34px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--gold); color: var(--navy); font-size: 17px; letter-spacing: 0;
+  transition: transform .4s cubic-bezier(.22,1,.36,1);
+}
+@media (hover: hover) {
+  .case-card:hover .case-card-link { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+  .case-card:hover .case-card-arrow { background: var(--navy); color: var(--gold); transform: translateX(4px); }
+}
+@media (max-width: 900px) {
+  .case-card-link { align-self: stretch; justify-content: space-between; }
+}
+
+/* ── Nav dropdown: Case Studies ── */
+.nav-drop { position: relative; }
+.nav-caret { font-size: 11px; margin-left: 4px; opacity: .7; display: inline-block; transition: transform .25s; }
+.nav-drop:hover .nav-caret, .nav-drop:focus-within .nav-caret { transform: rotate(180deg); }
+.nav-drop-panel {
+  position: absolute; top: calc(100% + 18px); left: 50%; width: 340px; transform: translate(-50%, 8px);
+  padding: 10px; border-radius: 16px; background: #0E1726; border: 1px solid rgba(209,172,114,0.25);
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.85);
+  opacity: 0; visibility: hidden; transition: opacity .25s, transform .25s, visibility 0s .25s;
+}
+.nav-drop-panel::before { content: ""; position: absolute; left: 0; right: 0; top: -20px; height: 20px; }
+.nav-drop:hover .nav-drop-panel, .nav-drop:focus-within .nav-drop-panel { opacity: 1; visibility: visible; transform: translate(-50%, 0); transition: opacity .25s, transform .25s; }
+.nav-case { display: flex; align-items: center; gap: 14px; padding: 12px; border-radius: 12px; text-decoration: none; transition: background .2s; }
+.nav-case:hover { background: rgba(209,172,114,0.1); }
+.nav-case-img { width: 46px; height: 46px; min-width: 46px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 2px solid rgba(209,172,114,0.5); }
+.nav-case-text { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.nav-case-name { font-size: 16px; font-weight: 600; color: var(--white); }
+.nav-case-stat { font-size: 14px; color: var(--gold); }
+.nav-case-arrow { color: var(--gold); font-size: 18px; transition: transform .25s; }
+.nav-case:hover .nav-case-arrow { transform: translateX(4px); }
+.nav-drop-all { display: block; margin-top: 6px; padding: 12px; border-top: 1px solid rgba(209,172,114,0.15); font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+
+@media (max-width: 900px) {
+  .nav-sheet { overflow-y: auto; }
+  .nav-sheet-cases { display: flex; flex-direction: column; gap: 8px; padding: 10px 0 14px; border-bottom: 1px solid rgba(209,172,114,0.12); }
+  .nav-sheet-links .nav-sheet-cases a.nav-case {
+    font-family: inherit; font-size: inherit; font-weight: inherit; padding: 12px 14px; border: 1px solid rgba(209,172,114,0.2);
+    border-radius: 14px; background: rgba(209,172,114,0.05);
+  }
+  .nav-sheet-links > div > a { display: block; }
+  .nav-sheet-links > div:has(.nav-sheet-cases) > a { border-bottom: 0; padding-bottom: 6px; }
+  .nav-case-name { font-size: 18px; }
+  .nav-case-stat { font-size: 15px; }
+
+  /* Inbox shows all 4 messages on mobile */
+  .wwd-visual:has(.inbox) { height: 316px; }
+  .inbox-list { gap: 5px; padding: 6px 8px; }
+  .inbox-row { padding: 7px 8px; }
+  .inbox-skel { height: 5px; }
+}

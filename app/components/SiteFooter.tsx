@@ -56,7 +56,7 @@ export default function SiteFooter() {
         </div>
 
         <div className="footer-bar">
-          <p>&copy; 2026 The Mark by 100Bold</p>
+          <p>&copy; 2026 The Mark by <a href="https://100bold.co" target="_blank" rel="noopener noreferrer" className="footer-100bold">100Bold</a></p>
           <p>Application Only</p>
         </div>
       </div>

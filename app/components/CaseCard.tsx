@@ -32,7 +32,7 @@ export default function CaseCard({ d }: { d: CaseCardData }) {
           ))}
         </div>
         <span className="case-card-link">
-          Read the case study <span className="case-card-arrow">&rarr;</span>
+          Read the case study <span className="case-card-arrow" aria-hidden>&rarr;</span>
         </span>
       </div>
     </a>
