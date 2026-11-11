@@ -73,7 +73,7 @@ export default function SiteNav({ active }: Props) {
               </a>
             )
           )}
-          <a href="#apply" className="nav-cta">Apply to Work With Us</a>
+          <a href="/apply" className="nav-cta">Apply to Work With Us</a>
         </div>
 
         {/* Mobile toggle */}
@@ -106,7 +106,7 @@ export default function SiteNav({ active }: Props) {
             </div>
           ))}
         </div>
-        <a href="#apply" className="btn-primary nav-sheet-cta" onClick={() => setOpen(false)}>
+        <a href="/apply" className="btn-primary nav-sheet-cta" onClick={() => setOpen(false)}>
           Apply to Work With Us
         </a>
         <a href="mailto:start@100bold.co" className="nav-sheet-mail">start@100bold.co</a>

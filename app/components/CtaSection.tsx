@@ -25,7 +25,7 @@ export default function CtaSection({
       </h2>
       <p className="cta2-sub reveal">{sub}</p>
       <a
-        href="mailto:start@100bold.co?subject=The Mark - Application"
+        href="/apply"
         className="btn-primary cta2-btn reveal"
       >
         Apply to Work With Us

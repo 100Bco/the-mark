@@ -37,6 +37,7 @@ export default function CaseStudiesPage() {
           <div className="reveal cards-2col case-grid">
             {CASES.map((c) => <CaseCard key={c.href} d={c} />)}
           </div>
+          <p className="case-note reveal">Every client starts from a different place. Results depend on industry, audience, and consistency.</p>
         </div>
       </section>
 

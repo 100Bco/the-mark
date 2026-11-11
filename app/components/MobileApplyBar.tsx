@@ -28,7 +28,7 @@ export default function MobileApplyBar() {
 
   return (
     <div className={`apply-bar${show ? " is-visible" : ""}`} aria-hidden={!show}>
-      <a href="#apply" className="btn-primary apply-bar-btn" tabIndex={show ? 0 : -1}>
+      <a href="/apply" className="btn-primary apply-bar-btn" tabIndex={show ? 0 : -1}>
         Apply to Work With Us
       </a>
     </div>

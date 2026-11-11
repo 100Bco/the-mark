@@ -30,7 +30,7 @@ export default function Home() {
         </p>
 
         <div className="hero-cta-group">
-          <a href="#apply" className="btn-primary">
+          <a href="/apply" className="btn-primary">
             Apply to Work With Us
           </a>
           <a href="#results" className="btn-ghost">
@@ -197,6 +197,8 @@ export default function Home() {
           <div className="reveal cards-2col case-grid">
             {CASES.map((c) => <CaseCard key={c.href} d={c} />)}
           </div>
+
+          <p className="case-note reveal">Every client starts from a different place. Results depend on industry, audience, and consistency.</p>
 
           {/* View all link */}
           <div className="reveal" style={{ textAlign: "center", marginTop: 40 }}>

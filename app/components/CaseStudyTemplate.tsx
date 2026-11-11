@@ -62,12 +62,17 @@ export default function CaseStudyTemplate({ d }: { d: CaseStudyData }) {
           </div>
         </section>
 
-        {/* 3. The work */}
+        {/* 6. Key milestones */}
         <section className="csx-section">
-          <Heading label="The work">What we <span className="accent">did</span></Heading>
-          <div className="csx-box csx-narrow reveal">
-            {d.work.map((para, i) => (
-              <p key={i} className="csx-body">{para}</p>
+          <Heading label="Milestones">Key <span className="accent">milestones</span></Heading>
+          <div className="csx-milestones csx-wide reveal">
+            {d.milestones.map((m, i) => (
+              <div key={m.title} className="csx-milestone">
+                <div className="csx-milestone-num">0{i + 1}</div>
+                {m.kicker && <div className="csx-milestone-kicker">{m.kicker}</div>}
+                <h3 className="csx-milestone-title">{m.title}</h3>
+                <p className="csx-milestone-desc">{m.desc}</p>
+              </div>
             ))}
           </div>
         </section>
@@ -100,25 +105,20 @@ export default function CaseStudyTemplate({ d }: { d: CaseStudyData }) {
           </div>
         </section>
 
-        {/* 6. Key milestones */}
-        <section className="csx-section">
-          <Heading label="Milestones">Key <span className="accent">milestones</span></Heading>
-          <div className="csx-milestones csx-wide reveal">
-            {d.milestones.map((m, i) => (
-              <div key={m.title} className="csx-milestone">
-                <div className="csx-milestone-num">0{i + 1}</div>
-                {m.kicker && <div className="csx-milestone-kicker">{m.kicker}</div>}
-                <h3 className="csx-milestone-title">{m.title}</h3>
-                <p className="csx-milestone-desc">{m.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* 7. The proof */}
         <section className="csx-section">
           <Heading label="Take a look at">The <span className="accent">proof</span></Heading>
           <div className="csx-wide reveal"><ImageRow images={d.proofImages} kind="proof" /></div>
+        </section>
+
+        {/* 3. The work */}
+        <section className="csx-section">
+          <Heading label="The work">What we <span className="accent">did</span></Heading>
+          <div className="csx-box csx-narrow reveal">
+            {d.work.map((para, i) => (
+              <p key={i} className="csx-body">{para}</p>
+            ))}
+          </div>
         </section>
 
         {/* 8. From the feed */}
