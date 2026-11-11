@@ -44,9 +44,9 @@ const data: CaseStudyData = {
     { src: "/images/tung-cao/tc-proof-inbox.webp", alt: "Real inbound LinkedIn messages to Tung Cao, sender names blurred", href: "/images/tung-cao/tc-proof-inbox-all.webp", cta: "View all messages \u2197" },
   ],
   feedImages: [
-    { src: "/images/tung-cao/tc-feed-1.webp", alt: "LinkedIn post: IKEA has sourced from Vietnam for 33 years", href: "https://lnkd.in/p/gmaU2XbA" },
-    { src: "/images/tung-cao/tc-feed-2.webp", alt: "LinkedIn post: The world's #2 shipping giant eyes $3.5 billion in Vietnam", href: "https://lnkd.in/p/gM3MNyrY" },
-    { src: "/images/tung-cao/tc-feed-3.webp", alt: "LinkedIn post: Vietnam's most powerful women in Asia", href: "https://lnkd.in/p/gw-JGzTf" },
+    { src: "/images/tung-cao/tc-feed-1.webp", alt: "LinkedIn post: Top 10 coffee companies worldwide 2026. Where is Vietnam?", href: "https://www.linkedin.com/feed/update/urn:li:activity:7506338118694940673/" },
+    { src: "/images/tung-cao/tc-feed-2.webp", alt: "LinkedIn post: David Thai, founder of Highlands Coffee", href: "https://www.linkedin.com/feed/update/urn:li:activity:7509242820700917760/" },
+    { src: "/images/tung-cao/tc-feed-3.webp", alt: "LinkedIn post: Vietnam feeds the world. Why become the next Singapore?", href: "https://lnkd.in/p/gVd5VMDk" },
   ],
   linkedin: { url: "https://www.linkedin.com/in/tungcao-thomas/", handle: "tungcao-thomas" },
 };

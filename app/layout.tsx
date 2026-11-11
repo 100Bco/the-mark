@@ -17,6 +17,9 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://themark.100bold.co"),
+  openGraph: { siteName: "The Mark", type: "website" },
+  twitter: { card: "summary_large_image" },
   title: "The Mark | Done-for-you LinkedIn Growth for Founders & CEOs",
   description:
     "Fully managed LinkedIn service that builds your authority and turns attention into deals, partnerships, and speaking invitations. By 100Bold.",
